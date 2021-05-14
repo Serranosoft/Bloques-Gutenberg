@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import { Global, css } from '@emotion/react'
+import styled from '@emotion/styled'
+import Header from "./components/Header"
+import Landing from './components/Landing'
+import TemplateList from './components/TemplateList'
+import { Route, BrowserRouter, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Global
+        styles={css`
+                *,*::after,*::before {
+                    box-sizing: border-box;
+                    margin: 0;
+                    padding: 0;
+                }
+                
+                html {
+                    font-family: 'Inter', sans-serif;
+                    height: 100%;
+                }
+                body {
+                    background-color: #1f2937;
+                    color: white;
+                }`
+        }
+      />
+      <AppSection>
+        <Header />
+        <BrowserRouter>
+          <Switch>
+            <MainSection>
+              <Route exact path="/" component={Landing} />
+              <Route path="/plantillas" component={TemplateList} />
+            </MainSection>
+          </Switch>
+        </BrowserRouter>
+      </AppSection>
+    </>
   );
 }
 
 export default App;
+
+const AppSection = styled.section`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`
+const MainSection = styled.section`
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
