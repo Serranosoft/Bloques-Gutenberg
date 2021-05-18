@@ -2,20 +2,47 @@ import React from "react";
 import styled from '@emotion/styled'
 import opcionCaja from "../images/opcion-caja.png"
 import opcionTabla from "../images/opcion-tabla.png"
+import ArrowLeft from "../images/decoration/curve-arrow-left.svg"
+import ArrowRight from "../images/decoration/curve-arrow-right.svg"
 import { Link } from "react-router-dom"
 
-function Landing() {
+function Landing(props) {
+
+    console.log(props.location.optionChosed);
 
     return (
         <>
-            <LandingTitle>Crear Bloques Gutenberg <span style={{ textDecoration: "line-through", textDecorationColor: "red", textDecorationThickness: "16.5px" }}>es dificil </span> <span style={{ display: "block", color: "#34d399", textAlign: "center" }}>nunca ha sido tan fácil</span></LandingTitle>
+            <LandingTitle>Crear Bloques Gutenberg <span style={{
+                textDecoration: "line-through",
+                textDecorationColor: "rgba(237, 66, 66, 0.85)",
+                textDecorationThickness: "16.5px"
+            }}>es dificil</span>
+                <span style={{
+                    display: "block",
+                    color: "#34d399",
+                    textAlign: "center"
+                }}>nunca ha sido tan fácil</span>
+            </LandingTitle>
+
             <LandingWrapper>
                 <p>Elige un tipo de bloque</p>
+                <ArrowText arrowLeft>Plantillas para Tablas</ArrowText>
+                <DecorationArrow src={ArrowLeft} arrowLeft />
+                <ArrowText arrowRight>Plantillas para Cajas</ArrowText>
+                <DecorationArrow src={ArrowRight} arrowRight />
                 <OptionWrapper>
-                    <Link to="/plantillas">
-                        <Image src={opcionCaja} />
+                    <Link to={{
+                        pathname: "/plantillas",
+                        optionChosed: "box"
+                    }}>
+                        <ImageOption src={opcionCaja} />
                     </Link>
-                    <Image src={opcionTabla} />
+                    <Link to={{
+                        pathname: "/plantillas",
+                        optionChosed: "table"
+                    }}>
+                        <ImageOption src={opcionTabla} />
+                    </Link>
                 </OptionWrapper>
             </LandingWrapper>
         </>
@@ -47,7 +74,7 @@ const OptionWrapper = styled.div`
     margin-top: 24px;
 `
 
-const Image = styled.img`
+const ImageOption = styled.img`
     width: 280px;
     height: 100%;
     cursor: pointer;
@@ -55,4 +82,25 @@ const Image = styled.img`
     &:hover {
         transform: scale(1.1);
     }
+`
+
+const DecorationArrow = styled.img`
+    width: 50px;
+    position: relative;
+    top: ${props =>
+        props.arrowLeft ? '70px' : '70px'};
+    left: ${props =>
+        props.arrowLeft ? '445px' : '-595px'};
+    
+`
+
+const ArrowText = styled.span`
+    position: relative;
+    top: ${props =>
+        props.arrowLeft ? '10px' : '10px'};
+    left: ${props =>
+        props.arrowLeft ? '555px' : '-505px'};
+    color: #34d399;
+    text-align: center;
+    font-family: 'Texturina', serif;
 `

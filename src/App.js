@@ -26,28 +26,22 @@ function App() {
                 }`
         }
       />
-      <AppSection>
-        <Header />
-        <BrowserRouter>
-          <Switch>
-            <MainSection>
-              <Route exact path="/" component={Landing} />
-              <Route path="/plantillas" component={TemplateList} />
-            </MainSection>
-          </Switch>
-        </BrowserRouter>
-      </AppSection>
+      <Header />
+      <BrowserRouter>
+        <Switch>
+          <MainSection>
+            <Route exact path="/" component={Landing} />
+            <Route path="/plantillas" component={TemplateList} />
+            <Route path="/personalizar" component={Landing} />
+          </MainSection>
+        </Switch>
+      </BrowserRouter>
     </>
   );
 }
 
 export default App;
 
-const AppSection = styled.section`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-`
 const MainSection = styled.section`
     width: 100%;
     height: 100vh;
