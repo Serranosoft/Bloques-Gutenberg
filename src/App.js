@@ -4,6 +4,7 @@ import Header from "./components/Header"
 import Landing from './components/Landing'
 import TemplateList from './components/TemplateList'
 import { Route, BrowserRouter, Switch } from "react-router-dom";
+import PersonalizeTemplate from './components/PersonalizeTemplate'
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
           <MainSection>
             <Route exact path="/" component={Landing} />
             <Route path="/plantillas" component={TemplateList} />
-            <Route path="/personalizar" component={Landing} />
+            <Route path="/personalizar" component={PersonalizeTemplate} />
           </MainSection>
         </Switch>
       </BrowserRouter>

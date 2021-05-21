@@ -6,10 +6,8 @@ import ArrowLeft from "../images/decoration/curve-arrow-left.svg"
 import ArrowRight from "../images/decoration/curve-arrow-right.svg"
 import { Link } from "react-router-dom"
 
-function Landing(props) {
-
-    console.log(props.location.optionChosed);
-
+function Landing() {
+    
     return (
         <>
             <LandingTitle>Crear Bloques Gutenberg <span style={{

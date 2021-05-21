@@ -26,7 +26,7 @@ const HeaderSection = styled.header`
   justify-content: end;
 `
 
-const UserActions = styled.div`
+/* const UserActions = styled.div`
     display: flex;
     width: 25%;
     align-items: center;
@@ -42,4 +42,4 @@ const Button = styled.button`
     text-transform: uppercase;
     font-weight: 700;
     cursor: pointer;
-`
+` */

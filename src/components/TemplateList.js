@@ -1,7 +1,7 @@
 import React from "react";
 import styled from '@emotion/styled'
 import Template from "./Template"
-import BoxTemplates from "../resources/BoxTemplates.json"
+import BoxTemplates from "../resources/BoxTemplates"
 import TableTemplates from "../resources/TableTemplates.json"
 import { useHistory } from 'react-router-dom';
 import { Link } from "react-router-dom"
@@ -22,6 +22,21 @@ function TemplateList(props) {
                 <TemplateListWrapper>
                     {props.location.optionChosed === "box" ?
                         BoxTemplates.map((el => {
+                            console.log(el.TemplateId);
+                            return (
+                                <Link to={{
+                                    pathname: "/personalizar",
+                                    optionChosed: el.TemplateId
+                                }}>
+                                    <Template
+                                        image={el.TemplateImg}
+                                        htmlCode={el.TemplateHtml}
+                                        cssCode={el.TemplateCss} />
+                                </Link>
+                            )
+                        }))
+                        :
+                        TableTemplates.map((el => {
                             return (
                                 <Link to={{
                                     pathname: "/personalizar",
@@ -32,15 +47,6 @@ function TemplateList(props) {
                                         htmlCode={el.templateHtml}
                                         cssCode={el.templateCss} />
                                 </Link>
-                            )
-                        }))
-                        :
-                        TableTemplates.map((el => {
-                            return (
-                                <Template
-                                    image={el.templateImg}
-                                    htmlCode={el.templateHtml}
-                                    cssCode={el.templateCss} />
                             )
                         }))
                     }
