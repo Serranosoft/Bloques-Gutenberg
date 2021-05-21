@@ -9,22 +9,15 @@ import "../resources/TemplatesStyles.css"
 function PersonalizeTemplate(props) {    
     const history = useHistory();
     const [template, getTemplate] = useState(fetchTemplate(props.location.optionChosed));
-    const [styling, changeStyling] = useState([]);
+    const [styling, changeStyling] = useState({
+        color: "#1C1C1C",
+        background: "#ffffff"
+    });
 
 
     useEffect(() => {
-        for(let key in styling) {
-            document.querySelector(`.template${template.TemplateId}`).setAttribute("style", `${key}:${styling[key]}`)
-        }
+        document.querySelector(`.template${template.TemplateId}`).setAttribute("style", applyStyles())
     }, [styling])
-
-    function fetchTemplate(id) {
-        if(id < 10) {
-            return BoxTemplates.find(element => element.TemplateId === parseInt(id))
-        } else {
-            return TableTemplates.find(element => element.TemplateId === parseInt(id))
-        }
-    }
 
     if (!props.location.optionChosed) {
         history.push("/")
@@ -41,12 +34,35 @@ function PersonalizeTemplate(props) {
                     <div id="templatePreview" className={template.TemplateId} dangerouslySetInnerHTML={{ __html: template.TemplateHtml }}></div>
                     <Palette styling={styling} changeStyling={changeStyling}/>
                     <HtmlGenerated>{template.TemplateHtml}</HtmlGenerated>
-                    <HtmlGenerated id="cssgenerated">{template.TemplateCss}</HtmlGenerated>
+                    <HtmlGenerated id="css-output"></HtmlGenerated>
                 </Workspace>
             </>
         )
     }
 
+    function applyStyles() {
+        let concatTxt = "";
+        for(let key in styling) {
+            concatTxt += `${key}:${styling[key]};`
+        }
+        console.log(concatTxt);
+        concatOutputCss(concatTxt)
+        return concatTxt;
+    }
+
+    function concatOutputCss(styles) {
+        document.getElementById("css-output").value=
+        `${template.TemplateCss}\n .template${template.TemplateId}{${styles}}`
+    }
+
+    function fetchTemplate(id) {
+        if(id < 10) {
+            return BoxTemplates.find(element => element.TemplateId === parseInt(id))
+        } else {
+            return TableTemplates.find(element => element.TemplateId === parseInt(id))
+        }
+    }
+    
 }
 
 export default PersonalizeTemplate;
