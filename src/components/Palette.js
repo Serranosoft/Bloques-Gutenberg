@@ -44,30 +44,42 @@ function Palette({ styling, changeStyling }) {
         <Form>
             <PaletteSection>
                 <SectionTitle>PLANTILLA</SectionTitle>
-                <Label>Color del fondo
-                        <InputColor type="color" value={styling.background} onChange={handleBgColor} />
-                </Label>
-                <Label>Bordes redondeados
-                    
-                    <InputOption type="radio" onChange={handleBorderRadius} value="30px" name="border-radius" />
-                    <label>Si</label>
-                    <InputOption type="radio" onChange={handleBorderRadius} value="0px" name="border-radius" />
-                    <label>No</label>
-                </Label>
+
+                <InputSection>
+                    <label>Color del fondo</label>
+                    <InputColor type="color" value={styling.background} onChange={handleBgColor} />
+                </InputSection>
+
+                <InputSection>
+                    <label>Bordes redondeados
+                        <OptionsWrapper>
+                            <label>Si<InputOption type="radio" onChange={handleBorderRadius} value="30px" name="border-radius" /></label>
+                            <label>No<InputOption type="radio" onChange={handleBorderRadius} value="0px" name="border-radius" /></label>
+                        </OptionsWrapper>
+                    </label>
+                </InputSection>
+
             </PaletteSection>
             <PaletteSection>
                 <SectionTitle>CONTENIDO</SectionTitle>
-                <Label>Color de la letra
-                        <InputColor type="color" value={styling.color} onChange={handleColor} />
-                </Label>
-                <Label>Espacio entre las letras
-                        <InputSlider type="range" value={styling["letter-spacing"].substring(0, 1)} onChange={handleLetterSpacing} min="0" max="8" />
+
+                <InputSection>
+                    <label>Color de la letra</label>
+                    <InputColor type="color" value={styling.color} onChange={handleColor} />
+                </InputSection>
+
+                <InputSection>
+                    <label>Espacio entre las letras</label>
+                    <InputSlider type="range" value={styling["letter-spacing"].substring(0, 1)} onChange={handleLetterSpacing} min="0" max="8" />
                     <p>{styling['letter-spacing']}</p>
-                </Label>
-                <Label>Espacio entre las palabras
-                        <InputSlider type="range" value={styling["word-spacing"].substring(0, 1)} onChange={handleWordSpacing} min="0" max="8" />
+                </InputSection>
+
+                <InputSection>
+                    <label>Espacio entre las palabras</label>
+                    <InputSlider type="range" value={styling["word-spacing"].substring(0, 1)} onChange={handleWordSpacing} min="0" max="8" />
                     <p>{styling['word-spacing']}</p>
-                </Label>
+                </InputSection>
+
             </PaletteSection>
 
         </Form>
@@ -87,6 +99,9 @@ const Form = styled.form`
 `
 
 const PaletteSection = styled.div`
+    display: grid;
+    justify-content: center;
+    align-content: start;
     border: 1px solid lightgray;
     background-color: rgba(255,255,255,0.02)
 `
@@ -98,31 +113,28 @@ const SectionTitle = styled.p`
     font-weight: 900;
     text-align: center;
     color: #34d399;
-
 `
-const Label = styled.label`
-    display: inline;
+
+const InputSection = styled.div`
+    width: 100%;
+    text-align: center;
+    margin: 8px auto;
 `
 
 const OptionsWrapper = styled.div`
-    width: 100%;
-`
-
-const InputText = styled.input`
-    display: block
-    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 `
 
 const InputColor = styled.input`
     display: block;
-    width: 45%;
     height: 40px;
     margin: 8px auto;
 `
 
 const InputOption = styled.input`
-    margin: 0 auto;
-    display: block;
+
 `
 
 const InputSlider = styled.input`

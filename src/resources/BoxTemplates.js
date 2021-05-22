@@ -56,6 +56,57 @@ const BoxTemplates = [
             `,
             TemplateCss: ".template2{display:flex;flex-wrap:wrap;border:2px solid #34d399;padding:8px;background:#faf5f0;border:1px solid gray;box-shadow:0 3px 3px #611905}.template2 h3{margin-left:40px}@media(max-width:768px){.template2 h3{margin-left:8px}}.template2>div:first-child h3{color:#1b4d1b}.template2>div:nth-child(2) h3{color:#962424}.template2 ul{text-align:center}.template2 ul li{margin:8px}",
             TemplateImg: "../images/box-template2.jpg",
+        },
+        {
+            TemplateId: 4,
+            TemplateHtml: `<!-- wp:columns {"className":"template4"} -->
+            <div class="wp-block-columns template4"><!-- wp:column -->
+            <div class="wp-block-column"><!-- wp:heading {"align":"center","level":4} -->
+            <h4 class="has-text-align-center">VENTAJAS</h4>
+            <!-- /wp:heading -->
+            
+            <!-- wp:heading {"level":5} -->
+            <h5>Subtitulo</h5>
+            <!-- /wp:heading -->
+            
+            <!-- wp:list -->
+            <ul><li>Descripción elaborada elaborada elaborada elaborada elaborada elaborada de la ventaja</li></ul>
+            <!-- /wp:list -->
+            
+            <!-- wp:heading {"level":5} -->
+            <h5>Subtitulo</h5>
+            <!-- /wp:heading -->
+            
+            <!-- wp:list -->
+            <ul><li>Descripción elaborada elaborada elaborada elaborada elaborada elaborada de la ventaja número</li></ul>
+            <!-- /wp:list --></div>
+            <!-- /wp:column -->
+            
+            <!-- wp:column -->
+            <div class="wp-block-column"><!-- wp:heading {"align":"center","level":4} -->
+            <h4 class="has-text-align-center">DESVENTAJAS</h4>
+            <!-- /wp:heading -->
+            
+            <!-- wp:heading {"level":5} -->
+            <h5>Subtitulo</h5>
+            <!-- /wp:heading -->
+            
+            <!-- wp:list -->
+            <ul><li>Descripción elaborada elaborada elaborada elaborada elaborada elaborada de la desventaja</li></ul>
+            <!-- /wp:list -->
+            
+            <!-- wp:heading {"level":5} -->
+            <h5>Subtitulo</h5>
+            <!-- /wp:heading -->
+            
+            <!-- wp:list -->
+            <ul><li>Descripción elaborada elaborada elaborada elaborada elaborada elaborada de la desventaja</li></ul>
+            <!-- /wp:list --></div>
+            <!-- /wp:column --></div>
+            <!-- /wp:columns -->
+            `,
+            TemplateCss: ".template4{width:100%;display:flex;flex-wrap:nowrap;padding:3px 12px}.template4>div{flex-grow:1;flex-basis:0;word-break:break-word;overflow-wrap:break-word;margin:0 16px}.template4 h4{font-size:23px;text-align:center}.template4>div:first-child h4{color:#274323;border-bottom:4px solid #274323;margin:16px 16px 16px 0}.template4>div:nth-child(2) h4{color:#db3232;border-bottom:4px solid #db3232;margin:16px 0 16px 16px}.template4>div:first-child h5{color:#274323;margin:0}.template4>div:nth-child(2) h5{color:#db3232}.template4 ul li{margin:24px 0}.template4 ul{list-style:none}",
+            TemplateImg: "../images/box-template4.jpg",
         }
     ]
 
