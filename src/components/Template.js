@@ -1,7 +1,7 @@
 import React from "react";
 import styled from '@emotion/styled'
 
-function Template({image, htmlCode, cssCode}) {
+function Template({image, id}) {
     return (
         <TemplateWrapper>
             <TemplateImage src={(image)}/>
@@ -16,7 +16,7 @@ const TemplateWrapper = styled.div`
     cursor: pointer;
     transition: 1s;
     &:hover {
-        transform: scale(1.1);
+        transform: scale(0.96)
     }
 `
 

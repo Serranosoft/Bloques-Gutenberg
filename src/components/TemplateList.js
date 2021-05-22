@@ -2,7 +2,7 @@ import React from "react";
 import styled from '@emotion/styled'
 import Template from "./Template"
 import BoxTemplates from "../resources/BoxTemplates"
-import TableTemplates from "../resources/TableTemplates.json"
+import TableTemplates from "../resources/TableTemplates.js"
 import { useHistory } from 'react-router-dom';
 import { Link } from "react-router-dom"
 
@@ -24,28 +24,27 @@ function TemplateList(props) {
                         BoxTemplates.map((el => {
                             console.log(el.TemplateId);
                             return (
-                                <Link to={{
+                                <Link 
+                                key={el.TemplateId} 
+                                to={{
                                     pathname: "/personalizar",
                                     optionChosed: el.TemplateId
                                 }}>
                                     <Template
-                                        image={el.TemplateImg}
-                                        htmlCode={el.TemplateHtml}
-                                        cssCode={el.TemplateCss} />
+                                        image={el.TemplateImg} />
                                 </Link>
                             )
                         }))
                         :
                         TableTemplates.map((el => {
                             return (
-                                <Link to={{
+                                <Link 
+                                key={el.TemplateId} 
+                                to={{
                                     pathname: "/personalizar",
-                                    optionChosed: el.templateId
+                                    optionChosed: el.TemplateId
                                 }}>
-                                    <Template
-                                        image={el.templateImg}
-                                        htmlCode={el.templateHtml}
-                                        cssCode={el.templateCss} />
+                                    <Template image={el.TemplateImg} id={el.TemplateId} />
                                 </Link>
                             )
                         }))
@@ -69,8 +68,12 @@ const LandingTitle = styled.h1`
 const TemplateListWrapper = styled.section`
     width: 85%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    grid-template-columns: 1fr;
     align-items: center;
+    justify-items: center;
     gap: 30px;
     margin-top: 40px;
+    & a {
+        width: 50%;
+    }
 `

@@ -18,7 +18,7 @@ function App() {
                 }
                 
                 html {
-                    font-family: 'Inter', sans-serif;
+                    font-family: 'Open Sans', sans-serif;
                     height: 100%;
                 }
                 body {
