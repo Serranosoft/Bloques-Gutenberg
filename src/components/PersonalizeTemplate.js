@@ -12,7 +12,7 @@ function PersonalizeTemplate(props) {
     const [styling, changeStyling] = useState({
         color: "#1C1C1C",
         background: "#ffffff",
-        "letter-spacing": "1px",
+        "letter-spacing": "0px",
         "word-spacing": "1px",
         "border-radius": "0px"
     });
@@ -89,7 +89,6 @@ const Workspace = styled.div`
     flex-direction: column;
     align-items: center;
     margin: 24px auto;
-    margin: 0 auto;
     & > div {
         width: 100%;
     }

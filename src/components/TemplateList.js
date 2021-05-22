@@ -19,7 +19,7 @@ function TemplateList(props) {
                     textAlign: "center"
                 }}>plantilla</span></LandingTitle>
 
-                <TemplateListWrapper>
+                <TemplateListWrapper type={props.location.optionChosed}>
                     {props.location.optionChosed === "box" ?
                         BoxTemplates.map((el => {
                             console.log(el.TemplateId);
@@ -68,12 +68,13 @@ const LandingTitle = styled.h1`
 const TemplateListWrapper = styled.section`
     width: 85%;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: ${props =>
+        props.type === "box" ? '1fr' : '1fr 1fr'};
     align-items: center;
     justify-items: center;
     gap: 30px;
     margin-top: 40px;
     & a {
-        width: 50%;
+        width: 60%;
     }
 `

@@ -117,42 +117,45 @@
 /* TEMPLATE 10 */
 
 .template10 {
-	width: 45%;
+	width: 50%;
 	margin: 16px auto;
 	border: 2px solid black;
+	overflow-x: auto;
 }
 
-.template10 tbody > tr  {
-	background-color: white !important;
+.template10 table {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: center
 }
 
 .template10 tbody > tr:first-child td {
-	line-height: 2;
-	background: white !important;
-	color: black !important;
+	line-height: 3;
 	border: 1px dashed black;
 	font-size: 22px;
+	font-weight: bold;
 }
 
 .template10 tbody > tr:nth-child(2) td {
-	line-height: 2;
+	line-height: 3;
 }
 
 .template10 tbody > tr:nth-child(3) td{
 	font-size: 54px;
 	font-weight: bold;
-	line-height: 1.7;
+	line-height: 2;
 }
 
 .template10 tbody > tr:nth-child(n+4) td{
 	font-weight: bold;
-	line-height: 1.2;
+	line-height: 2;
 }
 
 .template10 tbody > tr:nth-child(7) td {
 	width: 40%;
 	display: block;
 	line-height: 2;
+	padding: 8px 24px;
 	border: 1px solid black;
 	border-radius: 15px;
 	margin: 24px auto;
