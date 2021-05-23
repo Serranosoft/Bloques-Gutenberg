@@ -24,7 +24,7 @@ function PersonalizeTemplate(props) {
 
 
     useEffect(() => {
-        if(template != undefined) {
+        if (template != undefined) {
             let btn = document.querySelector(`.template${template.TemplateId} .wp-block-button a`);
             if (btn != null) {
                 btn.setAttribute("style", applyStyles().buttonStyles)
@@ -33,14 +33,12 @@ function PersonalizeTemplate(props) {
     }, [stylingButton])
 
     useEffect(() => {
-        if(template != undefined) {
+        if (template != undefined) {
             document.querySelector(`.template${template.TemplateId}`).setAttribute("style", applyStyles().templateStyles)
         }
     }, [styling])
 
     if (!props.location.optionChosed) {
-        /* history.push("/")
-        console.log("AAA"); */
         return (<Redirect to="/" />)
     } else {
         console.log("1");
@@ -63,11 +61,25 @@ function PersonalizeTemplate(props) {
                     <Button>CREAR BLOQUE</Button>
                 </Workspace>
                 <CodeSpace>
-                    <HtmlGenerated>{template.TemplateHtml}</HtmlGenerated>
-                    <HtmlGenerated id="css-output">{template.TemplateCss}</HtmlGenerated>
+                    <HtmlGenerated id="html-output" value={template.TemplateHtml} readOnly onClick={HtmlClipBoard}></HtmlGenerated>
+                    <HtmlGenerated id="css-output" readOnly onClick={CssClipBoard}>{template.TemplateCss}</HtmlGenerated>
                 </CodeSpace>
             </>
         )
+    }
+
+    function HtmlClipBoard() {
+        var copyText = document.getElementById("html-output");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+    }
+
+    function CssClipBoard() {
+        var copyText = document.getElementById("css-output");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
     }
 
     function applyStyles() {
@@ -83,7 +95,7 @@ function PersonalizeTemplate(props) {
         }
 
         concatOutputCss(templateStyles, buttonStyles)
-        return {templateStyles, buttonStyles}
+        return { templateStyles, buttonStyles }
     }
 
     function concatOutputCss(templateStyles, buttonStyles) {
@@ -143,6 +155,7 @@ const HtmlGenerated = styled.textarea`
     color: white;
     font-size: 18px;
     font-family: 'Space Mono', monospace;
+    resize: none;
 `
 
 const Button = styled.button`
