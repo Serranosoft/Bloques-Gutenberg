@@ -6,7 +6,7 @@ import TableTemplates from "../resources/TableTemplates.js"
 import Palette from "./Palette"
 import "../resources/TemplatesStyles.css"
 
-function PersonalizeTemplate(props) {    
+function PersonalizeTemplate(props) {
     const history = useHistory();
     const [template, getTemplate] = useState(fetchTemplate(props.location.optionChosed));
     const [styling, changeStyling] = useState({
@@ -26,13 +26,13 @@ function PersonalizeTemplate(props) {
 
     useEffect(() => {
         let btn = document.querySelector(`.template${template.TemplateId} .wp-block-button a`);
-        if(btn!=null) {
-            btn.setAttribute("style", applyStyles(stylingButton))
+        if (btn != null) {
+            btn.setAttribute("style", applyStyles().buttonStyles)
         }
     }, [stylingButton])
 
     useEffect(() => {
-        document.querySelector(`.template${template.TemplateId}`).setAttribute("style", applyStyles(styling))
+        document.querySelector(`.template${template.TemplateId}`).setAttribute("style", applyStyles().templateStyles)
     }, [styling])
 
     if (!props.location.optionChosed) {
@@ -48,46 +48,53 @@ function PersonalizeTemplate(props) {
 
                 <Workspace>
                     <div className={template.TemplateId} dangerouslySetInnerHTML={{ __html: template.TemplateHtml }}></div>
-                    <Palette 
+                    <Palette
                         template={template.TemplateId}
-                        styling={styling} 
-                        changeStyling={changeStyling} 
+                        styling={styling}
+                        changeStyling={changeStyling}
                         stylingButton={stylingButton}
-                        changeButton={changeButton} 
+                        changeButton={changeButton}
                     />
                     <Button>CREAR BLOQUE</Button>
                 </Workspace>
                 <CodeSpace>
                     <HtmlGenerated>{template.TemplateHtml}</HtmlGenerated>
-                    <HtmlGenerated id="css-output"></HtmlGenerated>
+                    <HtmlGenerated id="css-output">{template.TemplateCss}</HtmlGenerated>
                 </CodeSpace>
             </>
         )
     }
 
-    function applyStyles(style) {
-        let concatTxt = "";
-        for(let key in style) {
-            concatTxt += `${key}:${style[key]};`
+    function applyStyles() {
+        let templateStyles = "";
+        let buttonStyles = "";
+
+        for (let key in styling) {
+            templateStyles += `${key}:${styling[key]};`
         }
-        console.log(concatTxt);
-        concatOutputCss(concatTxt)
-        return concatTxt;
+
+        for (let key in stylingButton) {
+            buttonStyles += `${key}:${stylingButton[key]};`
+        }
+
+        concatOutputCss(templateStyles, buttonStyles)
+        return {templateStyles, buttonStyles}
     }
 
-    function concatOutputCss(styles) {
-        document.getElementById("css-output").value=
-        `${template.TemplateCss}\n .template${template.TemplateId}{${styles}}`
+    function concatOutputCss(templateStyles, buttonStyles) {
+        let index = document.getElementById("css-output").value.indexOf("\n")
+        let str = document.getElementById("css-output").value.substring(0, index);
+        document.getElementById("css-output").value = `${str}\n .template${template.TemplateId}{${templateStyles}}\n .template${template.TemplateId} .wp-block-button a {${buttonStyles}}\n `
     }
 
     function fetchTemplate(id) {
-        if(id < 10) {
+        if (id < 10) {
             return BoxTemplates.find(element => element.TemplateId === parseInt(id))
         } else {
             return TableTemplates.find(element => element.TemplateId === parseInt(id))
         }
     }
-    
+
 }
 
 export default PersonalizeTemplate;
