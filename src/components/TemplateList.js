@@ -22,7 +22,6 @@ function TemplateList(props) {
                 <TemplateListWrapper type={props.location.optionChosed}>
                     {props.location.optionChosed === "box" ?
                         BoxTemplates.map((el => {
-                            console.log(el.TemplateId);
                             return (
                                 <Link 
                                 key={el.TemplateId} 

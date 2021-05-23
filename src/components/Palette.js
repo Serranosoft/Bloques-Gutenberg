@@ -1,44 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled"
 
-function Palette({ styling, changeStyling }) {
-
-    console.log(styling["letter-spacing"]);
-    function handleBgColor(event) {
-        changeStyling({
-            ...styling,
-            background: event.target.value
-        })
-    }
-
-    function handleColor(event) {
-        changeStyling({
-            ...styling,
-            color: event.target.value
-        })
-    }
-
-    function handleLetterSpacing(event) {
-        changeStyling({
-            ...styling,
-            "letter-spacing": event.target.value + "px"
-        })
-    }
-
-    function handleWordSpacing(event) {
-        changeStyling({
-            ...styling,
-            "word-spacing": event.target.value + "px"
-        })
-    }
-
-    function handleBorderRadius(event) {
-        console.log(event.target.value);
-        changeStyling({
-            ...styling,
-            "border-radius": event.target.value
-        })
-    }
+function Palette({ template, styling, changeStyling, changeButton, stylingButton }) {
 
     return (
         <Form>
@@ -81,10 +44,94 @@ function Palette({ styling, changeStyling }) {
                 </InputSection>
 
             </PaletteSection>
+            {template === 1 && 3 &&
+                <PaletteSection>
+                    <SectionTitle>BOTÓN</SectionTitle>
+
+                    <InputSection>
+                        <label>Color del botón</label>
+                        <InputColor type="color" value={stylingButton.background} onChange={handleBgButtonColor} />
+                    </InputSection>
+
+                    <InputSection>
+                        <label>Color de la letra</label>
+                        <InputColor type="color" value={stylingButton.color} onChange={handleButtonColor} />
+                    </InputSection>
+
+                    <label>Bordes redondeados
+                        <OptionsWrapper>
+                            <label>Si<InputOption type="radio" onChange={handleBorderButton} value="30px" name="border-radius" /></label>
+                            <label>No<InputOption type="radio" onChange={handleBorderButton} value="0px" name="border-radius" /></label>
+                        </OptionsWrapper>
+                    </label>
+
+                </PaletteSection>
+            }
 
         </Form>
     )
+
+    /* TEMPLATE FUNCTIONS */
+    function handleBgColor(event) {
+        changeStyling({
+            ...styling,
+            background: event.target.value
+        })
+    }
+
+    function handleColor(event) {
+        changeStyling({
+            ...styling,
+            color: event.target.value
+        })
+    }
+
+    function handleLetterSpacing(event) {
+        changeStyling({
+            ...styling,
+            "letter-spacing": event.target.value + "px"
+        })
+    }
+
+    function handleWordSpacing(event) {
+        changeStyling({
+            ...styling,
+            "word-spacing": event.target.value + "px"
+        })
+    }
+
+    function handleBorderRadius(event) {
+        changeStyling({
+            ...styling,
+            "border-radius": event.target.value
+        })
+    }
+
+    /* BUTTON FUNCTIONS */
+    function handleBgButtonColor(event) {
+        changeButton({
+            ...stylingButton,
+            background: event.target.value
+        })
+    }
+
+    function handleButtonColor(event) {
+        changeButton({
+            ...stylingButton,
+            color: event.target.value
+        })
+    }
+
+    function handleBorderButton(event) {
+        changeButton({
+            ...stylingButton,
+            "border-radius": event.target.value
+        })
+    }
+
+
 }
+
 
 export default Palette
 

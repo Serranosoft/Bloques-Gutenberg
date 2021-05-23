@@ -41,7 +41,6 @@
 .template1 .wp-block-column .wp-block-buttons .wp-block-button a {
 	padding: 10px 20px;
 	border: 2px solid black;
-	background-color: #365E31;
 	color: white;
 	font-size: 20px;
 	transition: 1s;
@@ -49,9 +48,9 @@
 
 .template1 .wp-block-column .wp-block-buttons .wp-block-button a:hover {
 	border: 2px solid black;
-	background-color: #172815 !important;
 	color: white;
 	transform: scale(1.15);
+	cursor: pointer;
 }
 
 .template1 .wp-block-column ul li {
@@ -119,14 +118,13 @@
 
 
 
-
 /* TEMPLATE 4 */
 
 .template4 {
 	width: 100%;
 	display: flex;
-	flex-wrap: nowrap;
-	padding: 3px 12px;
+	flex-wrap: wrap;
+	padding: 3px 12px;	
 	box-shadow: 0px 3px 3px #611905;
 }
 
@@ -141,20 +139,21 @@
 .template4 h4{
 	font-size: 23px;
 	text-align: center;
-	margin-bottom: 25px;
 }
 
 .template4 > div:first-child h4 {
 	color: #274323;
-	border-bottom: 4px solid #274323;
-	margin: 16px 16px 16px 0px;
+	border-bottom: 3px solid #274323;
+	border-collapse: separate;
+	border-spacing: 50px;
+	margin: 16px 16px 24px 0px;
 }
 
 
 .template4 > div:nth-child(2) h4 {
-	color: #db3232;
-	border-bottom: 4px solid #db3232;
-	margin: 16px 0px 16px 16px;
+	color: #b02e2e;
+	border-bottom: 3px solid #b02e2e;
+	margin: 16px 0px 24px 16px;
 }
 
 .template4 > div:first-child h5 {
@@ -163,7 +162,7 @@
 }
 
 .template4 > div:nth-child(2) h5 {
-	color: #db3232;;
+	color: #b02e2e;
 }
 
 .template4 ul li {
@@ -172,6 +171,7 @@
 
 .template4 ul {
 	list-style: none;
+	padding-left: 0px;
 }
 
 /* TEMPLATE 10 */

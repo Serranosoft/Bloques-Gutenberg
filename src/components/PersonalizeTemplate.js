@@ -17,9 +17,22 @@ function PersonalizeTemplate(props) {
         "border-radius": "0px"
     });
 
+    const [stylingButton, changeButton] = useState({
+        background: "#272c30",
+        color: "#ffffff",
+        "border-radius": "0px"
+    })
+
 
     useEffect(() => {
-        document.querySelector(`.template${template.TemplateId}`).setAttribute("style", applyStyles())
+        let btn = document.querySelector(`.template${template.TemplateId} .wp-block-button a`);
+        if(btn!=null) {
+            btn.setAttribute("style", applyStyles(stylingButton))
+        }
+    }, [stylingButton])
+
+    useEffect(() => {
+        document.querySelector(`.template${template.TemplateId}`).setAttribute("style", applyStyles(styling))
     }, [styling])
 
     if (!props.location.optionChosed) {
@@ -35,7 +48,13 @@ function PersonalizeTemplate(props) {
 
                 <Workspace>
                     <div className={template.TemplateId} dangerouslySetInnerHTML={{ __html: template.TemplateHtml }}></div>
-                    <Palette styling={styling} changeStyling={changeStyling}/>
+                    <Palette 
+                        template={template.TemplateId}
+                        styling={styling} 
+                        changeStyling={changeStyling} 
+                        stylingButton={stylingButton}
+                        changeButton={changeButton} 
+                    />
                     <Button>CREAR BLOQUE</Button>
                 </Workspace>
                 <CodeSpace>
@@ -46,10 +65,10 @@ function PersonalizeTemplate(props) {
         )
     }
 
-    function applyStyles() {
+    function applyStyles(style) {
         let concatTxt = "";
-        for(let key in styling) {
-            concatTxt += `${key}:${styling[key]};`
+        for(let key in style) {
+            concatTxt += `${key}:${style[key]};`
         }
         console.log(concatTxt);
         concatOutputCss(concatTxt)
