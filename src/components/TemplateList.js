@@ -3,14 +3,12 @@ import styled from '@emotion/styled'
 import Template from "./Template"
 import BoxTemplates from "../resources/BoxTemplates"
 import TableTemplates from "../resources/TableTemplates.js"
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Link } from "react-router-dom"
 
 function TemplateList(props) {
-    const history = useHistory();
     if (!props.location.optionChosed) {
-        history.push("/")
-        return (<></>)
+        return (<Redirect to="/" />)
     } else {
         return (
             <>

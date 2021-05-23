@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled"
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import BoxTemplates from "../resources/BoxTemplates.js"
 import TableTemplates from "../resources/TableTemplates.js"
 import Palette from "./Palette"
 import "../resources/TemplatesStyles.css"
 
 function PersonalizeTemplate(props) {
-    const history = useHistory();
     const [template, getTemplate] = useState(fetchTemplate(props.location.optionChosed));
     const [styling, changeStyling] = useState({
         color: "#1C1C1C",
@@ -25,20 +24,26 @@ function PersonalizeTemplate(props) {
 
 
     useEffect(() => {
-        let btn = document.querySelector(`.template${template.TemplateId} .wp-block-button a`);
-        if (btn != null) {
-            btn.setAttribute("style", applyStyles().buttonStyles)
+        if(template != undefined) {
+            let btn = document.querySelector(`.template${template.TemplateId} .wp-block-button a`);
+            if (btn != null) {
+                btn.setAttribute("style", applyStyles().buttonStyles)
+            }
         }
     }, [stylingButton])
 
     useEffect(() => {
-        document.querySelector(`.template${template.TemplateId}`).setAttribute("style", applyStyles().templateStyles)
+        if(template != undefined) {
+            document.querySelector(`.template${template.TemplateId}`).setAttribute("style", applyStyles().templateStyles)
+        }
     }, [styling])
 
     if (!props.location.optionChosed) {
-        history.push("/")
-        return (<></>)
+        /* history.push("/")
+        console.log("AAA"); */
+        return (<Redirect to="/" />)
     } else {
+        console.log("1");
         return (
             <>
                 <LandingTitle>Personaliza tu  <span style={{
