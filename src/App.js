@@ -5,6 +5,7 @@ import Landing from './components/Landing'
 import TemplateList from './components/TemplateList'
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import PersonalizeTemplate from './components/PersonalizeTemplate'
+import SignIn from './components/SignIn'
 
 function App() {
   return (
@@ -27,13 +28,14 @@ function App() {
                 }`
         }
       />
-      <Header />
       <BrowserRouter>
+      <Header />
         <Switch>
           <MainSection>
             <Route exact path="/" component={Landing} />
             <Route path="/plantillas" component={TemplateList} />
             <Route path="/personalizar" component={PersonalizeTemplate} />
+            <Route path="/iniciar-sesion" component={SignIn} />
           </MainSection>
         </Switch>
       </BrowserRouter>

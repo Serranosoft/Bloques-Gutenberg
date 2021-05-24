@@ -1,13 +1,16 @@
 import React from "react";
 import styled from "@emotion/styled"
+import { Link } from "react-router-dom";
 
 function DropdownMenu() {
 
     return (
         <DropdownMenuWrapper>
-            <span>Iniciar Sesión</span>
+            <LinkWrapper to="/iniciar-sesion">
+                <span>Iniciar Sesión</span>
+            </LinkWrapper>
             <DropdownContent>
-                <DropdownOption>Iniciar Sesión</DropdownOption>
+                {/* <DropdownOption>Iniciar Sesión</DropdownOption> */}
                 <DropdownOption>Cerrar Sesión</DropdownOption>
             </DropdownContent>
         </DropdownMenuWrapper>
@@ -45,4 +48,10 @@ const DropdownContent = styled.div`
 const DropdownOption = styled.span`
     padding: 16px 16px;
     display: block;
+`
+
+const LinkWrapper = styled(Link)`
+    color: white;
+    text-decoration: none
+
 `
