@@ -128,8 +128,6 @@ function Palette({ template, styling, changeStyling, changeButton, stylingButton
             "border-radius": event.target.value
         })
     }
-
-
 }
 
 

@@ -41,7 +41,6 @@ function PersonalizeTemplate(props) {
     if (!props.location.optionChosed) {
         return (<Redirect to="/" />)
     } else {
-        console.log("1");
         return (
             <>
                 <LandingTitle>Personaliza tu  <span style={{
@@ -58,14 +57,26 @@ function PersonalizeTemplate(props) {
                         stylingButton={stylingButton}
                         changeButton={changeButton}
                     />
-                    <Button>CREAR BLOQUE</Button>
+                    <Button onClick={showResult}>CREAR BLOQUE</Button>
                 </Workspace>
-                <CodeSpace>
-                    <HtmlGenerated id="html-output" value={template.TemplateHtml} readOnly onClick={HtmlClipBoard}></HtmlGenerated>
-                    <HtmlGenerated id="css-output" readOnly onClick={CssClipBoard}>{template.TemplateCss}</HtmlGenerated>
+                <CodeSpace id="codespace">
+                    <div>
+                        <p>Copia-lo en la entrada/página de tu Wordpress para pegar el bloque</p>
+                        <HtmlGenerated id="html-output" value={template.TemplateHtml} readOnly onClick={HtmlClipBoard}></HtmlGenerated>
+                    </div>
+                    <div>
+                        <p>Copia-lo en CSS Adicional (Personalizar {'>'} CSS Adicional)</p>
+                        <HtmlGenerated id="css-output" readOnly onClick={CssClipBoard}>{template.TemplateCss}</HtmlGenerated>
+                    </div>
                 </CodeSpace>
             </>
         )
+    }
+
+    function showResult() {
+        let codespace = document.getElementById("codespace");
+        codespace.setAttribute("style", "display: grid");
+        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
     }
 
     function HtmlClipBoard() {
@@ -141,19 +152,21 @@ const CodeSpace = styled.div`
     width: 90%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    display: none;
     gap: 24px;
     margin: 16px auto;
+    padding-bottom: 60px;
 `
 
 const HtmlGenerated = styled.textarea`
     width: 100%;
     height: 350px;
-    margin: 40px auto;
+    margin: 8px auto;
     padding: 10px;
-    background: transparent;
+    background-color: #181f29;
     border: 1px solid #34d399;
-    color: white;
-    font-size: 18px;
+    color: lightgray;
+    font-size: 15.5px;
     font-family: 'Space Mono', monospace;
     resize: none;
 `
@@ -161,7 +174,7 @@ const HtmlGenerated = styled.textarea`
 const Button = styled.button`
     width: 65%;
     padding: 8px 24px;
-    margin: 8px auto;
+    margin: 24px auto;
     background: #181f29;
     border: 1px solid lightgray;
     outline: 0;
