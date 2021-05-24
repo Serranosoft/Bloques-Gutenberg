@@ -6,27 +6,51 @@ import star from "../images/decoration/star.svg"
 import { Link } from "react-router-dom";
 
 
-function SignIn() {
+function SignUp() {
 
-    const { login } = useContext(AuthContext);
+    const { register } = useContext(AuthContext);
 
     const initialState = {
+        nameInput: "",
         mailInput: "",
         passwdInput: ""
     }
 
     const [inputValues, setInputValues] = useState(initialState)
+    const { nameInput, mailInput, passwdInput } = inputValues;
 
     const handleChange = (e) => {
         const { name, value } = e.target
         setInputValues({ ...inputValues, [name]: value })
     }
+
+    const onSubmit = event => {
+        let user = {
+            nameInput,
+            mailInput
+        }
+        register(mailInput, passwdInput)
+            .then(authUser => {
+                console.log(authUser);
+            })
+            .then((result) => {
+                console.log(result);
+                setInputValues(initialState)
+            })
+            .catch(error => {
+                console.log({ error });
+            });
+
+        event.preventDefault();
+    }
+
+
     return (
         <Section>
             <CTAWrapper>
                 <CTA>
-                    <H1>Inicia Sesión</H1>
-                    <H3>Y accede a todas las funciones extra</H3>
+                    <H1>Crea tu cuenta GRATIS</H1>
+                    <H3>Y consigue 2 plantillas premium gratis</H3>
                     <Image src={CTASignIn} />
                 </CTA>
                 <InfoWrapper>
@@ -35,15 +59,24 @@ function SignIn() {
                 </InfoWrapper>
                 <InfoWrapper>
                     <ImageStar src={star} />
-                    <Text>Utiliza las plantillas premium</Text>
+                    <Text>Desbloquea plantillas premium PARA SIEMPRE</Text>
                 </InfoWrapper>
                 <InfoWrapper>
                     <ImageStar src={star} />
-                    <Text>Utiliza todos los tipos de personalización</Text>
+                    <Text>Desbloquea todos los tipos de personalización TAMBIÉN PARA SIEMPRE</Text>
                 </InfoWrapper>
             </CTAWrapper>
             <SignInWrapper>
                 <form>
+                    <Label>Nombre <span style={{ color: "red" }}>*</span>
+                        <Input
+                            type="text"
+                            value={inputValues.nameInput}
+                            name="nameInput"
+                            onChange={handleChange}
+                            placeholder="Manuel Scholz"
+                        />
+                    </Label>
                     <Label>Correo electrónico <span style={{ color: "red" }}>*</span>
                         <Input
                             type="text"
@@ -62,8 +95,8 @@ function SignIn() {
                             placeholder="***********"
                         />
                     </Label>
-                    <Button>Iniciar sesión</Button>
-                    <Text>¿No tienes una cuenta? <LinkWrapper to="/registro">Registrate</LinkWrapper></Text>
+                    <Button onClick={onSubmit}>Crear Cuenta</Button>
+                    <Text>¿Ya tienes una cuenta? <LinkWrapper to="/iniciar-sesion">Inicia sesión</LinkWrapper></Text>
                 </form>
             </SignInWrapper>
 
@@ -183,4 +216,4 @@ const LinkWrapper = styled(Link)`
         text-decoration: underline;
     }
 `
-export default SignIn;
+export default SignUp;

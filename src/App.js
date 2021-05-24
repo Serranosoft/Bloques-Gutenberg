@@ -6,6 +6,7 @@ import TemplateList from './components/TemplateList'
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import PersonalizeTemplate from './components/PersonalizeTemplate'
 import SignIn from './components/SignIn'
+import SignUp from './components/SignUp'
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route path="/plantillas" component={TemplateList} />
             <Route path="/personalizar" component={PersonalizeTemplate} />
             <Route path="/iniciar-sesion" component={SignIn} />
+            <Route path="/registro" component={SignUp} />
           </MainSection>
         </Switch>
       </BrowserRouter>
@@ -47,7 +49,7 @@ export default App;
 
 const MainSection = styled.section`
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     align-items: center;

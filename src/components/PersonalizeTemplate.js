@@ -175,7 +175,7 @@ const Button = styled.button`
     width: 65%;
     padding: 8px 24px;
     margin: 24px auto;
-    background: #181f29;
+    background: #2c9374;
     border: 1px solid lightgray;
     outline: 0;
     font-size: 24px;
