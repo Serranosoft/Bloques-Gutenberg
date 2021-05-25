@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from '@emotion/styled'
 import Template from "./Template"
 import BoxTemplates from "../resources/BoxTemplates"
 import TableTemplates from "../resources/TableTemplates.js"
 import { Redirect } from 'react-router-dom';
 import { Link } from "react-router-dom"
+import { AuthContext } from './Firebase/AuthDAO';
 
 function TemplateList(props) {
+    const { authUser } = useContext(AuthContext);
+
+    const ConditionalLink = ({ children, to, condition }) => (!condition && to)
+        ? <Link to={to}>{children}</Link>
+        : <PremiumContentWrapper>{children}</PremiumContentWrapper>;
+
     if (!props.location.optionChosed) {
         return (<Redirect to="/" />)
     } else {
@@ -21,26 +28,31 @@ function TemplateList(props) {
                     {props.location.optionChosed === "box" ?
                         BoxTemplates.map((el => {
                             return (
-                                <Link 
-                                key={el.TemplateId} 
-                                to={{
-                                    pathname: "/personalizar",
-                                    optionChosed: el.TemplateId
-                                }}>
+                                <ConditionalLink
+                                    key={el.TemplateId}
+                                    to={{
+                                        pathname: "/personalizar",
+                                        optionChosed: el.TemplateId
+                                    }}
+                                    condition={!authUser && el.TemplateId === 1}
+                                >
+                                    <PremiumContentWarn>{!authUser && el.TemplateId === 1 && "Registrate para usar esta plantilla premium"}</PremiumContentWarn>
                                     <Template
-                                        image={el.TemplateImg} />
-                                </Link>
+                                        image={el.TemplateImg}
+                                        id={el.TemplateId}
+                                    />
+                                </ConditionalLink>
                             )
                         }))
                         :
                         TableTemplates.map((el => {
                             return (
-                                <Link 
-                                key={el.TemplateId} 
-                                to={{
-                                    pathname: "/personalizar",
-                                    optionChosed: el.TemplateId
-                                }}>
+                                <Link
+                                    key={el.TemplateId}
+                                    to={{
+                                        pathname: "/personalizar",
+                                        optionChosed: el.TemplateId
+                                    }}>
                                     <Template image={el.TemplateImg} id={el.TemplateId} />
                                 </Link>
                             )
@@ -73,5 +85,23 @@ const TemplateListWrapper = styled.section`
     margin-top: 40px;
     & a {
         width: 60%;
+    }
+`
+
+const PremiumContentWarn = styled.p`
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 1 !important;
+`
+
+const PremiumContentWrapper = styled.div`
+    width: 60%;
+    & > div {
+        opacity: 0.3;
+        cursor: auto;
+    }
+    & > div:hover {
+        transform: scale(1);
     }
 `

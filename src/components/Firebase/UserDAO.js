@@ -21,7 +21,7 @@ export const UserDAO = ({ children }) => {
     }
 
     useEffect(() => {
-        if (authUser != "" && authUser !== null) {
+        if (authUser !== "" && authUser !== null) {
             getUserName(authUser.uid)
         }
     }, [authUser])

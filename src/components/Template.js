@@ -1,10 +1,12 @@
 import React from "react";
 import styled from '@emotion/styled'
 
-function Template({image, id}) {
+
+function Template({ image, id }) {
+
     return (
         <TemplateWrapper>
-            <TemplateImage src={(image)}/>
+                <TemplateImage src={(image)} />
         </TemplateWrapper>
     )
 }
