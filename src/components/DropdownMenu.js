@@ -1,19 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "@emotion/styled"
 import { Link } from "react-router-dom";
+import { AuthContext } from './Firebase/AuthDAO';
+import { DBContext } from "./Firebase/UserDAO";
+import { useHistory } from 'react-router-dom';
+
 
 function DropdownMenu() {
+    const { authUser, signOut } = useContext(AuthContext);
+    const { userName } = useContext(DBContext)
+    const history = useHistory();
 
+    console.log(userName);
     return (
-        <DropdownMenuWrapper>
-            <LinkWrapper to="/iniciar-sesion">
-                <span>Iniciar Sesión</span>
-            </LinkWrapper>
-            <DropdownContent>
-                {/* <DropdownOption>Iniciar Sesión</DropdownOption> */}
-                <DropdownOption>Cerrar Sesión</DropdownOption>
-            </DropdownContent>
-        </DropdownMenuWrapper>
+        <>
+            {!authUser && authUser !== "" ?
+                <> 
+                    <DropdownMenuWrapper>
+                        <LinkWrapper to="/registro">
+                            <span>Registro</span>
+                        </LinkWrapper>
+                    </DropdownMenuWrapper>
+                    <DropdownMenuWrapper>
+                        <LinkWrapper to="/iniciar-sesion">
+                            <span>Iniciar Sesión</span>
+                        </LinkWrapper>
+                    </DropdownMenuWrapper>
+                </>
+                :
+                <DropdownMenuWrapper>
+                    <LinkWrapper to="/cuenta">
+                        <span>{userName !== "" ? userName : "Cargando..."}</span>
+                    </LinkWrapper>
+                    <DropdownContent>
+                        <DropdownOption onClick={() => signOut(history)}>Cerrar Sesión</DropdownOption>
+                    </DropdownContent>
+                </DropdownMenuWrapper>
+            }
+        </>
     )
 }
 

@@ -24,7 +24,7 @@ function PersonalizeTemplate(props) {
 
 
     useEffect(() => {
-        if (template != undefined) {
+        if (template !== undefined) {
             let btn = document.querySelector(`.template${template.TemplateId} .wp-block-button a`);
             if (btn != null) {
                 btn.setAttribute("style", applyStyles().buttonStyles)
@@ -33,7 +33,7 @@ function PersonalizeTemplate(props) {
     }, [stylingButton])
 
     useEffect(() => {
-        if (template != undefined) {
+        if (template !== undefined) {
             document.querySelector(`.template${template.TemplateId}`).setAttribute("style", applyStyles().templateStyles)
         }
     }, [styling])

@@ -4,11 +4,15 @@ import { AuthContext } from './Firebase/AuthDAO';
 import CTASignIn from "../images/decoration/cta-signin2.svg"
 import star from "../images/decoration/star.svg"
 import { Link } from "react-router-dom";
+import { DBContext } from "./Firebase/UserDAO";
+import { useHistory } from 'react-router-dom';
 
 
 function SignUp() {
 
     const { register } = useContext(AuthContext);
+    const { createUser } = useContext(DBContext)
+    const history = useHistory();
 
     const initialState = {
         nameInput: "",
@@ -31,10 +35,10 @@ function SignUp() {
         }
         register(mailInput, passwdInput)
             .then(authUser => {
-                console.log(authUser);
+                createUser(authUser.user.uid, user)
+                history.push("/")
             })
-            .then((result) => {
-                console.log(result);
+            .then(() => {
                 setInputValues(initialState)
             })
             .catch(error => {

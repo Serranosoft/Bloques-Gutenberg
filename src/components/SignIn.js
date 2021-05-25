@@ -4,11 +4,13 @@ import { AuthContext } from './Firebase/AuthDAO';
 import CTASignIn from "../images/decoration/cta-signin2.svg"
 import star from "../images/decoration/star.svg"
 import { Link } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 
 function SignIn() {
 
     const { login } = useContext(AuthContext);
+    const history = useHistory();
 
     const initialState = {
         mailInput: "",
@@ -21,6 +23,19 @@ function SignIn() {
         const { name, value } = e.target
         setInputValues({ ...inputValues, [name]: value })
     }
+
+    const onSubmit = event => {
+        login(inputValues.mailInput, inputValues.passwdInput)
+            .then(authUser => {
+                setInputValues(initialState)
+                history.push("/")
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        event.preventDefault();
+    }
+
     return (
         <Section>
             <CTAWrapper>
@@ -62,7 +77,7 @@ function SignIn() {
                             placeholder="***********"
                         />
                     </Label>
-                    <Button>Iniciar sesión</Button>
+                    <Button onClick={onSubmit}>Iniciar sesión</Button>
                     <Text>¿No tienes una cuenta? <LinkWrapper to="/registro">Registrate</LinkWrapper></Text>
                 </form>
             </SignInWrapper>
