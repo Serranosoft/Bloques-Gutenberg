@@ -47,14 +47,20 @@ function TemplateList(props) {
                         :
                         TableTemplates.map((el => {
                             return (
-                                <Link
+                                <ConditionalLink
                                     key={el.TemplateId}
                                     to={{
                                         pathname: "/personalizar",
                                         optionChosed: el.TemplateId
-                                    }}>
-                                    <Template image={el.TemplateImg} id={el.TemplateId} />
-                                </Link>
+                                    }}
+                                    condition={!authUser && el.TemplateId === 10}
+                                >
+                                    <PremiumContentWarn>{!authUser && el.TemplateId === 10 && "Registrate para usar esta plantilla premium"}</PremiumContentWarn>
+                                    <Template
+                                        image={el.TemplateImg}
+                                        id={el.TemplateId}
+                                    />
+                                </ConditionalLink>
                             )
                         }))
                     }
@@ -75,7 +81,8 @@ const LandingTitle = styled.h1`
 `
 
 const TemplateListWrapper = styled.section`
-    width: 85%;
+    width: ${props =>
+        props.type === "box" ? "73%" : "65%"};
     display: grid;
     grid-template-columns: ${props =>
         props.type === "box" ? '1fr' : '1fr 1fr'};
@@ -83,15 +90,15 @@ const TemplateListWrapper = styled.section`
     justify-items: center;
     gap: 30px;
     margin-top: 40px;
-    & a {
-        width: 60%;
+    & a, & div:first-child {
+        width: 70%;
     }
 `
 
 const PremiumContentWarn = styled.p`
     color: white;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
     opacity: 1 !important;
 `
 

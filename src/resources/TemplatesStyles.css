@@ -232,3 +232,46 @@
 .template10 tbody > tr:nth-child(7) td:hover {
 	background: #424547;
 }
+
+/* TEMPLATE 11 */
+
+.template11 {
+	width: 40%;
+	border: 2px solid lightgray;
+	padding: 8px 16px;
+	margin: 16px auto;
+	transition: 1s;
+	overflow-x: auto;
+}
+
+.template11 table {
+	border: 0;
+	width: 100%;
+	border-collapse: collapse;
+	text-align: center
+}
+
+.template11 table tr{
+	line-height: 2.5;
+}
+ 
+.template11 table tr:nth-child(2) td {
+	font-size: 24px;
+}
+
+.template11 table tr:nth-child(3) td img {
+	width: 100px !important;
+	height: 90%;
+}
+
+.template11 table tr:nth-child(4) td {
+	display: block;
+	width: 50%;
+	margin: 0 auto;
+	padding: 4px 24px;
+	border: 1px solid black;
+	border-radius: 7px;
+	background-color: #272c30;
+	color: white;
+	cursor: pointer;
+}
