@@ -25,7 +25,7 @@ function PersonalizeTemplate(props) {
 
     useEffect(() => {
         if (template !== undefined) {
-            let btn = document.querySelector(`.template${template.TemplateId} .wp-block-button a`);
+            let btn = document.querySelector(`.template${template.TemplateId} .wp-block-button a, .template${template.TemplateId} tr:last-child td`);
             if (btn != null) {
                 btn.setAttribute("style", applyStyles().buttonStyles)
             }
@@ -51,7 +51,7 @@ function PersonalizeTemplate(props) {
                 <Workspace>
                     <div className={template.TemplateId} dangerouslySetInnerHTML={{ __html: template.TemplateHtml }}></div>
                     <Palette
-                        template={template.TemplateId}
+                        templateId={template.TemplateId}
                         styling={styling}
                         changeStyling={changeStyling}
                         stylingButton={stylingButton}
@@ -112,7 +112,7 @@ function PersonalizeTemplate(props) {
     function concatOutputCss(templateStyles, buttonStyles) {
         let index = document.getElementById("css-output").value.indexOf("\n")
         let str = document.getElementById("css-output").value.substring(0, index);
-        document.getElementById("css-output").value = `${str}\n .template${template.TemplateId}{${templateStyles}}\n .template${template.TemplateId} .wp-block-button a {${buttonStyles}}\n `
+        document.getElementById("css-output").value = `${str}\n .template${template.TemplateId}{${templateStyles}}\n .template${template.TemplateId} .wp-block-button a, .template${template.TemplateId} tr:last-child td {${buttonStyles}}\n `
     }
 
     function fetchTemplate(id) {

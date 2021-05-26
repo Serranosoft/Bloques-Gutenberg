@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled"
 
-function Palette({ template, styling, changeStyling, changeButton, stylingButton }) {
+function Palette({ templateId, styling, changeStyling, changeButton, stylingButton }) {
 
     return (
         <Form>
@@ -44,7 +44,7 @@ function Palette({ template, styling, changeStyling, changeButton, stylingButton
                 </InputSection>
 
             </PaletteSection>
-            {template === 1 && 3 &&
+            {templateId === 1 || templateId === 10 || templateId === 11 ?
                 <PaletteSection>
                     <SectionTitle>BOTÓN</SectionTitle>
 
@@ -65,7 +65,7 @@ function Palette({ template, styling, changeStyling, changeButton, stylingButton
                         </OptionsWrapper>
                     </label>
 
-                </PaletteSection>
+                </PaletteSection>:""
             }
 
         </Form>

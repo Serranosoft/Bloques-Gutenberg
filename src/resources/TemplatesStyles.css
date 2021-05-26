@@ -223,14 +223,10 @@
 	border: 1px solid black;
 	border-radius: 15px;
 	margin: 24px auto;
-	background: #272c30;
 	color: white;
 	font-weight: 700;
 	cursor: pointer;
 	transition: 0.7s;
-}
-.template10 tbody > tr:nth-child(7) td:hover {
-	background: #424547;
 }
 
 /* TEMPLATE 11 */
@@ -274,4 +270,5 @@
 	background-color: #272c30;
 	color: white;
 	cursor: pointer;
+	transition: 0.7s;
 }
