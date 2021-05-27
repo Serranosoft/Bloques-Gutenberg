@@ -11,9 +11,8 @@ function DropdownMenu() {
     const { userName } = useContext(DBContext)
     const history = useHistory();
 
-    console.log(userName);
     return (
-        <>
+        <div>
             {!authUser && authUser !== "" ?
                 <> 
                     <DropdownMenuWrapper>
@@ -37,21 +36,21 @@ function DropdownMenu() {
                     </DropdownContent>
                 </DropdownMenuWrapper>
             }
-        </>
+        </div>
     )
 }
 
 export default DropdownMenu;
 
+
 const DropdownMenuWrapper = styled.div`
     display: inline-block;
-    align-self: flex-end;
     padding: 8px 24px;
     border-radius: 15px;
     border: 1px solid #34d399;
     cursor: pointer;
     color: white;
-    margin: 8px 24px;
+    margin: 8px 18px;
     &:hover > div {
         display: block;
     }

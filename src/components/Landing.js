@@ -23,7 +23,9 @@ function Landing() {
             </LandingTitle>
 
             <LandingWrapper>
-                <p>Elige un tipo de bloque</p>
+                <LandingSubtitle>Elige una plantilla y personaliza tu bloque gutenberg de Wordpress para SEO, 
+                    nichos de Amazon, Adsense y todo tipo de webs sin el uso de plugins
+                </LandingSubtitle>
                 <ArrowText arrowLeft>Plantillas para Tablas</ArrowText>
                 <DecorationArrow src={ArrowLeft} arrowLeft />
                 <ArrowText arrowRight>Plantillas para Cajas</ArrowText>
@@ -58,10 +60,17 @@ const LandingTitle = styled.h1`
     word-spacing: -5px;
 `
 
+const LandingSubtitle = styled.p`
+    width: 650px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 17px;
+`
+
 const LandingWrapper = styled.div`
     width: 75%;
     height: 100%;
-    margin-top: 40px;
+    margin-top: 20px;
     text-align: center;
 `
 

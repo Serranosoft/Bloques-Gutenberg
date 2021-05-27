@@ -7,6 +7,7 @@ import { Route, BrowserRouter, Switch } from "react-router-dom";
 import PersonalizeTemplate from './components/PersonalizeTemplate'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
+import Account from './components/Account'
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path="/personalizar" component={PersonalizeTemplate} />
             <Route path="/iniciar-sesion" component={SignIn} />
             <Route path="/registro" component={SignUp} />
+            <Route path="/cuenta" component={Account} />
           </MainSection>
         </Switch>
       </BrowserRouter>

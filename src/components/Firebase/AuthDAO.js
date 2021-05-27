@@ -1,5 +1,6 @@
 import 'firebase/auth';
 import 'firebase/database';
+import firebase from 'firebase/app'
 import { useState, createContext, useEffect } from 'react';
 import { auth } from "./config"
 
@@ -31,19 +32,45 @@ export const AuthDAO = ({ children }) => {
     };
 
     // Sign out
-    function signOut(history) {
+    function signOut() {
         auth.signOut()
             .then(() => {
                 handleAuthUser("")
-                history.push("/")
             })
+    }
+
+    // Reset password
+    function resetPassword(email) {
+        auth.sendPasswordResetEmail(email);
+    }
+
+    // Update password
+    function UpdatePassword(oldPassword, newPassword) {
+/*         var cred = firebase.auth.EmailAuthProvider.credential(
+            auth.currentUser.email,
+            oldPassword
+        );
+        console.log(auth.currentUser.email);
+
+        auth.currentUser.reauthenticateWithCredential(cred).then(function () {
+            auth.currentUser.updatePassword(newPassword).then(function(response){
+                console.log(response);
+                return "ole"
+            }).catch(function(error){
+                return error
+            });
+        }).catch(function (error) {
+            return error
+        }) */
+        
+        return auth.currentUser.updatePassword(newPassword)
     }
 
     return (
         <AuthContext.Provider
             value={
                 {
-                    authUser, register, login, signOut
+                    authUser, register, login, signOut, resetPassword, UpdatePassword
                 }
             }>
             {children}
