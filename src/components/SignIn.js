@@ -18,6 +18,7 @@ function SignIn() {
     }
 
     const [inputValues, setInputValues] = useState(initialState)
+    const { mailInput, passwdInput } = inputValues;
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -25,13 +26,14 @@ function SignIn() {
     }
 
     const onSubmit = event => {
-        login(inputValues.mailInput, inputValues.passwdInput)
+        login(mailInput, passwdInput)
             .then(authUser => {
                 setInputValues(initialState)
                 history.push("/")
             })
             .catch(error => {
                 console.log(error);
+                document.getElementById("error-msg").innerHTML = error
             });
         event.preventDefault();
     }
@@ -62,7 +64,7 @@ function SignIn() {
                     <Label>Correo electrónico <span style={{ color: "red" }}>*</span>
                         <Input
                             type="text"
-                            value={inputValues.mailInput}
+                            value={mailInput}
                             name="mailInput"
                             onChange={handleChange}
                             placeholder="manuel@manu-scholz.com"
@@ -71,13 +73,15 @@ function SignIn() {
                     <Label>Contraseña <span style={{ color: "red" }}>*</span>
                         <Input
                             type="password"
-                            value={inputValues.passwdInput}
+                            value={passwdInput}
                             name="passwdInput"
                             onChange={handleChange}
                             placeholder="***********"
                         />
                     </Label>
+                    <ErrorMessage id="error-msg"></ErrorMessage>
                     <Button onClick={onSubmit}>Iniciar sesión</Button>
+                    <Text>¿Te has olvidado la contraseña? <LinkWrapper to="/recuperar-contraseña">Recupera tu contraseña</LinkWrapper></Text>
                     <Text>¿No tienes una cuenta? <LinkWrapper to="/registro">Registrate</LinkWrapper></Text>
                 </form>
             </SignInWrapper>
@@ -87,6 +91,8 @@ function SignIn() {
 
 
 }
+
+export default SignIn;
 
 const Section = styled.section`
     width: 72%;
@@ -148,6 +154,7 @@ const ImageStar = styled.img`
 const Text = styled.p`
     font-size: 15px;
     color: #e3e3e3;
+    margin: 8px 0;
 `
 
 const Label = styled.label`
@@ -198,4 +205,9 @@ const LinkWrapper = styled(Link)`
         text-decoration: underline;
     }
 `
-export default SignIn;
+
+const ErrorMessage = styled.p`
+    font-size: 13px;
+    color: red;
+`
+

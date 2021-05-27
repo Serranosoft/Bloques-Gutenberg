@@ -33,7 +33,10 @@ function Account() {
                 })
                 .catch(error => {
                     console.log(error);
+                    document.getElementById("error-msg").innerHTML = error
                 });
+        } else {
+            document.getElementById("error-msg").innerHTML = "Las contraseñas no coinciden"
         }
         event.preventDefault();
     }
@@ -71,7 +74,7 @@ function Account() {
                             onChange={handleChange}
                         />
                     </Label>
-                    
+                    <ErrorMessage id="error-msg"></ErrorMessage>
                     <Button onClick={onSubmit}>Cambiar contraseña</Button>
                 </div>
                 <div style={{gridArea: "temp1"}}>
@@ -173,4 +176,9 @@ const Input = styled.input`
     &:focus {
         border: 2px solid white;
     }
+`
+
+const ErrorMessage = styled.p`
+    font-size: 13px;
+    color: red;
 `

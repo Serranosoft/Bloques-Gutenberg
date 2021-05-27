@@ -1,27 +1,22 @@
 import React, { useState, useContext } from "react";
 import styled from "@emotion/styled";
 import { AuthContext } from './Firebase/AuthDAO';
+import { Link } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import CTASignIn from "../images/decoration/cta-signin2.svg"
 import star from "../images/decoration/star.svg"
-import { Link } from "react-router-dom";
-import { DBContext } from "./Firebase/UserDAO";
-import { useHistory } from 'react-router-dom';
 
+function ResetPassword() {
 
-function SignUp() {
-
-    const { register } = useContext(AuthContext);
-    const { createUser } = useContext(DBContext)
     const history = useHistory();
-
+    
     const initialState = {
-        nameInput: "",
-        mailInput: "",
-        passwdInput: ""
+        emailInput: ""
     }
-
+    
     const [inputValues, setInputValues] = useState(initialState)
-    const { nameInput, mailInput, passwdInput } = inputValues;
+    const { resetPassword } = useContext(AuthContext);
+    const { mailInput } = inputValues;
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -29,25 +24,14 @@ function SignUp() {
     }
 
     const onSubmit = event => {
-        let user = {
-            nameInput,
-            mailInput
-        }
-        if(nameInput.length > 0) {
-            register(mailInput, passwdInput)
-                .then(authUser => {
-                    createUser(authUser.user.uid, user)
-                    history.push("/")
-                })
-                .then(() => {
-                    setInputValues(initialState)
-                })
-                .catch(error => {
-                    document.getElementById("error-msg").innerHTML = error
-                });
-        } else {
-            document.getElementById("error-msg").innerHTML = "Rellena todos los campos"
-        }
+        resetPassword(mailInput)
+            .then(authUser => {
+                history.push("/iniciar-sesion")
+            })
+            .catch(error => {
+                console.log(error);
+                document.getElementById("error-msg").innerHTML = error
+            });
 
         event.preventDefault();
     }
@@ -57,66 +41,35 @@ function SignUp() {
         <Section>
             <CTAWrapper>
                 <CTA>
-                    <H1>Crea tu cuenta GRATIS</H1>
-                    <H3>Y consigue 2 plantillas premium gratis</H3>
+                    <H1>Recupera tu contraseña</H1>
+                    <H3>¡Te enviaré un correo electrónico con la confirmación!</H3>
                     <Image src={CTASignIn} />
                 </CTA>
-                <InfoWrapper>
-                    <ImageStar src={star} />
-                    <Text>Además podrás guardar en favoritos tus bloques personalizados</Text>
-                </InfoWrapper>
-                <InfoWrapper>
-                    <ImageStar src={star} />
-                    <Text>Desbloquea plantillas premium PARA SIEMPRE</Text>
-                </InfoWrapper>
-                <InfoWrapper>
-                    <ImageStar src={star} />
-                    <Text>Desbloquea todos los tipos de personalización TAMBIÉN PARA SIEMPRE</Text>
-                </InfoWrapper>
             </CTAWrapper>
             <SignInWrapper>
                 <form>
-                    <Label>Nombre <span style={{ color: "red" }}>*</span>
-                        <Input
-                            type="text"
-                            value={inputValues.nameInput}
-                            name="nameInput"
-                            onChange={handleChange}
-                            placeholder="Manuel Scholz"
-                            required
-                        />
-                    </Label>
                     <Label>Correo electrónico <span style={{ color: "red" }}>*</span>
                         <Input
-                            type="text"
-                            value={inputValues.mailInput}
+                            type="email"
+                            value={mailInput}
                             name="mailInput"
                             onChange={handleChange}
                             placeholder="manuel@manu-scholz.com"
                         />
                     </Label>
-                    <Label>Contraseña <span style={{ color: "red" }}>*</span>
-                        <Input
-                            type="password"
-                            value={inputValues.passwdInput}
-                            name="passwdInput"
-                            onChange={handleChange}
-                            placeholder="***********"
-                        />
-                    </Label>
+                    
                     <ErrorMessage id="error-msg"></ErrorMessage>
-                    <Button onClick={onSubmit}>Crear Cuenta</Button>
-                    <Text>¿Ya tienes una cuenta? <LinkWrapper to="/iniciar-sesion">Inicia sesión</LinkWrapper></Text>
+                    <Button onClick={onSubmit}>Recuperar contraseña</Button>
                 </form>
             </SignInWrapper>
 
         </Section>
     )
-
-
 }
 
-export default SignUp;
+
+export default ResetPassword;
+
 
 const Section = styled.section`
     width: 72%;
@@ -178,6 +131,7 @@ const ImageStar = styled.img`
 const Text = styled.p`
     font-size: 15px;
     color: #e3e3e3;
+    margin: 8px 0;
 `
 
 const Label = styled.label`
@@ -233,4 +187,3 @@ const ErrorMessage = styled.p`
     font-size: 13px;
     color: red;
 `
-

@@ -11,6 +11,11 @@ function DropdownMenu() {
     const { userName } = useContext(DBContext)
     const history = useHistory();
 
+    function closeSession() {
+        signOut();
+        history.push("/")
+    }
+
     return (
         <div>
             {!authUser && authUser !== "" ?
@@ -32,7 +37,7 @@ function DropdownMenu() {
                         <span>{userName !== "" ? userName : "Cargando..."}</span>
                     </LinkWrapper>
                     <DropdownContent>
-                        <DropdownOption onClick={() => signOut(history)}>Cerrar Sesión</DropdownOption>
+                        <DropdownOption onClick={closeSession}>Cerrar Sesión</DropdownOption>
                     </DropdownContent>
                 </DropdownMenuWrapper>
             }

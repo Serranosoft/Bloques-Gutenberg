@@ -8,6 +8,7 @@ import PersonalizeTemplate from './components/PersonalizeTemplate'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import Account from './components/Account'
+import ResetPassword from './components/ResetPassword'
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
             <Route path="/iniciar-sesion" component={SignIn} />
             <Route path="/registro" component={SignUp} />
             <Route path="/cuenta" component={Account} />
+            <Route path="/recuperar-contraseña" component={ResetPassword} />
           </MainSection>
         </Switch>
       </BrowserRouter>

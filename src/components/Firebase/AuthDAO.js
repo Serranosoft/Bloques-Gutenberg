@@ -41,7 +41,7 @@ export const AuthDAO = ({ children }) => {
 
     // Reset password
     function resetPassword(email) {
-        auth.sendPasswordResetEmail(email);
+        return auth.sendPasswordResetEmail(email);
     }
 
     // Update password
