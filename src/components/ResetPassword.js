@@ -1,10 +1,8 @@
 import React, { useState, useContext } from "react";
 import styled from "@emotion/styled";
 import { AuthContext } from './Firebase/AuthDAO';
-import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import CTASignIn from "../images/decoration/cta-signin2.svg"
-import star from "../images/decoration/star.svg"
 
 function ResetPassword() {
 
@@ -24,6 +22,7 @@ function ResetPassword() {
     }
 
     const onSubmit = event => {
+        event.preventDefault();
         resetPassword(mailInput)
             .then(authUser => {
                 history.push("/iniciar-sesion")
@@ -33,7 +32,6 @@ function ResetPassword() {
                 document.getElementById("error-msg").innerHTML = error
             });
 
-        event.preventDefault();
     }
 
 
@@ -114,26 +112,6 @@ const Image = styled.img`
     margin: 10px 0;
 `
 
-const InfoWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 0 90px;
-    margin: 4px 0;
-    align-content: flex-end;
-`
-
-const ImageStar = styled.img`
-    width: 30px;
-    margin: 0 8px;
-`
-
-const Text = styled.p`
-    font-size: 15px;
-    color: #e3e3e3;
-    margin: 8px 0;
-`
-
 const Label = styled.label`
     display: block;
     color: white;
@@ -171,15 +149,6 @@ const Button = styled.button`
     border-radius: 3px;
     &:hover {
         transform: scale(0.95);
-    }
-`
-
-
-const LinkWrapper = styled(Link)`
-    color: #2c9978;
-    text-decoration: none;
-    &:hover {
-        text-decoration: underline;
     }
 `
 

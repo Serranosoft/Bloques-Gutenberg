@@ -9,7 +9,7 @@ function Header() {
 
     return (
         <HeaderSection>
-            <HeaderTitle to="/">Bloques gutenberg<img src={logo} /></HeaderTitle>
+            <HeaderTitle to="/">Bloques gutenberg<img src={logo} alt="bloques gutenberg"/></HeaderTitle>
             <DropdownMenu />
         </HeaderSection>
     )

@@ -5,9 +5,11 @@ import BoxTemplates from "../resources/BoxTemplates.js"
 import TableTemplates from "../resources/TableTemplates.js"
 import Palette from "./Palette"
 import "../resources/TemplatesStyles.css"
+import AddFavorites from "./AddFavorites.js";
 
 function PersonalizeTemplate(props) {
-    const [template, getTemplate] = useState(fetchTemplate(props.location.optionChosed));
+    // eslint-disable-next-line
+    const template = fetchTemplate(props.location.optionChosed)
     const [styling, changeStyling] = useState({
         color: "#1C1C1C",
         background: "#ffffff",
@@ -30,12 +32,14 @@ function PersonalizeTemplate(props) {
                 btn.setAttribute("style", applyStyles().buttonStyles)
             }
         }
+        // eslint-disable-next-line
     }, [stylingButton])
 
     useEffect(() => {
         if (template !== undefined) {
             document.querySelector(`.template${template.TemplateId}`).setAttribute("style", applyStyles().templateStyles)
         }
+        // eslint-disable-next-line
     }, [styling])
 
     if (!props.location.optionChosed) {
@@ -50,6 +54,11 @@ function PersonalizeTemplate(props) {
 
                 <Workspace>
                     <div className={template.TemplateId} dangerouslySetInnerHTML={{ __html: template.TemplateHtml }}></div>
+                    <AddFavorites 
+                        template={template} 
+                        stylingButton={stylingButton} 
+                        styling={styling}
+                    />
                     <Palette
                         templateId={template.TemplateId}
                         styling={styling}
@@ -66,7 +75,7 @@ function PersonalizeTemplate(props) {
                     </div>
                     <div>
                         <p>Copia-lo en CSS Adicional (Personalizar {'>'} CSS Adicional)</p>
-                        <HtmlGenerated id="css-output" readOnly onClick={CssClipBoard}>{template.TemplateCss}</HtmlGenerated>
+                        <HtmlGenerated id="css-output" value={template.TemplateCss} readOnly onClick={CssClipBoard}></HtmlGenerated>
                     </div>
                 </CodeSpace>
             </>
@@ -173,19 +182,17 @@ const HtmlGenerated = styled.textarea`
 
 const Button = styled.button`
     width: 65%;
-    padding: 8px 24px;
-    margin: 24px auto;
-    background: #2c9374;
-    border: 1px solid lightgray;
-    outline: 0;
-    font-size: 24px;
-    font-weight: 900;
+    padding: 10px 24px;
+    margin: 16px auto;
+    background: #1f6952;
+    font-size: 17px;
     text-align: center;
-    text-transform: uppercase;
-    color: #34d399;
+    color: white;
     cursor: pointer;
     transition: 0.5s;
+    border: 0;
+    border-radius: 3px;
     &:hover {
-        transform: scale(1.05);
+        transform: scale(0.95);
     }
 `

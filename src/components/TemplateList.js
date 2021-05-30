@@ -37,10 +37,7 @@ function TemplateList(props) {
                                     condition={!authUser && el.TemplateId === 1}
                                 >
                                     <PremiumContentWarn>{!authUser && el.TemplateId === 1 && "Registrate para usar esta plantilla premium"}</PremiumContentWarn>
-                                    <Template
-                                        image={el.TemplateImg}
-                                        id={el.TemplateId}
-                                    />
+                                    <Template image={el.TemplateImg} />
                                 </ConditionalLink>
                             )
                         }))
@@ -56,10 +53,7 @@ function TemplateList(props) {
                                     condition={!authUser && el.TemplateId === 10}
                                 >
                                     <PremiumContentWarn>{!authUser && el.TemplateId === 10 && "Registrate para usar esta plantilla premium"}</PremiumContentWarn>
-                                    <Template
-                                        image={el.TemplateImg}
-                                        id={el.TemplateId}
-                                    />
+                                    <Template image={el.TemplateImg} />
                                 </ConditionalLink>
                             )
                         }))

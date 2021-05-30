@@ -1,13 +1,12 @@
 import React, { useContext, useState } from "react";
 import styled from '@emotion/styled'
-import { Link } from "react-router-dom"
 import { DBContext } from "./Firebase/UserDAO";
 import { AuthContext } from './Firebase/AuthDAO';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 function Account() {
 
-    const { userName } = useContext(DBContext)
+    const { userName } = useContext(DBContext);
     const history = useHistory();
 
     const initialState = {
@@ -15,7 +14,7 @@ function Account() {
         newPassword: ""
     }
 
-    const [inputValues, setInputValues] = useState(initialState)
+    const [inputValues, setInputValues] = useState(initialState);
     const { UpdatePassword, signOut } = useContext(AuthContext);
     const {oldPassword, newPassword} = inputValues;
 
@@ -25,10 +24,10 @@ function Account() {
     }
 
     const onSubmit = event => {
-        if (oldPassword != newPassword) {
+        if (oldPassword !== newPassword) {
             UpdatePassword(oldPassword, newPassword)
                 .then(authUser => {
-                    history.push("/")
+                    history.push("/");
                     signOut();
                 })
                 .catch(error => {
@@ -55,9 +54,11 @@ function Account() {
                 <div style={{gridArea: "favorites"}}>
                     <BoxTitle>Mis favoritos</BoxTitle>
                     <LandingSubtitle>Accede a tus bloques guardados</LandingSubtitle>
-                    <Button>Favoritos</Button>
+                    <LinkWrapper to="cuenta/favoritos">
+                        <Button>Favoritos</Button>
+                    </LinkWrapper>
                 </div>
-                <div style={{gridArea: "changepassword"}}>
+                <form style={{gridArea: "changepassword"}}>
                     <BoxTitle>Cambiar contraseña</BoxTitle>
                     <Label>Contraseña actual
                         <Input 
@@ -76,7 +77,7 @@ function Account() {
                     </Label>
                     <ErrorMessage id="error-msg"></ErrorMessage>
                     <Button onClick={onSubmit}>Cambiar contraseña</Button>
-                </div>
+                </form>
                 <div style={{gridArea: "temp1"}}>
                     <BoxTitle>En construcción</BoxTitle>
                 </div>
@@ -116,7 +117,7 @@ const AccountWrapper = styled.div`
     "temp1 temp1 temp2 temp3";
     gap: 40px;
     margin: 48px auto;
-    & > div {
+    & > div, & > form {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -138,7 +139,13 @@ const BoxTitle = styled.p`
     font-weight: bold;
 `
 
-const Button = styled.button`
+const LinkWrapper = styled(Link)`
+    width: 100%;
+    margin: 16px auto;
+    text-align: center;
+    `
+    
+    const Button = styled.button`
     width: 50%;
     padding: 10px 24px;
     margin: 16px auto;

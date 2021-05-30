@@ -9,6 +9,7 @@ import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import Account from './components/Account'
 import ResetPassword from './components/ResetPassword'
+import Favorites from './components/Favorites'
 
 function App() {
   return (
@@ -40,8 +41,9 @@ function App() {
             <Route path="/personalizar" component={PersonalizeTemplate} />
             <Route path="/iniciar-sesion" component={SignIn} />
             <Route path="/registro" component={SignUp} />
-            <Route path="/cuenta" component={Account} />
+            <Route exact path="/cuenta" component={Account} />
             <Route path="/recuperar-contraseña" component={ResetPassword} />
+            <Route exact path="/cuenta/favoritos" component={Favorites} />
           </MainSection>
         </Switch>
       </BrowserRouter>

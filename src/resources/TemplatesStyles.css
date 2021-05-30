@@ -6,7 +6,7 @@
 	background: #faf5f0;
 	border: 1px solid gray;
 	box-shadow: 0px 3px 3px #611905;
-	margin: 24px auto;
+	margin: 8px auto;
 	padding: 24px 10px;
 	text-align: center;
 	transition: 1s;
@@ -181,7 +181,7 @@
 
 .template10 {
 	width: 50%;
-	margin: 16px auto;
+	margin: 8px auto;
 	border: 2px solid black;
 	overflow-x: auto;
 	transition: 1s;
@@ -235,7 +235,7 @@
 	width: 40%;
 	border: 2px solid lightgray;
 	padding: 8px 16px;
-	margin: 16px auto;
+	margin: 8px auto;
 	transition: 1s;
 	overflow-x: auto;
 }

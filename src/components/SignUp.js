@@ -29,6 +29,7 @@ function SignUp() {
     }
 
     const onSubmit = event => {
+        event.preventDefault();
         let user = {
             nameInput,
             mailInput
@@ -48,8 +49,6 @@ function SignUp() {
         } else {
             document.getElementById("error-msg").innerHTML = "Rellena todos los campos"
         }
-
-        event.preventDefault();
     }
 
 

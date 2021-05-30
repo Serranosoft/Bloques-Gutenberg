@@ -20,10 +20,20 @@ export const UserDAO = ({ children }) => {
         })
     }
 
+    function setFavorite(id, template) {
+        getUserRef(id).child("favorites").push({ "template": template })
+            .then((response) => {
+                console.log(response);
+            }).catch((error) => {
+                console.log(error);
+            })
+    };
+
     useEffect(() => {
         if (authUser !== "" && authUser !== null) {
             getUserName(authUser.uid)
         }
+        // eslint-disable-next-line
     }, [authUser])
 
     return (
@@ -32,6 +42,7 @@ export const UserDAO = ({ children }) => {
                 {
                     userName,
                     createUser,
+                    setFavorite
                 }
             }>
             {children}
