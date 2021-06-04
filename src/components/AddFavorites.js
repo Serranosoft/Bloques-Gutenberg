@@ -38,9 +38,12 @@ function AddFavorites({ template, stylingButton, styling }) {
 
             console.log(templateFavorite);
             setFavorite(authUser.uid, templateFavorite)
-
+            setInputValues(initialState)
+            document.getElementById("error-msg").innerHTML = ""
+            document.getElementById("success-msg").innerHTML = "Plantilla guardada con éxito"
         } else {
             document.getElementById("error-msg").innerHTML = "Introduce algún nombre"
+            document.getElementById("success-msg").innerHTML = ""
         }
 
     }
@@ -51,17 +54,21 @@ function AddFavorites({ template, stylingButton, styling }) {
     }
 
     return (
-        <AddFavoritesWrapper>
+        <>
             <ErrorMessage id="error-msg"></ErrorMessage>
-            <Input
-                type="text"
-                onChange={handleChange}
-                name="templateName"
-                value={templateName}
-                placeholder="Guardar en favoritos"
-            />
-            <Button onClick={setFavoriteTemplate}>Guardar</Button>
-        </AddFavoritesWrapper>
+            <AddFavoritesWrapper>
+                <Input
+                    type="text"
+                    onChange={handleChange}
+                    name="templateName"
+                    value={templateName}
+                    placeholder="Guardar en favoritos"
+                    maxLength="20"
+                />
+                <Button onClick={setFavoriteTemplate}>Guardar</Button>
+            </AddFavoritesWrapper>
+            <SuccessfulMessage id="success-msg"></SuccessfulMessage>
+        </>
     )
 
 }
@@ -74,7 +81,8 @@ const AddFavoritesWrapper = styled.div`
     display: flex;
     align-self: end;
     align-items: center;
-    margin-bottom: 16px;
+    margin: 0 auto;
+    margin-bottom: 8px;
     font-size: 13px;
 `
 
@@ -111,5 +119,11 @@ const Button = styled.button`
 const ErrorMessage = styled.span`
     font-size: 13px;
     color: red;
+    flex: 1;
+`
+
+const SuccessfulMessage = styled.span`
+    font-size: 13px;
+    color: #2b702f;
     flex: 1;
 `

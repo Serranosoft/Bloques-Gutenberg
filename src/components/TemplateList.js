@@ -86,6 +86,7 @@ const TemplateListWrapper = styled.section`
     margin-top: 40px;
     & a, & div:first-child {
         width: 70%;
+        margin: 0 auto;
     }
 `
 

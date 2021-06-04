@@ -80,6 +80,5 @@ const DropdownOption = styled.span`
 
 const LinkWrapper = styled(Link)`
     color: white;
-    text-decoration: none
-
+    text-decoration: none;
 `

@@ -54,17 +54,17 @@ function PersonalizeTemplate(props) {
 
                 <Workspace>
                     <div className={template.TemplateId} dangerouslySetInnerHTML={{ __html: template.TemplateHtml }}></div>
-                    <AddFavorites 
-                        template={template} 
-                        stylingButton={stylingButton} 
-                        styling={styling}
-                    />
                     <Palette
                         templateId={template.TemplateId}
                         styling={styling}
                         changeStyling={changeStyling}
                         stylingButton={stylingButton}
                         changeButton={changeButton}
+                    />
+                    <AddFavorites 
+                        template={template} 
+                        stylingButton={stylingButton} 
+                        styling={styling}
                     />
                     <Button onClick={showResult}>CREAR BLOQUE</Button>
                 </Workspace>

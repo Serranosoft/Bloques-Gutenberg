@@ -27,7 +27,6 @@ function SignIn() {
 
     const onSubmit = event => {
         event.preventDefault();
-
         login(mailInput, passwdInput)
             .then(authUser => {
                 setInputValues(initialState)
@@ -37,7 +36,6 @@ function SignIn() {
                 console.log(error);
                 document.getElementById("error-msg").innerHTML = error
             });
-
     }
 
     return (

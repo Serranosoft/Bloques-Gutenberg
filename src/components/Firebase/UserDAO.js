@@ -29,6 +29,45 @@ export const UserDAO = ({ children }) => {
             })
     };
 
+    function getFavorites(id, handleFavorites) {
+        getUserRef(id).child("favorites").once("value", snapshot => {
+            const snap = snapshot.val();
+
+            if (snap != null) {
+                const snapValues = Object.keys(snapshot.val()).map(key => ({
+                    ...snap[key].template
+                }))
+                handleFavorites(snapValues)
+            } else {
+                handleFavorites([])
+            }
+
+        })
+    }
+
+    function removeFavorite(id, handleFavorites, templateId) {
+        getUserRef(id).child("favorites").once("value", snapshot => {
+            const snap = snapshot.val();
+            const usersList = Object.keys(snap).map(key => ({
+                ...snap[key],
+                key: key,
+            }));
+            console.log(usersList);
+            usersList.forEach((el => {
+                console.log(el);
+                if (el.template.TemplateId === templateId) {
+                    getUserRef(id).child(`favorites/${el.key}`).remove()
+                        .then(() => {
+                            getFavorites(id, handleFavorites)
+                        }).catch((error) => {
+                            console.log(error);
+                        });
+                }
+            }))
+
+        })
+    }
+
     useEffect(() => {
         if (authUser !== "" && authUser !== null) {
             getUserName(authUser.uid)
@@ -42,7 +81,9 @@ export const UserDAO = ({ children }) => {
                 {
                     userName,
                     createUser,
-                    setFavorite
+                    setFavorite,
+                    getFavorites,
+                    removeFavorite
                 }
             }>
             {children}

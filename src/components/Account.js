@@ -3,10 +3,12 @@ import styled from '@emotion/styled'
 import { DBContext } from "./Firebase/UserDAO";
 import { AuthContext } from './Firebase/AuthDAO';
 import { Link, useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 function Account() {
 
     const { userName } = useContext(DBContext);
+    const { authUser } = useContext(AuthContext);
     const history = useHistory();
 
     const initialState = {
@@ -40,56 +42,62 @@ function Account() {
         event.preventDefault();
     }
 
-    return (
-        <>
-            <LandingTitle>Bienvenido/a  <span style={{
-                color: "#34d399",
-                textAlign: "center"
-            }}> {userName}</span></LandingTitle>
 
-            <LandingSubtitle>Accede a tus bloques guardados y modifica todos tus datos
-                </LandingSubtitle>
-
-            <AccountWrapper>
-                <div style={{gridArea: "favorites"}}>
-                    <BoxTitle>Mis favoritos</BoxTitle>
-                    <LandingSubtitle>Accede a tus bloques guardados</LandingSubtitle>
-                    <LinkWrapper to="cuenta/favoritos">
-                        <Button>Favoritos</Button>
-                    </LinkWrapper>
-                </div>
-                <form style={{gridArea: "changepassword"}}>
-                    <BoxTitle>Cambiar contraseña</BoxTitle>
-                    <Label>Contraseña actual
-                        <Input 
-                            type="password" 
-                            name="oldPassword"
-                            value={oldPassword} 
-                            onChange={handleChange}/>
-                    </Label>
-                    <Label>Contraseña nueva
-                        <Input 
-                            type="password" 
-                            name="newPassword"
-                            value={newPassword} 
-                            onChange={handleChange}
-                        />
-                    </Label>
-                    <ErrorMessage id="error-msg"></ErrorMessage>
-                    <Button onClick={onSubmit}>Cambiar contraseña</Button>
-                </form>
-                <div style={{gridArea: "temp1"}}>
-                    <BoxTitle>En construcción</BoxTitle>
-                </div>
-                <div style={{gridArea: "temp2"}}>
-                    <BoxTitle>En construcción</BoxTitle>
-                </div>
-                <div style={{gridArea: "temp3"}}>
-                    <BoxTitle>En construcción</BoxTitle>
-                </div>
-            </AccountWrapper>
-        </>
-    )
+    if(!authUser) {
+        
+        return (<Redirect to="/" />)
+    } else {
+        return (
+            <>
+                <LandingTitle>Bienvenido/a  <span style={{
+                    color: "#34d399",
+                    textAlign: "center"
+                }}> {userName}</span></LandingTitle>
+    
+                <LandingSubtitle>Accede a tus bloques guardados y modifica todos tus datos
+                    </LandingSubtitle>
+    
+                <AccountWrapper>
+                    <div style={{gridArea: "favorites"}}>
+                        <BoxTitle>Mis favoritos</BoxTitle>
+                        <LandingSubtitle>Accede a tus bloques guardados</LandingSubtitle>
+                        <LinkWrapper to="cuenta/favoritos">
+                            <Button>Favoritos</Button>
+                        </LinkWrapper>
+                    </div>
+                    <form style={{gridArea: "changepassword"}}>
+                        <BoxTitle>Cambiar contraseña</BoxTitle>
+                        <Label>Contraseña actual
+                            <Input 
+                                type="password" 
+                                name="oldPassword"
+                                value={oldPassword} 
+                                onChange={handleChange}/>
+                        </Label>
+                        <Label>Contraseña nueva
+                            <Input 
+                                type="password" 
+                                name="newPassword"
+                                value={newPassword} 
+                                onChange={handleChange}
+                            />
+                        </Label>
+                        <ErrorMessage id="error-msg"></ErrorMessage>
+                        <Button onClick={onSubmit}>Cambiar contraseña</Button>
+                    </form>
+                    <div style={{gridArea: "temp1"}}>
+                        <BoxTitle>En construcción</BoxTitle>
+                    </div>
+                    <div style={{gridArea: "temp2"}}>
+                        <BoxTitle>En construcción</BoxTitle>
+                    </div>
+                    <div style={{gridArea: "temp3"}}>
+                        <BoxTitle>En construcción</BoxTitle>
+                    </div>
+                </AccountWrapper>
+            </>
+        )
+    }
 }
 
 export default Account
