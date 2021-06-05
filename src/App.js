@@ -59,4 +59,7 @@ const MainSection = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media(max-width: 768px) {
+      height: 100vh;
+    }
 `

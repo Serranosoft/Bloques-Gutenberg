@@ -44,7 +44,6 @@ function Account() {
 
 
     if(!authUser) {
-        
         return (<Redirect to="/" />)
     } else {
         return (

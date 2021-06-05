@@ -75,6 +75,12 @@ const LandingTitle = styled.h1`
     font-family: 'Texturina', serif;
     color: white;
     word-spacing: -5px;
+    @media(max-width: 768px) {
+        padding: 36px 8px 8px 8px;
+        font-size: 33px;
+        line-height: 1.3;
+        word-spacing: 1px;
+    }
 `
 
 const TemplateListWrapper = styled.section`
@@ -90,6 +96,13 @@ const TemplateListWrapper = styled.section`
     & a, & div:first-child {
         width: 70%;
         margin: 0 auto;
+    }
+    @media(max-width: 768px) {
+        width: 95%;
+        grid-template-columns: 1fr;
+        & > * {
+            width: 90% !important;
+        }
     }
 `
 
@@ -116,6 +129,9 @@ const DecorationArrow = styled.img`
     position: relative;
     top: 110px;
     left: -435px;
+    @media(max-width: 768px) {
+        display: none;
+    }
 `
 
 const ArrowText = styled.span`
@@ -125,4 +141,7 @@ const ArrowText = styled.span`
     color: #34d399;
     text-align: center;
     font-family: 'Texturina', serif;
+    @media(max-width: 768px) {
+        display: none;
+    }
 `

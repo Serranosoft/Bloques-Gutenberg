@@ -9,7 +9,7 @@ function Header() {
 
     return (
         <HeaderSection>
-            <HeaderTitle to="/">Bloques gutenberg<img src={logo} alt="bloques gutenberg"/></HeaderTitle>
+            <HeaderTitle to="/"><span>Bloques gutenberg</span><img src={logo} alt="bloques gutenberg"/></HeaderTitle>
             <DropdownMenu />
         </HeaderSection>
     )
@@ -24,6 +24,10 @@ const HeaderSection = styled.header`
   padding: 16px 32px;
   align-items: center;
   justify-content: space-between;
+  @media(max-width: 768px) {
+      flex-direction: column;
+      padding: 10px 8px;
+  }
 `
 
 const HeaderTitle = styled(Link)`
@@ -39,5 +43,10 @@ const HeaderTitle = styled(Link)`
         width: 25px;
         color: white;
         margin: 0 5px;
+    }
+    @media(max-width: 768px) {
+        display: block;
+        font-size: 18px;
+        margin: 8px 0;
     }
 `

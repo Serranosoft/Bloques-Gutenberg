@@ -7,7 +7,7 @@ import ArrowRight from "../images/decoration/curve-arrow-right.svg"
 import { Link } from "react-router-dom"
 
 function Landing() {
-    
+
     return (
         <>
             <LandingTitle>Crear Bloques Gutenberg <span style={{
@@ -23,8 +23,8 @@ function Landing() {
             </LandingTitle>
 
             <LandingWrapper>
-                <LandingSubtitle>Elige una plantilla y personaliza tu bloque gutenberg de Wordpress para SEO, 
-                    nichos de Amazon, Adsense y todo tipo de webs sin el uso de plugins
+                <LandingSubtitle>Elige una plantilla y personaliza tu bloque gutenberg de Wordpress para SEO,
+                nichos de Amazon, Adsense y todo tipo de webs sin el uso de plugins
                 </LandingSubtitle>
                 <ArrowText arrowLeft>Plantillas para Tablas</ArrowText>
                 <DecorationArrow src={ArrowLeft} arrowLeft />
@@ -58,13 +58,13 @@ const LandingTitle = styled.h1`
     color: white;
     line-height: 1.1;
     word-spacing: -5px;
-`
-
-const LandingSubtitle = styled.p`
-    width: 650px;
-    margin: 0 auto;
     text-align: center;
-    font-size: 17px;
+    @media(max-width: 768px) {
+        padding: 36px 8px 8px 8px;
+        font-size: 33px;
+        line-height: 1.3;
+        word-spacing: 1px;
+    }
 `
 
 const LandingWrapper = styled.div`
@@ -72,6 +72,22 @@ const LandingWrapper = styled.div`
     height: 100%;
     margin-top: 20px;
     text-align: center;
+    @media(max-width: 768px) {
+        width: 95%;
+        margin-top: 8px;
+    }
+`
+
+
+const LandingSubtitle = styled.p`
+    width: 650px;
+    margin: 0 auto;
+    font-size: 17px;
+    @media(max-width: 768px) {
+        padding: 8px;
+        font-size: 14px;
+        width: 100%;
+    }
 `
 
 const OptionWrapper = styled.div`
@@ -79,6 +95,11 @@ const OptionWrapper = styled.div`
     display: flex;
     justify-content: space-evenly;   
     margin-top: 24px;
+    @media(max-width: 768px) {
+        flex-direction: column;
+        margin-top: 8px;
+        align-items: space-evenly;
+    }
 `
 
 const ImageOption = styled.img`
@@ -89,6 +110,14 @@ const ImageOption = styled.img`
     &:hover {
         transform: scale(1.1);
     }
+    @media(max-width: 768px) {
+        width: 90%;
+        height: 150px;
+        margin-top: 35px;
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
 `
 
 const DecorationArrow = styled.img`
@@ -98,6 +127,10 @@ const DecorationArrow = styled.img`
         props.arrowLeft ? '70px' : '70px'};
     left: ${props =>
         props.arrowLeft ? '445px' : '-595px'};
+    
+    @media(max-width: 768px) {
+        display: none;
+    }
     
 `
 
@@ -110,4 +143,12 @@ const ArrowText = styled.span`
     color: #34d399;
     text-align: center;
     font-family: 'Texturina', serif;
+    @media(max-width: 768px) {
+        position: absolute;
+        top: ${props =>
+            props.arrowLeft ? '600px' : '420px'};
+        left: ${props =>
+            props.arrowLeft ? '35px' : '35px'};
+        font-size: 13px;
+    }
 `
