@@ -107,6 +107,13 @@ const LandingTitle = styled.h1`
     font-family: 'Texturina', serif;
     color: white;
     word-spacing: -2px;
+    text-align: center;
+    @media(max-width: 768px) {
+        padding: 36px 8px 8px 8px;
+        font-size: 33px;
+        line-height: 1.3;
+        word-spacing: 1px;
+    }
 `
 
 const LandingSubtitle = styled.p`
@@ -114,6 +121,11 @@ const LandingSubtitle = styled.p`
     margin: 0 auto;
     text-align: center;
     font-size: 17px;
+    @media(max-width: 768px) {
+        padding: 8px;
+        font-size: 14px;
+        width: 100%;
+    }
 `
 
 const AccountWrapper = styled.div`
@@ -135,6 +147,19 @@ const AccountWrapper = styled.div`
     }
     & > div:nth-child(2) label:first-of-type {
         margin-top: 20px;
+    }
+
+    @media(max-width: 768px) {
+        width: 95%;
+        grid-template-columns: 1fr !important;
+        grid-template-areas:
+        "favorites"
+        "changepassword"
+        "temp1"
+        "temp2"
+        "temp3";
+        gap: 30px;
+        margin: 32px auto;
     }
 `
 

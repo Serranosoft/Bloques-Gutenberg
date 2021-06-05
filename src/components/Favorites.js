@@ -81,6 +81,13 @@ const LandingTitle = styled.h1`
     font-family: 'Texturina', serif;
     color: white;
     word-spacing: -2px;
+    text-align: center;
+    @media(max-width: 768px) {
+        padding: 36px 8px 8px 8px;
+        font-size: 33px;
+        line-height: 1.3;
+        word-spacing: 1px;
+    }
 `
 
 const LandingSubtitle = styled.p`
@@ -88,6 +95,11 @@ const LandingSubtitle = styled.p`
     margin: 0 auto;
     text-align: center;
     font-size: 17px;
+    @media(max-width: 768px) {
+        padding: 8px;
+        font-size: 14px;
+        width: 100%;
+    }
 `
 
 const FavoritesWrapper = styled.div`
@@ -98,6 +110,9 @@ const FavoritesWrapper = styled.div`
     justify-content: center;
     align-items: center;
     margin: 40px auto;
+    @media(max-width: 768px) {
+        width: 95%;
+    }
 `
 
 const FavoriteTemplate = styled.div`
@@ -126,6 +141,9 @@ const ActionWrapper = styled.div`
     display: flex;
     align-items: space-evenly;
     margin: 5px auto;
+    @media(max-width: 768px) {
+        margin: 12px 8px;
+    }
 `
 
 const Button = styled.button`

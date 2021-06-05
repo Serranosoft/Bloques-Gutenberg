@@ -84,6 +84,9 @@ const AddFavoritesWrapper = styled.div`
     margin: 0 auto;
     margin-bottom: 8px;
     font-size: 13px;
+    @media(max-width: 768px) {
+        width: 95% !important;
+    }
 `
 
 const Input = styled.input`

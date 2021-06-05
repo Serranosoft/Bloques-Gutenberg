@@ -13,8 +13,8 @@
 }
 
 .template1 > div:first-child {
-	flex-basis: 34% !important;
-	width: 100% !important;
+	flex-basis: 34% /* !important */;
+	width: 100% /* !important */;
 }
 
 .template1 > div:first-child img {
@@ -56,13 +56,26 @@
 
 .template1 .wp-block-column ul li {
 	margin: 16px 0;
-	text-align: left;
+	text-align: center;
 	font-size: 18px;
 }
 
 .template1 .wp-block-column ul li::marker {
 	color: #172815;
 	font-size: 23px;
+}
+
+@media (max-width:768px) {
+	.template1 {
+		flex-wrap: wrap;
+	}
+	.template1 > div{
+	 	flex-basis: 100% !important;
+		 align-self: center;
+	}
+	.template1 .wp-block-column .wp-block-buttons .wp-block-button {
+		margin-top: 24px;
+	}
 }
 
 

@@ -148,6 +148,14 @@ const LandingTitle = styled.h1`
     font-family: 'Texturina', serif;
     color: white;
     word-spacing: -5px;
+    @media(max-width: 768px) {
+        text-align: center
+        padding: 36px 8px 8px 8px;
+        font-size: 33px;
+        line-height: 1.3;
+        word-spacing: 1px;
+        margin-bottom: 16px;
+    }
 `
 
 const Workspace = styled.div`
@@ -158,6 +166,9 @@ const Workspace = styled.div`
     margin: 24px auto;
     & > div {
         width: 100%;
+    }
+    @media(max-width: 768px) {
+        width: 95%;
     }
 `
 
@@ -208,6 +219,9 @@ const DecorationArrow = styled.img`
         props.id < 10 ? '50px' : '70px'};
     left: ${props =>
         props.id < 10 ? '-450px' : '-240px'};
+    @media(max-width: 768px) {
+        display: none;
+    }
     
 `
 
@@ -220,4 +234,7 @@ const ArrowText = styled.span`
     color: #34d399;
     text-align: center;
     font-family: 'Texturina', serif;
+    @media(max-width: 768px) {
+        display: none;
+    }
 `

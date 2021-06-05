@@ -100,6 +100,13 @@ const Section = styled.section`
     grid-template-columns: 1.5fr 1fr;
     align-items: center;
     padding: 20px;
+    justify-content: center;
+    @media(max-width: 768px) {
+        width: 95%;
+        grid-template-columns: 1fr;
+        margin: 0 auto;
+        grid-auto-flow: dense
+    }
 `
 
 const CTAWrapper = styled.div`
@@ -119,6 +126,9 @@ const CTA = styled.div`
     width: 100%;
     margin-bottom: 24px;
     text-align: center;
+    @media(max-width: 768px) {
+        margin-bottom: 8px;
+    }
 `
 
 const H1 = styled.h1`
@@ -144,6 +154,9 @@ const InfoWrapper = styled.div`
     padding: 0 90px;
     margin: 4px 0;
     align-content: flex-end;
+    @media(max-width: 768px) {
+        display: none;
+    }
 `
 
 const ImageStar = styled.img`

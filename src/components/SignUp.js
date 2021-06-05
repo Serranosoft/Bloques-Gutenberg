@@ -123,6 +123,13 @@ const Section = styled.section`
     grid-template-columns: 1.5fr 1fr;
     align-items: center;
     padding: 20px;
+    justify-content: center;
+    @media(max-width: 768px) {
+        width: 95%;
+        grid-template-columns: 1fr;
+        margin: 0 auto;
+        grid-auto-flow: dense
+    }
 `
 
 const CTAWrapper = styled.div`
@@ -136,23 +143,35 @@ const SignInWrapper = styled.div`
     display: flex;
     flex-direction: column;
     text-align: center;
+    /* @media(max-width: 768px) {
+        grid-row: 1;
+    } */
 `
 
 const CTA = styled.div`
     width: 100%;
     margin-bottom: 24px;
     text-align: center;
+    @media(max-width: 768px) {
+        margin-bottom: 8px;
+    }
 `
 
 const H1 = styled.h1`
     font-size: 46px;
     font-weight: bold;
+    @media(max-width: 768px) {
+        font-size: 33px;
+    }
 `
 
 const H3 = styled.h3`
     font-size: 19px;
     font-weight: 400;
     color: lightgray;
+    @media(max-width: 768px) {
+        font-size: 16px;
+    }
 `
 
 const Image = styled.img`
@@ -167,6 +186,9 @@ const InfoWrapper = styled.div`
     padding: 0 90px;
     margin: 4px 0;
     align-content: flex-end;
+    @media(max-width: 768px) {
+        display: none;
+    }
 `
 
 const ImageStar = styled.img`
