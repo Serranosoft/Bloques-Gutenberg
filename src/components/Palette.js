@@ -16,8 +16,8 @@ function Palette({ templateId, styling, changeStyling, changeButton, stylingButt
                 <InputSection>
                     <label>Bordes redondeados
                         <OptionsWrapper>
-                            <label>Si<InputOption type="radio" onChange={handleBorderRadius} value="30px" name="border-radius" /></label>
-                            <label>No<InputOption type="radio" onChange={handleBorderRadius} value="0px" name="border-radius" /></label>
+                            <label>Si<InputOption type="radio" onChange={handleBorderRadius} value="30px" name="border-template" /></label>
+                            <label>No<InputOption type="radio" onChange={handleBorderRadius} value="0px" name="border-template" defaultChecked /></label>
                         </OptionsWrapper>
                     </label>
                 </InputSection>
@@ -60,12 +60,12 @@ function Palette({ templateId, styling, changeStyling, changeButton, stylingButt
 
                     <label>Bordes redondeados
                         <OptionsWrapper>
-                            <label>Si<InputOption type="radio" onChange={handleBorderButton} value="30px" name="border-radius" /></label>
-                            <label>No<InputOption type="radio" onChange={handleBorderButton} value="0px" name="border-radius" /></label>
+                            <label>Si<InputOption type="radio" onChange={handleBorderButton} value="30px" name="border-button" /></label>
+                            <label>No<InputOption type="radio" onChange={handleBorderButton} value="0px" name="border-button" defaultChecked /></label>
                         </OptionsWrapper>
                     </label>
 
-                </PaletteSection>:""
+                </PaletteSection> : ""
             }
 
         </Form>
@@ -166,10 +166,17 @@ const InputSection = styled.div`
     margin: 8px auto;
 `
 
-const OptionsWrapper = styled.div`
+const OptionsWrapper = styled.form`
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
+    & > label {
+        display: flex;
+        align-items: center;
+        font-size: 16.5px;
+        cursor: pointer;
+    }
 `
 
 const InputColor = styled.input`
@@ -179,7 +186,10 @@ const InputColor = styled.input`
 `
 
 const InputOption = styled.input`
-
+	width: 20px;
+	height: 20px;
+    margin: 8px 5px;
+    cursor: pointer;
 `
 
 const InputSlider = styled.input`
