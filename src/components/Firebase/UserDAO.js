@@ -35,7 +35,8 @@ export const UserDAO = ({ children }) => {
 
             if (snap != null) {
                 const snapValues = Object.keys(snapshot.val()).map(key => ({
-                    ...snap[key].template
+                    ...snap[key].template,
+                    key: key
                 }))
                 handleFavorites(snapValues)
             } else {
@@ -45,17 +46,15 @@ export const UserDAO = ({ children }) => {
         })
     }
 
-    function removeFavorite(id, handleFavorites, templateId) {
+    function removeFavorite(id, handleFavorites, key) {
         getUserRef(id).child("favorites").once("value", snapshot => {
             const snap = snapshot.val();
             const usersList = Object.keys(snap).map(key => ({
                 ...snap[key],
                 key: key,
             }));
-            console.log(usersList);
             usersList.forEach((el => {
-                console.log(el);
-                if (el.template.TemplateId === templateId) {
+                if (el.key === key) {
                     getUserRef(id).child(`favorites/${el.key}`).remove()
                         .then(() => {
                             getFavorites(id, handleFavorites)

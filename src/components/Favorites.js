@@ -15,8 +15,8 @@ function Favorites() {
         getFavorites(authUser.uid, handleFavorites)
     }
 
-    function removeFromFavorite(templateId) {
-        removeFavorite(authUser.uid, handleFavorites, templateId)
+    function removeFromFavorite(key) {
+        removeFavorite(authUser.uid, handleFavorites, key)
     }
 
     useEffect(() => {
@@ -50,7 +50,6 @@ function Favorites() {
                 <FavoritesWrapper>
                     {favorites != null &&
                         favorites.map((el) => {
-                            console.log(el);
                             return (
                                 <FavoriteTemplate>
                                     <FavoriteName>{el.TemplateName}</FavoriteName>
@@ -59,7 +58,7 @@ function Favorites() {
                                         <Button onClick={submitHtml}>Código HTML</Button>
                                         <Button onClick={submitCss}>Código CSS</Button>
                                     </ActionWrapper>
-                                    <Delete onClick={() => removeFromFavorite(el.TemplateId)}>Borrar de favoritos</Delete>
+                                    <Delete onClick={() => removeFromFavorite(el.key)}>Borrar de favoritos</Delete>
                                     <ActionWrapper>
                                         <HtmlGenerated id="html-output" value={el.TemplateHtml} />
                                         <HtmlGenerated id="css-output" value={el.TemplateCss} />
@@ -92,7 +91,7 @@ const LandingSubtitle = styled.p`
 `
 
 const FavoritesWrapper = styled.div`
-    width: 65%;
+    width: 50%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 30px;

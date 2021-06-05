@@ -6,6 +6,8 @@ import TableTemplates from "../resources/TableTemplates.js"
 import { Redirect } from 'react-router-dom';
 import { Link } from "react-router-dom"
 import { AuthContext } from './Firebase/AuthDAO';
+import ArrowRight from "../images/decoration/curve-arrow-right.svg"
+
 
 function TemplateList(props) {
     const { authUser } = useContext(AuthContext);
@@ -23,7 +25,8 @@ function TemplateList(props) {
                     color: "#34d399",
                     textAlign: "center"
                 }}>plantilla</span></LandingTitle>
-
+                <DecorationArrow src={ArrowRight} />
+                <ArrowText>¡Escoge una plantilla y personaliza-la!</ArrowText>
                 <TemplateListWrapper type={props.location.optionChosed}>
                     {props.location.optionChosed === "box" ?
                         BoxTemplates.map((el => {
@@ -76,13 +79,13 @@ const LandingTitle = styled.h1`
 
 const TemplateListWrapper = styled.section`
     width: ${props =>
-        props.type === "box" ? "73%" : "65%"};
+        props.type === "box" ? "73%" : "60%"};
     display: grid;
     grid-template-columns: ${props =>
         props.type === "box" ? '1fr' : '1fr 1fr'};
     align-items: center;
     justify-items: center;
-    gap: 30px;
+    gap: 20px;
     margin-top: 40px;
     & a, & div:first-child {
         width: 70%;
@@ -106,4 +109,20 @@ const PremiumContentWrapper = styled.div`
     & > div:hover {
         transform: scale(1);
     }
+`
+
+const DecorationArrow = styled.img`
+    width: 50px;
+    position: relative;
+    top: 110px;
+    left: -435px;
+`
+
+const ArrowText = styled.span`
+    position: relative;
+    top: 25px;
+    left: -435px;
+    color: #34d399;
+    text-align: center;
+    font-family: 'Texturina', serif;
 `

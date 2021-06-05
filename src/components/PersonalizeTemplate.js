@@ -6,6 +6,8 @@ import TableTemplates from "../resources/TableTemplates.js"
 import Palette from "./Palette"
 import "../resources/TemplatesStyles.css"
 import AddFavorites from "./AddFavorites.js";
+import ArrowRight from "../images/decoration/curve-arrow-right.svg"
+
 
 function PersonalizeTemplate(props) {
     // eslint-disable-next-line
@@ -53,6 +55,8 @@ function PersonalizeTemplate(props) {
                 }}>plantilla</span></LandingTitle>
 
                 <Workspace>
+                    <DecorationArrow src={ArrowRight} id={template.TemplateId}/>
+                    <ArrowText id={template.TemplateId}>Así es como quedará en tu página web</ArrowText>
                     <div className={template.TemplateId} dangerouslySetInnerHTML={{ __html: template.TemplateHtml }}></div>
                     <Palette
                         templateId={template.TemplateId}
@@ -61,9 +65,9 @@ function PersonalizeTemplate(props) {
                         stylingButton={stylingButton}
                         changeButton={changeButton}
                     />
-                    <AddFavorites 
-                        template={template} 
-                        stylingButton={stylingButton} 
+                    <AddFavorites
+                        template={template}
+                        stylingButton={stylingButton}
                         styling={styling}
                     />
                     <Button onClick={showResult}>CREAR BLOQUE</Button>
@@ -195,4 +199,25 @@ const Button = styled.button`
     &:hover {
         transform: scale(0.95);
     }
+`
+
+const DecorationArrow = styled.img`
+    width: 50px;
+    position: relative;
+    top: ${props =>
+        props.id < 10 ? '50px' : '70px'};
+    left: ${props =>
+        props.id < 10 ? '-450px' : '-240px'};
+    
+`
+
+const ArrowText = styled.span`
+    position: relative;
+    top: ${props =>
+        props.id < 10 ? '-30px' : '-10px'};
+    left: ${props =>
+        props.id < 10 ? '-450px' : '-240px'};
+    color: #34d399;
+    text-align: center;
+    font-family: 'Texturina', serif;
 `
