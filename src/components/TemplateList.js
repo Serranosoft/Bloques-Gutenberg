@@ -26,7 +26,7 @@ function TemplateList(props) {
                     textAlign: "center"
                 }}>plantilla</span></LandingTitle>
                 <DecorationArrow src={ArrowRight} />
-                <ArrowText>¡Escoge una plantilla y personaliza-la!</ArrowText>
+                <ArrowText>¡Escoge una plantilla y personalízala!</ArrowText>
                 <TemplateListWrapper type={props.location.optionChosed}>
                     {props.location.optionChosed === "box" ?
                         BoxTemplates.map((el => {
@@ -128,7 +128,7 @@ const DecorationArrow = styled.img`
     width: 50px;
     position: relative;
     top: 110px;
-    left: -435px;
+    left: -420px;
     @media(max-width: 768px) {
         display: none;
     }
@@ -137,10 +137,11 @@ const DecorationArrow = styled.img`
 const ArrowText = styled.span`
     position: relative;
     top: 25px;
-    left: -435px;
+    left: -420px;
     color: #34d399;
     text-align: center;
     font-family: 'Texturina', serif;
+    font-size: 19px;
     @media(max-width: 768px) {
         display: none;
     }

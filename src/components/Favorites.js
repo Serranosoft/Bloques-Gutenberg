@@ -24,20 +24,33 @@ function Favorites() {
         //eslint-disable-next-line
     }, [authUser])
 
-    function submitHtml() {
+    function HtmlClipBoard() {
         var copyText = document.getElementById("html-output");
         copyText.select();
         copyText.setSelectionRange(0, 99999);
         document.execCommand("copy");
+
+        /*         let copied = document.getElementById("html-copied");
+                copied.setAttribute("style", "display: block")
+                setTimeout(() => {
+                    copied.setAttribute("style", "display: none")
+                }, 1500) */
     }
 
-    function submitCss() {
+    function CssClipBoard() {
         var copyText = document.getElementById("css-output");
         copyText.select();
         copyText.setSelectionRange(0, 99999);
         document.execCommand("copy");
+
+        /*         let copied = document.getElementById("css-copied");
+                copied.setAttribute("style", "display: block")
+                setTimeout(() => {
+                    copied.setAttribute("style", "display: none")
+                }, 1500) */
     }
-    if(!authUser) {
+    console.log(favorites);
+    if (!authUser) {
         return (<Redirect to="/" />)
     } else {
         return (
@@ -48,15 +61,16 @@ function Favorites() {
                 }}> favoritos</span></LandingTitle>
                 <LandingSubtitle>Pincha en los botones para copiar en el portapeles el código HTML o el código CSS de tu plantilla</LandingSubtitle>
                 <FavoritesWrapper>
-                    {favorites != null &&
+                    {favorites.length !== 0 ?
                         favorites.map((el) => {
+                            console.log(el);
                             return (
                                 <FavoriteTemplate>
                                     <FavoriteName>{el.TemplateName}</FavoriteName>
                                     <FavoriteImage src={el.TemplateImg} />
                                     <ActionWrapper>
-                                        <Button onClick={submitHtml}>Código HTML</Button>
-                                        <Button onClick={submitCss}>Código CSS</Button>
+                                        <Button onClick={HtmlClipBoard}>Obtener Bloque</Button>
+                                        <Button onClick={CssClipBoard}>Obtener CSS</Button>
                                     </ActionWrapper>
                                     <Delete onClick={() => removeFromFavorite(el.key)}>Borrar de favoritos</Delete>
                                     <ActionWrapper>
@@ -66,6 +80,9 @@ function Favorites() {
                                 </FavoriteTemplate>
                             )
                         })
+                        
+                        :
+                        <EmptyContentMessage>No tienes bloques guardados</EmptyContentMessage>
                     }
                 </FavoritesWrapper>
             </>
@@ -148,7 +165,7 @@ const ActionWrapper = styled.div`
 
 const Button = styled.button`
     padding: 8px 16px;
-    margin: 0px 8px;
+    margin: 5px 8px;
     background: #1f6952;
     color: white;
     cursor: pointer;
@@ -187,4 +204,19 @@ const HtmlGenerated = styled.textarea`
     font-size: 15.5px;
     font-family: 'Space Mono', monospace;
     resize: none;
+`
+
+const EmptyContentMessage = styled.span`
+    font-size: 24px;
+    text-align: center;
+    margin: 0 auto;
+`
+
+const SuccessfulMessage = styled.span`
+    display: none;    
+    font-size: 16px;
+    color: #2b702f;
+    text-align: center;
+    margin-top: 16px;
+    transition: 1s;
 `

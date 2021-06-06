@@ -56,6 +56,10 @@ const DropdownMenuWrapper = styled.div`
     cursor: pointer;
     color: white;
     margin: 8px 18px;
+    transition: 1s;
+    &:hover {
+        transform: scale(0.92);   
+    }
     &:hover > div {
         display: block;
     }

@@ -126,7 +126,7 @@ const DecorationArrow = styled.img`
     top: ${props =>
         props.arrowLeft ? '70px' : '70px'};
     left: ${props =>
-        props.arrowLeft ? '445px' : '-595px'};
+        props.arrowLeft ? '445px' : '-620px'};
     
     @media(max-width: 768px) {
         display: none;
@@ -139,10 +139,11 @@ const ArrowText = styled.span`
     top: ${props =>
         props.arrowLeft ? '10px' : '10px'};
     left: ${props =>
-        props.arrowLeft ? '555px' : '-505px'};
+        props.arrowLeft ? '570px' : '-520px'};
     color: #34d399;
     text-align: center;
     font-family: 'Texturina', serif;
+    font-size: 19px;
     @media(max-width: 768px) {
         position: absolute;
         top: ${props =>

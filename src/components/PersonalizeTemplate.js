@@ -7,6 +7,7 @@ import Palette from "./Palette"
 import "../resources/TemplatesStyles.css"
 import AddFavorites from "./AddFavorites.js";
 import ArrowRight from "../images/decoration/curve-arrow-right.svg"
+import "../resources/Animations.css"
 
 
 function PersonalizeTemplate(props) {
@@ -70,16 +71,18 @@ function PersonalizeTemplate(props) {
                         stylingButton={stylingButton}
                         styling={styling}
                     />
-                    <Button onClick={showResult}>CREAR BLOQUE</Button>
+                    <Button onClick={showResult}>OBTENER CÓDIGO</Button>
                 </Workspace>
                 <CodeSpace id="codespace">
                     <div>
-                        <p>Copia-lo en la entrada/página de tu Wordpress para pegar el bloque</p>
+                        <p>Cópialo en la entrada/página de tu Wordpress para pegar el bloque</p>
                         <HtmlGenerated id="html-output" value={template.TemplateHtml} readOnly onClick={HtmlClipBoard}></HtmlGenerated>
+                        <SuccessfulMessage id="html-copied" className="slide-top">¡Copiado!</SuccessfulMessage>
                     </div>
                     <div>
-                        <p>Copia-lo en CSS Adicional (Personalizar {'>'} CSS Adicional)</p>
+                        <p>Cópialo en CSS Adicional (Personalizar {'>'} CSS Adicional)</p>
                         <HtmlGenerated id="css-output" value={template.TemplateCss} readOnly onClick={CssClipBoard}></HtmlGenerated>
+                        <SuccessfulMessage id="css-copied" className="slide-top">¡Copiado!</SuccessfulMessage>
                     </div>
                 </CodeSpace>
             </>
@@ -97,6 +100,12 @@ function PersonalizeTemplate(props) {
         copyText.select();
         copyText.setSelectionRange(0, 99999);
         document.execCommand("copy");
+
+        let copied = document.getElementById("html-copied");
+        copied.setAttribute("style", "display: block")
+        setTimeout(() => {
+            copied.setAttribute("style", "display: none")
+        }, 1500)
     }
 
     function CssClipBoard() {
@@ -104,6 +113,12 @@ function PersonalizeTemplate(props) {
         copyText.select();
         copyText.setSelectionRange(0, 99999);
         document.execCommand("copy");
+
+        let copied = document.getElementById("css-copied");
+        copied.setAttribute("style", "display: block")
+        setTimeout(() => {
+            copied.setAttribute("style", "display: none")
+        }, 1500)
     }
 
     function applyStyles() {
@@ -185,7 +200,7 @@ const CodeSpace = styled.div`
 const HtmlGenerated = styled.textarea`
     width: 100%;
     height: 350px;
-    margin: 8px auto;
+    margin: 8px auto 32px auto;
     padding: 10px;
     background-color: #181f29;
     border: 1px solid #34d399;
@@ -234,7 +249,16 @@ const ArrowText = styled.span`
     color: #34d399;
     text-align: center;
     font-family: 'Texturina', serif;
+    font-size: 19px;
     @media(max-width: 768px) {
         display: none;
     }
+`
+
+const SuccessfulMessage = styled.span`
+    display: none;    
+    font-size: 25px;
+    color: #2b702f;
+    text-align: center;
+    transition: 1s;
 `
