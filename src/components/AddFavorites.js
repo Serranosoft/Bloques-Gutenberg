@@ -15,35 +15,40 @@ function AddFavorites({ template, stylingButton, styling }) {
     const { templateName } = inputValues;
 
     function setFavoriteTemplate() {
-        if (templateName !== "") {
-
-            let templateStyles = "";
-            let buttonStyles = "";
-
-            for (let key in styling) {
-                templateStyles += `${key}:${styling[key]};`
+        if(authUser !== null) {
+            if (templateName !== "") {
+    
+                let templateStyles = "";
+                let buttonStyles = "";
+    
+                for (let key in styling) {
+                    templateStyles += `${key}:${styling[key]};`
+                }
+    
+                for (let key in stylingButton) {
+                    buttonStyles += `${key}:${stylingButton[key]};`
+                }
+    
+                let templateFavorite = {
+                    TemplateName: templateName,
+                    TemplateId: template.TemplateId,
+                    TemplateHtml: template.TemplateHtml,
+                    TemplateImg: template.TemplateImg,
+                    TemplateCss: `${template.TemplateCss}\n .template${template.TemplateId}{${templateStyles}}\n .template${template.TemplateId} .wp-block-button a, .template${template.TemplateId} tr:last-child td {${buttonStyles}}\n`
+                }
+    
+                console.log(templateFavorite);
+                setFavorite(authUser.uid, templateFavorite)
+                setInputValues(initialState)
+                document.getElementById("error-msg").innerHTML = ""
+                document.getElementById("success-msg").innerHTML = "Plantilla guardada con éxito"
+            } else {
+                document.getElementById("error-msg").innerHTML = "Introduce algún nombre"
+                document.getElementById("success-msg").innerHTML = ""
             }
 
-            for (let key in stylingButton) {
-                buttonStyles += `${key}:${stylingButton[key]};`
-            }
-
-            let templateFavorite = {
-                TemplateName: templateName,
-                TemplateId: template.TemplateId,
-                TemplateHtml: template.TemplateHtml,
-                TemplateImg: template.TemplateImg,
-                TemplateCss: `${template.TemplateCss}\n .template${template.TemplateId}{${templateStyles}}\n .template${template.TemplateId} .wp-block-button a, .template${template.TemplateId} tr:last-child td {${buttonStyles}}\n`
-            }
-
-            console.log(templateFavorite);
-            setFavorite(authUser.uid, templateFavorite)
-            setInputValues(initialState)
-            document.getElementById("error-msg").innerHTML = ""
-            document.getElementById("success-msg").innerHTML = "Plantilla guardada con éxito"
         } else {
-            document.getElementById("error-msg").innerHTML = "Introduce algún nombre"
-            document.getElementById("success-msg").innerHTML = ""
+            document.getElementById("error-msg").innerHTML = "Inicia sesión o registrate para guardar en favoritos"
         }
 
     }
