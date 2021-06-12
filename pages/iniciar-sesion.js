@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { AuthContext } from '../components/Firebase/AuthDAO';
 import Link from "next/link"
 import { useRouter } from 'next/router'
-
+import Head from 'next/head'
 
 function SignIn() {
 
@@ -37,54 +37,61 @@ function SignIn() {
     }
 
     return (
-        <Section>
-            <CTAWrapper>
-                <CTA>
-                    <H1>Inicia Sesión</H1>
-                    <H3>Y accede a todas las funciones extra</H3>
-                    <Image src="/images/decoration/cta-signin2.svg" />
-                </CTA>
-                <InfoWrapper>
-                    <ImageStar src="/images/decoration/star.svg" />
-                    <Text>Además podrás guardar en favoritos tus bloques personalizados</Text>
-                </InfoWrapper>
-                <InfoWrapper>
-                    <ImageStar src="/images/decoration/star.svg" />
-                    <Text>Utiliza las plantillas premium</Text>
-                </InfoWrapper>
-                <InfoWrapper>
-                    <ImageStar src="/images/decoration/star.svg" />
-                    <Text>Utiliza todos los tipos de personalización</Text>
-                </InfoWrapper>
-            </CTAWrapper>
-            <SignInWrapper>
-                <form>
-                    <Label>Correo electrónico <span style={{ color: "red" }}>*</span>
-                        <Input
-                            type="text"
-                            value={mailInput}
-                            name="mailInput"
-                            onChange={handleChange}
-                            placeholder="manuel@manu-scholz.com"
-                        />
-                    </Label>
-                    <Label>Contraseña <span style={{ color: "red" }}>*</span>
-                        <Input
-                            type="password"
-                            value={passwdInput}
-                            name="passwdInput"
-                            onChange={handleChange}
-                            placeholder="***********"
-                        />
-                    </Label>
-                    <ErrorMessage id="error-msg"></ErrorMessage>
-                    <Button onClick={onSubmit}>Iniciar sesión</Button>
-                    <Text>¿Te has olvidado la contraseña? <Link href="/recuperar-contrasena"><LinkWrapper>Recupera tu contraseña</LinkWrapper></Link></Text>
-                    <Text>¿No tienes una cuenta? <Link href="/registro"><LinkWrapper>Registrate</LinkWrapper></Link></Text>
-                </form>
-            </SignInWrapper>
+        <>
+            <Head>
+                <title>Iniciar sesión - Acceso a plantillas premium y personalización ampliada | Bloques Gutenberg</title>
+                <meta name="description" content="Inicia sesión en tu cuenta para poder guardar tus bloques gutenberg favoritos, acceso a tus datos y poder usar plantillas premium" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <Section>
+                <CTAWrapper>
+                    <CTA>
+                        <H1>Inicia Sesión</H1>
+                        <H3>Y accede a todas las funciones extra</H3>
+                        <Image src="/images/decoration/cta-signin2.svg" />
+                    </CTA>
+                    <InfoWrapper>
+                        <ImageStar src="/images/decoration/star.svg" />
+                        <Text>Además podrás guardar en favoritos tus bloques personalizados</Text>
+                    </InfoWrapper>
+                    <InfoWrapper>
+                        <ImageStar src="/images/decoration/star.svg" />
+                        <Text>Utiliza las plantillas premium</Text>
+                    </InfoWrapper>
+                    <InfoWrapper>
+                        <ImageStar src="/images/decoration/star.svg" />
+                        <Text>Utiliza todos los tipos de personalización</Text>
+                    </InfoWrapper>
+                </CTAWrapper>
+                <SignInWrapper>
+                    <form>
+                        <Label>Correo electrónico <span style={{ color: "red" }}>*</span>
+                            <Input
+                                type="text"
+                                value={mailInput}
+                                name="mailInput"
+                                onChange={handleChange}
+                                placeholder="manuel@manu-scholz.com"
+                            />
+                        </Label>
+                        <Label>Contraseña <span style={{ color: "red" }}>*</span>
+                            <Input
+                                type="password"
+                                value={passwdInput}
+                                name="passwdInput"
+                                onChange={handleChange}
+                                placeholder="***********"
+                            />
+                        </Label>
+                        <ErrorMessage id="error-msg"></ErrorMessage>
+                        <Button onClick={onSubmit}>Iniciar sesión</Button>
+                        <Text>¿Te has olvidado la contraseña? <Link href="/recuperar-contrasena"><LinkWrapper>Recupera tu contraseña</LinkWrapper></Link></Text>
+                        <Text>¿No tienes una cuenta? <Link href="/registro"><LinkWrapper>Registrate</LinkWrapper></Link></Text>
+                    </form>
+                </SignInWrapper>
 
-        </Section>
+            </Section>
+        </>
     )
 
 

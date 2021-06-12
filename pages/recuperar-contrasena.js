@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import styled from "@emotion/styled";
 import { AuthContext } from '../components/Firebase/AuthDAO';
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 function ResetPassword() {
 
@@ -10,7 +11,7 @@ function ResetPassword() {
     const initialState = {
         emailInput: ""
     }
-    
+
     const [inputValues, setInputValues] = useState(initialState)
     const { resetPassword } = useContext(AuthContext);
     const { mailInput } = inputValues;
@@ -35,32 +36,39 @@ function ResetPassword() {
 
 
     return (
-        <Section>
-            <CTAWrapper>
-                <CTA>
-                    <H1>Recupera tu contraseña</H1>
-                    <H3>¡Te enviaré un correo electrónico con la confirmación!</H3>
-                    <Image src="/images/decoration/cta-signin2.svg" />
-                </CTA>
-            </CTAWrapper>
-            <SignInWrapper>
-                <form>
-                    <Label>Correo electrónico <span style={{ color: "red" }}>*</span>
-                        <Input
-                            type="email"
-                            value={mailInput}
-                            name="mailInput"
-                            onChange={handleChange}
-                            placeholder="manuel@manu-scholz.com"
-                        />
-                    </Label>
-                    
-                    <ErrorMessage id="error-msg"></ErrorMessage>
-                    <Button onClick={onSubmit}>Recuperar contraseña</Button>
-                </form>
-            </SignInWrapper>
+        <>
+            <Head>
+                <title>Recupera tu contraseña - Recupera la contraseña de tu cuenta de la forma mas segura | Bloques Gutenberg</title>
+                <meta name="description" content="Recupera la contraseña de tu cuenta de la forma mas segura en bloques-gutenberg.com" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <Section>
+                <CTAWrapper>
+                    <CTA>
+                        <H1>Recupera tu contraseña</H1>
+                        <H3>¡Te enviaré un correo electrónico con la confirmación!</H3>
+                        <Image src="/images/decoration/cta-signin2.svg" />
+                    </CTA>
+                </CTAWrapper>
+                <SignInWrapper>
+                    <form>
+                        <Label>Correo electrónico <span style={{ color: "red" }}>*</span>
+                            <Input
+                                type="email"
+                                value={mailInput}
+                                name="mailInput"
+                                onChange={handleChange}
+                                placeholder="manuel@manu-scholz.com"
+                            />
+                        </Label>
 
-        </Section>
+                        <ErrorMessage id="error-msg"></ErrorMessage>
+                        <Button onClick={onSubmit}>Recuperar contraseña</Button>
+                    </form>
+                </SignInWrapper>
+
+            </Section>
+        </>
     )
 }
 

@@ -3,24 +3,7 @@ import styled from "@emotion/styled"
 import Templates from "../../resources/Templates.js"
 import Palette from "../../components/Palette"
 import AddFavorites from "../../components/AddFavorites.js";
-
-export const getStaticPaths = async () => {
-    return {
-        paths: Templates.map((el) => ({
-            params: {
-                name: el.name
-            },
-        })),
-        fallback: false
-    }
-}
-
-export const getStaticProps = async (context) => {
-    const name = context.params.name;
-    return {
-        props: Templates.find((el) => el.name === name),
-    };
-}
+import Head from 'next/head'
 
 function PersonalizeTemplate(props) {
     const template = props;
@@ -52,6 +35,11 @@ function PersonalizeTemplate(props) {
 
     return (
         <>
+            <Head>
+                <title>Personaliza tu bloque gutenberg | Bloques Gutenberg</title>
+                <meta name="description" content="Diseña y personaliza tu bloque gutenberg: tabla o caja para tu nicho SEO de Amazon Afiliados o Adsense en Wordpress" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <LandingTitle>Personaliza tu  <span style={{
                 color: "#34d399",
                 textAlign: "center"
@@ -144,6 +132,24 @@ function PersonalizeTemplate(props) {
         let str = document.getElementById("css-output").value.substring(0, index);
         document.getElementById("css-output").value = `${str}\n .template${template.id}{${templateStyles}}\n .template${template.id} .wp-block-button a, .template${template.id} tr:last-child td {${buttonStyles}}\n `
     }
+}
+
+export const getStaticPaths = async () => {
+    return {
+        paths: Templates.map((el) => ({
+            params: {
+                name: el.name
+            },
+        })),
+        fallback: false
+    }
+}
+
+export const getStaticProps = async (context) => {
+    const name = context.params.name;
+    return {
+        props: Templates.find((el) => el.name === name),
+    };
 }
 
 export default PersonalizeTemplate;

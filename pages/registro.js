@@ -4,6 +4,7 @@ import { AuthContext } from '../components/Firebase/AuthDAO';
 import { DBContext } from "../components/Firebase/UserDAO";
 import Link from "next/link";
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 
 function SignUp() {
@@ -32,7 +33,7 @@ function SignUp() {
             nameInput,
             mailInput
         }
-        if(nameInput.length > 0) {
+        if (nameInput.length > 0) {
             register(mailInput, passwdInput)
                 .then(authUser => {
                     createUser(authUser.user.uid, user)
@@ -51,64 +52,71 @@ function SignUp() {
 
 
     return (
-        <Section>
-            <CTAWrapper>
-                <CTA>
-                    <H1>Crea tu cuenta GRATIS</H1>
-                    <H3>Y consigue 2 plantillas premium gratis</H3>
-                    <Image src="/images/decoration/cta-signin2.svg" />
-                </CTA>
-                <InfoWrapper>
-                    <ImageStar src="/images/decoration/star.svg" />
-                    <Text>Además podrás guardar en favoritos tus bloques personalizados</Text>
-                </InfoWrapper>
-                <InfoWrapper>
-                    <ImageStar src="/images/decoration/star.svg" />
-                    <Text>Desbloquea plantillas premium PARA SIEMPRE</Text>
-                </InfoWrapper>
-                <InfoWrapper>
-                    <ImageStar src="/images/decoration/star.svg" />
-                    <Text>Desbloquea todos los tipos de personalización TAMBIÉN PARA SIEMPRE</Text>
-                </InfoWrapper>
-            </CTAWrapper>
-            <SignInWrapper>
-                <form>
-                    <Label>Nombre <span style={{ color: "red" }}>*</span>
-                        <Input
-                            type="text"
-                            value={nameInput}
-                            name="nameInput"
-                            onChange={handleChange}
-                            placeholder="Manuel Scholz"
-                            maxLength="30"
-                            required
-                        />
-                    </Label>
-                    <Label>Correo electrónico <span style={{ color: "red" }}>*</span>
-                        <Input
-                            type="text"
-                            value={mailInput}
-                            name="mailInput"
-                            onChange={handleChange}
-                            placeholder="manuel@manu-scholz.com"
-                        />
-                    </Label>
-                    <Label>Contraseña <span style={{ color: "red" }}>*</span>
-                        <Input
-                            type="password"
-                            value={passwdInput}
-                            name="passwdInput"
-                            onChange={handleChange}
-                            placeholder="***********"
-                        />
-                    </Label>
-                    <ErrorMessage id="error-msg"></ErrorMessage>
-                    <Button onClick={onSubmit}>Crear Cuenta</Button>
-                    <Text>¿Ya tienes una cuenta? <Link href="/iniciar-sesion"><LinkWrapper>Inicia sesión</LinkWrapper></Link></Text>
-                </form>
-            </SignInWrapper>
+        <>
+            <Head>
+                <title>Crear una cuenta - Crea una cuenta GRATIS y consigue bloques premium para SIEMPRE | Bloques Gutenberg</title>
+                <meta name="description" content="Registrate en bloques-gutenberg.com para conseguir acceso ilimitado a todas las plantillas premium y poder guardar en favoritos los bloques que has creado "/>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <Section>
+                <CTAWrapper>
+                    <CTA>
+                        <H1>Crea tu cuenta GRATIS</H1>
+                        <H3>Y consigue 2 plantillas premium gratis</H3>
+                        <Image src="/images/decoration/cta-signin2.svg" />
+                    </CTA>
+                    <InfoWrapper>
+                        <ImageStar src="/images/decoration/star.svg" />
+                        <Text>Además podrás guardar en favoritos tus bloques personalizados</Text>
+                    </InfoWrapper>
+                    <InfoWrapper>
+                        <ImageStar src="/images/decoration/star.svg" />
+                        <Text>Desbloquea plantillas premium PARA SIEMPRE</Text>
+                    </InfoWrapper>
+                    <InfoWrapper>
+                        <ImageStar src="/images/decoration/star.svg" />
+                        <Text>Desbloquea todos los tipos de personalización TAMBIÉN PARA SIEMPRE</Text>
+                    </InfoWrapper>
+                </CTAWrapper>
+                <SignInWrapper>
+                    <form>
+                        <Label>Nombre <span style={{ color: "red" }}>*</span>
+                            <Input
+                                type="text"
+                                value={nameInput}
+                                name="nameInput"
+                                onChange={handleChange}
+                                placeholder="Manuel Scholz"
+                                maxLength="30"
+                                required
+                            />
+                        </Label>
+                        <Label>Correo electrónico <span style={{ color: "red" }}>*</span>
+                            <Input
+                                type="text"
+                                value={mailInput}
+                                name="mailInput"
+                                onChange={handleChange}
+                                placeholder="manuel@manu-scholz.com"
+                            />
+                        </Label>
+                        <Label>Contraseña <span style={{ color: "red" }}>*</span>
+                            <Input
+                                type="password"
+                                value={passwdInput}
+                                name="passwdInput"
+                                onChange={handleChange}
+                                placeholder="***********"
+                            />
+                        </Label>
+                        <ErrorMessage id="error-msg"></ErrorMessage>
+                        <Button onClick={onSubmit}>Crear Cuenta</Button>
+                        <Text>¿Ya tienes una cuenta? <Link href="/iniciar-sesion"><LinkWrapper>Inicia sesión</LinkWrapper></Link></Text>
+                    </form>
+                </SignInWrapper>
 
-        </Section>
+            </Section>
+        </>
     )
 
 

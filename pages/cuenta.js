@@ -4,6 +4,7 @@ import { DBContext } from "../components/Firebase/UserDAO";
 import { AuthContext } from '../components/Firebase/AuthDAO';
 import Link from "next/link"
 import { useRouter } from "next/router";
+import Head from 'next/head'
 
 function Account() {
 
@@ -42,63 +43,70 @@ function Account() {
         event.preventDefault();
     }
 
+    useEffect(() => {
+        if (!authUser) {
+            router.push("/");
+        }
+    }, [])
 
-    if (!authUser) {
-        return (<><h1>si?</h1></>)
-    } else {
-        return (
-            <>
-                <LandingTitle>Bienvenido/a  <span style={{
-                    color: "#34d399",
-                    textAlign: "center"
-                }}> {userName}</span></LandingTitle>
+    return (
+        <>
+            <Head>
+                <title>Tu Cuenta - Acceso a tus bloques gutenberg favoritos | Bloques Gutenberg</title>
+                <meta name="description" content="Accede a tu cuenta, encuentra tus bloques gutenberg favoritos y consigue acceso a plantillas premium gratis" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <LandingTitle>Bienvenido/a  <span style={{
+                color: "#34d399",
+                textAlign: "center"
+            }}> {userName}</span></LandingTitle>
 
-                <LandingSubtitle>Accede a tus bloques guardados y modifica todos tus datos
-                    </LandingSubtitle>
+            <LandingSubtitle>Accede a tus bloques guardados y modifica todos tus datos
+            </LandingSubtitle>
 
-                <AccountWrapper>
-                    <div style={{ gridArea: "favorites" }}>
-                        <BoxTitle>Mis favoritos</BoxTitle>
-                        <LandingSubtitle>Accede a tus bloques guardados</LandingSubtitle>
-                        <Link href="/cuenta/favoritos">
-                            <LinkWrapper>
-                                <Button>Favoritos</Button>
-                            </LinkWrapper>
-                        </Link>
-                    </div>
-                    <form style={{ gridArea: "changepassword" }}>
-                        <BoxTitle>Cambiar contraseña</BoxTitle>
-                        <Label>Contraseña actual
-                            <Input
-                                type="password"
-                                name="oldPassword"
-                                value={oldPassword}
-                                onChange={handleChange} />
-                        </Label>
-                        <Label>Contraseña nueva
-                            <Input
-                                type="password"
-                                name="newPassword"
-                                value={newPassword}
-                                onChange={handleChange}
-                            />
-                        </Label>
-                        <ErrorMessage id="error-msg"></ErrorMessage>
-                        <Button onClick={onSubmit}>Cambiar contraseña</Button>
-                    </form>
-                    <div style={{ gridArea: "temp1" }}>
-                        <BoxTitle>En construcción</BoxTitle>
-                    </div>
-                    <div style={{ gridArea: "temp2" }}>
-                        <BoxTitle>En construcción</BoxTitle>
-                    </div>
-                    <div style={{ gridArea: "temp3" }}>
-                        <BoxTitle>En construcción</BoxTitle>
-                    </div>
-                </AccountWrapper>
-            </>
-        )
-    }
+            <AccountWrapper>
+                <div style={{ gridArea: "favorites" }}>
+                    <BoxTitle>Mis favoritos</BoxTitle>
+                    <LandingSubtitle>Accede a tus bloques guardados</LandingSubtitle>
+                    <Link href="/cuenta/favoritos">
+                        <LinkWrapper>
+                            <Button>Favoritos</Button>
+                        </LinkWrapper>
+                    </Link>
+                </div>
+                <form style={{ gridArea: "changepassword" }}>
+                    <BoxTitle>Cambiar contraseña</BoxTitle>
+                    <Label>Contraseña actual
+                        <Input
+                            type="password"
+                            name="oldPassword"
+                            value={oldPassword}
+                            onChange={handleChange} />
+                    </Label>
+                    <Label>Contraseña nueva
+                        <Input
+                            type="password"
+                            name="newPassword"
+                            value={newPassword}
+                            onChange={handleChange}
+                        />
+                    </Label>
+                    <ErrorMessage id="error-msg"></ErrorMessage>
+                    <Button onClick={onSubmit}>Cambiar contraseña</Button>
+                </form>
+                <div style={{ gridArea: "temp1" }}>
+                    <BoxTitle>En construcción</BoxTitle>
+                </div>
+                <div style={{ gridArea: "temp2" }}>
+                    <BoxTitle>En construcción</BoxTitle>
+                </div>
+                <div style={{ gridArea: "temp3" }}>
+                    <BoxTitle>En construcción</BoxTitle>
+                </div>
+            </AccountWrapper>
+        </>
+    )
+
 }
 
 export default Account
