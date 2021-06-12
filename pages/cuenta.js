@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styled from '@emotion/styled'
 import { DBContext } from "../components/Firebase/UserDAO";
 import { AuthContext } from '../components/Firebase/AuthDAO';
