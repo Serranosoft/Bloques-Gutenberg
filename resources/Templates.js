@@ -125,6 +125,27 @@ const Templates = [
         TemplateImg: "../images/box-template4.jpg",
     },
     {
+        id: 5,
+        name: "bloque-con-google-maps",
+        type: "box",
+        TemplateHtml: `<!-- wp:columns {"className":"template5"} -->
+        <div class="wp-block-columns template5"><!-- wp:column -->
+        <div class="wp-block-column"><!-- wp:table -->
+        <figure class="wp-block-table"><table><tbody><tr><td class="has-text-align-left" data-align="left"><strong>Título de Ejemplo</strong></td></tr><tr><td class="has-text-align-left" data-align="left">» <strong>Característica</strong>: Detalle</td></tr><tr><td class="has-text-align-left" data-align="left">» <strong>Característica</strong>: Detalle</td></tr><tr><td class="has-text-align-left" data-align="left">» <strong>Característica</strong>: Detalle</td></tr><tr><td class="has-text-align-left" data-align="left">» <strong>Característica</strong>: Detalle</td></tr><tr><td class="has-text-align-left" data-align="left"><a href="https://bloques-gutenberg.com" target="_blank" rel="noreferrer noopener">Solicitar</a></td></tr></tbody></table></figure>
+        <!-- /wp:table --></div>
+        <!-- /wp:column -->
+        
+        <!-- wp:column -->
+        <div class="wp-block-column"><!-- wp:table -->
+        <figure class="wp-block-table"><table><tbody><tr><td class="has-text-align-center" data-align="center"><strong>Google Maps</strong></td></tr><tr><td class="has-text-align-center" data-align="center"><img class="wp-image-1540" style="width: 350px;" src="https://bg.manu-scholz.com/wp-content/uploads/2021/06/mapexample.jpg" alt=""></td></tr></tbody></table></figure>
+        <!-- /wp:table --></div>
+        <!-- /wp:column --></div>
+        <!-- /wp:columns -->
+        `,
+        TemplateCss: ".template5{width:100%;flex-wrap:wrap;border:1px solid #d3d3d3}.template5>div:first-child tr:first-child td{font-size:28px;line-height:2.5}.template5>div:first-child tr td{font-size:18px;line-height:2.3}.template5>div:first-child tr:nth-child(6) td a{display:block;width:70%;margin:16px auto;border:1px solid #000;border-radius:7px;background-color:#272c30;color:#fff;cursor:pointer;transition:.7s;text-decoration:none;font-size:20px;text-align:center;line-height:2}.template5>div:nth-child(2) figure table tbody tr td img{width:100%!important;max-height:300px;margin:8px 0}@media(max-width:768px){.template5>div figure{margin:16px}.template5>div:first-child tr:first-child td{font-size:26px;line-height:1.7;text-align:center}.template5>div:first-child tr td{font-size:16px;line-height:2}.template5>div:nth-child(2) figure table tbody tr td img{max-height:200px}} \n",
+        TemplateImg: "../images/box-template5.jpg"
+    },
+    {
         id: 10,
         name: "amazon-vertical",
         type: "table",

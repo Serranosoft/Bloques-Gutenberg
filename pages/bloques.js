@@ -75,7 +75,7 @@ const LandingTitle = styled.h1`
 
 const TemplateListWrapper = styled.section`
     width: ${props =>
-        props.type === "box" ? "73%" : "60%"};
+        props.type === "box" ? "67%" : "60%"};
     display: grid;
     grid-template-columns: ${props =>
         props.type === "box" ? '1fr' : '1fr 1fr'};
