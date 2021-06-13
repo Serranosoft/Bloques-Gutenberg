@@ -193,7 +193,7 @@ const CodeSpace = styled.div`
     display: none;
     gap: 24px;
     margin: 16px auto;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
 `
 
 const HtmlGenerated = styled.textarea`
