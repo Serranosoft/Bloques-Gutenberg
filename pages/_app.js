@@ -5,6 +5,7 @@ import { AuthDAO } from '../components/Firebase/AuthDAO';
 import { UserDAO } from '../components/Firebase/UserDAO';
 import styled from '@emotion/styled'
 import Header from "../components/Header"
+import Footer from "../components/Footer"
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -14,6 +15,7 @@ function MyApp({ Component, pageProps }) {
         <MainSection>
           <Component {...pageProps} />
         </MainSection>
+        <Footer />
       </UserDAO>
     </AuthDAO>
   )
@@ -23,11 +25,8 @@ export default MyApp
 
 const MainSection = styled.section`
     width: 100%;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    @media(max-width: 768px) {
-      height: 100vh;
-    }
+    padding-bottom: 80px;
 `
