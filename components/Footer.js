@@ -17,7 +17,7 @@ function Footer() {
                             </HeaderTitle>
                         </a>
                     </Link>
-                    <FooterDescr>La solución mas fácil para decorar tus webs para Adsense o Amazon Afiliados.</FooterDescr>
+                    <FooterDescr>La solución mas fácil para decorar tus webs de Wordpress para Adsense o Amazon Afiliados.</FooterDescr>
                 </div>
                 <Menu>
                     <MenuColumn>
@@ -29,17 +29,16 @@ function Footer() {
                     <MenuColumn>
                         <MenuColumnTitle>FUNDADOR</MenuColumnTitle>
                         <Link href="/blog">Blog</Link>
-                        <a href="/">Twitter</a>
-                        <a href="/iniciar-sesion">LinkedIn</a>
+                        <a href="https://twitter.com/ImScholz" target="_blank">Twitter</a>
+                        <a href="https://www.linkedin.com/in/manuel-serrano-scholz/" target="_blank">LinkedIn</a>
                     </MenuColumn>
                     <MenuColumn>
                         <MenuColumnTitle>PROYECTOS</MenuColumnTitle>
-                        <a href="/" target="_blank">Curricufy</a>
-                        <a href="/">Memorify</a>
-                        <a href="/iniciar-sesion">Fake Spotify</a>
+                        <a href="https://curricufy.manu-scholz.com" target="_blank">Curricufy</a>
+                        <a href="https://memorify.manu-scholz.com" target="_blank">Memorify</a>
+                        <a href="https://spotify.manu-scholz.com" target="_blank">Fake Spotify</a>
                     </MenuColumn>
                 </Menu>
-
             </FooterWrapper>
         </FooterSection>
     )

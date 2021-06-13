@@ -194,7 +194,6 @@ const DecorationArrow = styled.img`
     props.arrowLeft ? '70px' : '110px'};
     left: ${props =>
     props.arrowLeft ? '445px' : '-790px'};
-    
     @media(max-width: 768px) {
         display: none;
     }
