@@ -16,8 +16,8 @@ function Blog({ data }) {
     return (
         <>
             <Head>
-                <title>TODA la lista de BLOQUES y DISEÑOS para nichos de Adsense y Amazon para Wordpress</title>
-                <meta name="description" content="Crea bloques gutenberg para wordpress en nichos de SEO en Adsense o Amazon sin saber programar y sin plugins. SEO amistoso, rápido y adaptables a móvil." />
+                <title>Encuentra información valiosa para mejorar tus webs, amazon afiliados y adsense</title>
+                <meta name="description" content="Encuentra información valiosa para mejorar tus webs, amazon afiliados y adsense." />
             </Head>
             <LandingTitle>Aprende a mejorar tus  <span style={{
                 color: "#34d399",

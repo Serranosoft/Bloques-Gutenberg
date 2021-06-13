@@ -35,12 +35,12 @@ export default function Home({ data }) {
         <LandingSubtitle>Elige una plantilla y personaliza tu bloque gutenberg de Wordpress para SEO,
           nichos de Amazon, Adsense y todo tipo de webs sin el uso de plugins
         </LandingSubtitle>
-        <ArrowText arrowLeft>Plantillas para Tablas <span>(Recomendado para Amazon)</span></ArrowText>
+        <ArrowText arrowLeft>Plantillas Verticales <span>(Recomendado para Amazon)</span></ArrowText>
         <DecorationArrow
           src="/images/decoration/curve-arrow-left.svg"
           arrowLeft
         />
-        <ArrowText arrowRight>Plantillas para Cajas <span>(Recomendado para Adsense)</span></ArrowText>
+        <ArrowText arrowRight>Plantillas Horizontales <span>(Recomendado para Adsense)</span></ArrowText>
         <DecorationArrow
           src="/images/decoration/curve-arrow-right.svg"
           arrowRight />
@@ -206,7 +206,7 @@ const ArrowText = styled.span`
     top: ${props =>
     props.arrowLeft ? '10px' : '45px'};
     left: ${props =>
-    props.arrowLeft ? '700px' : '-580px'};
+    props.arrowLeft ? '700px' : '-540px'};
     color: #34d399;
     text-align: center;
     font-family: 'Texturina', serif;

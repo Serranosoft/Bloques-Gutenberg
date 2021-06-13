@@ -45,7 +45,7 @@ function Palette({ id, styling, changeStyling, changeButton, stylingButton }) {
                 </InputSection>
 
             </PaletteSection>
-            {id === 1 || id === 10 || id === 11 ?
+            {id === 1 || id === 10 || id === 11 || id === 3 ?
                 <PaletteSection>
                     <SectionTitle>BOTÓN</SectionTitle>
 
@@ -62,7 +62,7 @@ function Palette({ id, styling, changeStyling, changeButton, stylingButton }) {
                     <label>Bordes redondeados
                         <OptionsWrapper>
                             <label>Si<InputOption type="radio" onChange={handleBorderButton} value="30px" name="border-button" /></label>
-                            <label>No<InputOption type="radio" onChange={handleBorderButton} value="0px" name="border-button" defaultChecked /></label>
+                            <label>No<InputOption type="radio" onChange={handleBorderButton} value="7px" name="border-button" defaultChecked /></label>
                         </OptionsWrapper>
                     </label>
 

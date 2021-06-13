@@ -58,8 +58,18 @@ const Templates = [
             <!-- /wp:column --></div>
             <!-- /wp:columns -->
             `,
-        TemplateCss: ".template2{display:flex;flex-wrap:wrap;border:2px solid #34d399;padding:8px;background:#faf5f0;border:1px solid gray;box-shadow:0 3px 3px #611905}.template2 h3{margin-left:40px}@media(max-width:768px){.template2 h3{margin-left:8px}}.template2>div:first-child h3{color:#1b4d1b}.template2>div:nth-child(2) h3{color:#962424}.template2 ul{text-align:center}.template2 ul li{margin:8px}\n",
+        TemplateCss: ".template2{display:flex;flex-wrap:wrap;border:2px solid #34d399;padding:8px;background:#faf5f0;border:1px solid gray;box-shadow:0 3px 3px #611905}.template2 h3{margin-left:40px}@media(max-width:768px){.template2 h3{margin-left:8px}}.template2>div:first-child h3{color:#1b4d1b}.template2>div:nth-child(2) h3{color:#962424}.template2 ul{text-align:center}.template2 ul li{margin:8px 0;list-style-position:inside}\n",
         TemplateImg: "../images/box-template2.jpg",
+    },
+    {
+        id: 3,
+        name: "call-to-action",
+        type: "box",
+        TemplateHtml: `<!-- wp:table {"className":"template3"} -->
+        <figure class="wp-block-table template3"><table><tbody><tr><td class="has-text-align-center" data-align="center">Prueba los bloques gutenberg</td></tr><tr><td class="has-text-align-center" data-align="center">Los bloques CTA (Call to Action) son perfectos para destacar información y atraer al usuario mejorando la conversión e incitando al lector en hacer clic en el contenido</td></tr><tr><td class="has-text-align-center" data-align="center"><a href="https://bloques-gutenberg.com">Utiliza bloques gutenberg</a></td></tr></tbody></table></figure>
+        <!-- /wp:table -->`,
+        TemplateCss: ".template3{width:100%;margin:0 auto;border:1px solid #d3d3d3;padding:8px;overflow-x:auto}.template3 table{width:100%;border-collapse:collapse}.template3 tbody>tr:first-child td{font-size:28px;line-height:2.5}@media(max-width:768px){.template3 tbody>tr:first-child td{line-height:1.5}.template3 tbody>tr:nth-child(2) td{display:block;margin:16px 0}.template3 tbody>tr:nth-child(3) td a{width:95%!important}}.template3 tbody>tr:nth-child(3) td a{display:block;width:40%;margin:18px auto;padding:10px 16px;border-radius:30px;background-color:#272c30;color:#fff;font-size:20px;text-decoration: none;}\n",
+        TemplateImg: "../images/box-template3.jpg"
     },
     {
         id: 4,
@@ -119,9 +129,9 @@ const Templates = [
         name: "amazon-vertical",
         type: "table",
         TemplateHtml: `<!-- wp:table {"className":"template10"} -->
-        <figure class="wp-block-table template10"><table><tbody><tr><td class="has-text-align-center" data-align="center">Título de Ejemplo</td></tr><tr><td class="has-text-align-center" data-align="center">Subtitulo</td></tr><tr><td class="has-text-align-center" data-align="center">45€</td></tr><tr><td class="has-text-align-center" data-align="center">Característica de ejemplo 1</td></tr><tr><td class="has-text-align-center" data-align="center">Característica de ejemplo 2</td></tr><tr><td class="has-text-align-center" data-align="center">Característica de ejemplo 3</td></tr><tr><td class="has-text-align-center" data-align="center">Comprar</td></tr></tbody></table></figure>
+        <figure class="wp-block-table template10"><table><tbody><tr><td class="has-text-align-center" data-align="center">Título de Ejemplo</td></tr><tr><td class="has-text-align-center" data-align="center">Subtitulo</td></tr><tr><td class="has-text-align-center" data-align="center">45€</td></tr><tr><td class="has-text-align-center" data-align="center">Característica de ejemplo 1</td></tr><tr><td class="has-text-align-center" data-align="center">Característica de ejemplo 2</td></tr><tr><td class="has-text-align-center" data-align="center">Característica de ejemplo 3</td></tr><tr><td class="has-text-align-center" data-align="center"><a href="https://bloques-gutenberg.com">Comprar</a></td></tr></tbody></table></figure>
         <!-- /wp:table -->`,
-        TemplateCss: ".template10{width:45%;margin:16px auto;border:2px solid #000}.template10 table{width:100%;border-collapse:collapse;text-align:center}.template10 tbody>tr:first-child td{line-height:2.5;color:#000;border:1px dashed #000;font-size:22px}.template10 tbody>tr:nth-child(2) td{line-height:2.5;}.template10 tbody>tr:nth-child(3) td{font-size:54px;font-weight:700;line-height:2.5}.template10 tbody>tr:nth-child(n+4) td{font-weight:700;line-height:1.5}.template10 tbody>tr:nth-child(7) td{width:40%;display:block;line-height:2.5;padding: 4px 24px;border:1px solid #000;border-radius:15px;margin:24px auto;color:#fff;font-weight:700;cursor:pointer;transition:.7s} \n",
+        TemplateCss: ".template10{width:45%;margin:16px auto;border:2px solid #000}.template10 table{width:100%;border-collapse:collapse;text-align:center}.template10 tbody>tr:first-child td{line-height:2.5;color:#000;border:1px dashed #000;font-size:22px}.template10 tbody>tr:nth-child(2) td{line-height:2.5;}.template10 tbody>tr:nth-child(3) td{font-size:54px;font-weight:700;line-height:2.5}.template10 tbody>tr:nth-child(n+4) td{font-weight:700;line-height:1.5}.template10 tbody>tr:nth-child(7) td a{width:50%;display:block;margin:18px auto;padding: 4px 24px;border:1px solid #000;border-radius:15px;margin:24px auto;color:#fff;font-weight:700;transition:.7s;font-size:20px;text-decoration:none;} \n",
         TemplateImg: "../images/table-template10.jpg",
     },
     {
@@ -129,9 +139,9 @@ const Templates = [
         name: "caja-oferta",
         type: "table",
         TemplateHtml: `<!-- wp:table {"className":"template11"} -->
-        <figure class="wp-block-table template11"><table><tbody><tr><td class="has-text-align-center" data-align="center"><img src="https://www.mejor-banco.com/wp-content/uploads/2020/11/santander-cuenta-one-opiniones.png" alt="" style="width: 150px;"></td></tr><tr><td class="has-text-align-center" data-align="center">Título de Ejemplo</td></tr><tr><td class="has-text-align-center" data-align="center"><img class="wp-image-819" style="width: 128px;" src="https://huchadefinanzas.es/wp-content/uploads/2021/05/rating-3.png" alt=""></td></tr><tr><td class="has-text-align-center" data-align="center">Comprar</td></tr></tbody></table></figure>
+        <figure class="wp-block-table template11"><table><tbody><tr><td class="has-text-align-center" data-align="center"><img src="https://www.mejor-banco.com/wp-content/uploads/2020/11/santander-cuenta-one-opiniones.png" alt="" style="width: 150px;"></td></tr><tr><td class="has-text-align-center" data-align="center">Título de Ejemplo</td></tr><tr><td class="has-text-align-center" data-align="center"><img class="wp-image-819" style="width: 128px;" src="https://huchadefinanzas.es/wp-content/uploads/2021/05/rating-3.png" alt=""></td></tr><tr><td class="has-text-align-center" data-align="center"><a href="https://bloques-gutenberg.com">Comprar</a></td></tr></tbody></table></figure>
         <!-- /wp:table -->`,
-        TemplateCss: ".template11{width:33%;border:2px solid #d3d3d3;padding:8px 16px;margin:8px auto;}.template11 table{border:0;border-collapse:collapse;}.template11 table tr{line-height:2.5;}.template11 table tr:nth-child(2) td{font-size:24px}.template11 table tr:nth-child(3) td img{width:100px!important;height:90%}.template11 table tr:nth-child(4) td{display:block;width:50%;margin:0 auto;padding:5px 24px;border:1px solid gray;border-radius:30px;background-color:#272c30;color:#fff;cursor:pointer}\n",
+        TemplateCss: ".template11{width:33%;border:2px solid #d3d3d3;padding:8px 16px;margin:8px auto;}.template11 table{border:0;border-collapse:collapse;}.template11 table tr{line-height:2.5;}.template11 table tr:nth-child(2) td{font-size:24px}.template11 table tr:nth-child(3) td img{width:100px!important;height:90%}.template11 table tr:nth-child(4) td a{display:block;width:50%;margin:0 auto;padding:5px 24px;border:1px solid gray;border-radius:30px;background-color:#272c30;color:#fff;cursor:pointer;text-decoration: none;font-size:20px;}\n",
         TemplateImg: "../images/table-template11.jpg",
     },
 ]

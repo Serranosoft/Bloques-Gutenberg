@@ -18,12 +18,12 @@ function PersonalizeTemplate(props) {
     const [stylingButton, changeButton] = useState({
         background: "#272c30",
         color: "#ffffff",
-        "border-radius": "0px"
+        "border-radius": "7px"
     })
 
 
     useEffect(() => {
-        let btn = document.querySelector(`.template${template.id} .wp-block-button a, .template${template.id} tr:last-child td`);
+        let btn = document.querySelector(`.template${template.id} .wp-block-button a, .template${template.id} tr:last-child td a`);
         if (btn != null) {
             btn.setAttribute("style", applyStyles().buttonStyles)
         }
@@ -130,7 +130,7 @@ function PersonalizeTemplate(props) {
     function concatOutputCss(templateStyles, buttonStyles) {
         let index = document.getElementById("css-output").value.indexOf("\n")
         let str = document.getElementById("css-output").value.substring(0, index);
-        document.getElementById("css-output").value = `${str}\n .template${template.id}{${templateStyles}}\n .template${template.id} .wp-block-button a, .template${template.id} tr:last-child td {${buttonStyles}}\n `
+        document.getElementById("css-output").value = `${str}\n .template${template.id}{${templateStyles}}\n .template${template.id} .wp-block-button a, .template${template.id} tr:last-child td a {${buttonStyles}}\n `
     }
 }
 
