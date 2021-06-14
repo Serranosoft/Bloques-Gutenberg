@@ -71,6 +71,9 @@ const HeaderTitle = styled.div`
 const Menu = styled.div`
     display: flex;
     justify-self: flex-end;
+    @media(max-width: 768px) {
+        margin: 12px 0;
+    }
 `
 
 const DropdownMenuWrapper = styled.div`

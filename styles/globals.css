@@ -14,3 +14,5 @@ body {
   background-color: #1f2937;
   color: white;
 }
+
+.skeleton-2wv2iwtyaua:empty {width: 85%;box-sizing: content-box; height: 690px; background-color: transparent; border-radius: 21px 3px 0px 0px; background-image: linear-gradient( 100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 80% ),linear-gradient( #cccccc 45px, transparent 0 ),linear-gradient( #cccccc 20px, transparent 0 ),linear-gradient( #cccccc 20px, transparent 0 ),linear-gradient( #cccccc 220px, transparent 0 ),linear-gradient( #cccccc 220px, transparent 0 ),linear-gradient( #E0E0E0 220px, transparent 0 ),linear-gradient( #E0E0E0 200px, transparent 0 );background-repeat: repeat-y;background-size: 50px 700px,300px 700px,300px 700px,50% 700px,150px 700px,150px 700px,150px 700px,75% 700px;background-position: 0 0,362px 584px,362px 543px,267px 28px,700px 300px,445px 300px,176px 300px,135px 80px;animation: shineForSkeleton-2wv2iwtyaua 1s infinite;}@keyframes shineForSkeleton-2wv2iwtyaua {to {background-position: 100% 0,362px 584px,362px 543px,267px 28px,700px 300px,445px 300px,176px 300px,135px 80px;}}

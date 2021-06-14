@@ -135,7 +135,7 @@
 	width: 100%;
 	margin: 0 auto;
 	border: 1px solid lightgray;
-	padding: 10px;
+	padding: 16px 24px;
 	overflow-x: auto;
 	background-color: #ebeff4;
 	transition: 1s;

@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "@emotion/styled"
+import { css } from "@emotion/react";
 import Templates from "../../resources/Templates.js"
 import Palette from "../../components/Palette"
 import AddFavorites from "../../components/AddFavorites.js";
+import RestrictedContent from "../../components/RestrictedContent";
 import Head from 'next/head'
 import { AuthContext } from '../../components/Firebase/AuthDAO';
 import { useRouter } from "next/router";
@@ -13,7 +15,6 @@ function PersonalizeTemplate(props) {
 
     const { authUser } = useContext(AuthContext);
     const router = useRouter();
-
     const [styling, changeStyling] = useState({
         color: "#1C1C1C",
         background: "#ffffff",
@@ -31,67 +32,80 @@ function PersonalizeTemplate(props) {
     useEffect(() => {
         if (authUser !== "") {
             if (authUser === null && template.id === 1 || authUser === null && template.id === 6) {
-                router.push("/registro");
+            } else {
+                let btn = document.querySelector(`.template${template.id} .wp-block-button a, .template${template.id} tr:last-child td a`);
+                if (btn != null) {
+                    btn.setAttribute("style", applyStyles().buttonStyles)
+                }
             }
         }
-    }, [authUser])
+    }, [stylingButton, authUser])
 
     useEffect(() => {
-        let btn = document.querySelector(`.template${template.id} .wp-block-button a, .template${template.id} tr:last-child td a`);
-        if (btn != null) {
-            btn.setAttribute("style", applyStyles().buttonStyles)
+        if (authUser !== "") {
+            if (authUser === null && template.id === 1 || authUser === null && template.id === 6) {
+            } else {
+                document.querySelector(`.template${template.id}`).setAttribute("style", applyStyles().templateStyles)
+            }
         }
-    }, [stylingButton])
+    }, [styling, authUser])
 
-    useEffect(() => {
-        document.querySelector(`.template${template.id}`).setAttribute("style", applyStyles().templateStyles)
-    }, [styling])
+    if (authUser !== "") {
+        if (authUser === null && template.id === 1 || authUser === null && template.id === 6) {
+            return (
+                <RestrictedContent />
+            )
+        } else {
+            return (
+                <>
+                    <Head>
+                        <title>Personaliza tu bloque gutenberg | Bloques Gutenberg</title>
+                        <meta name="description" content="Diseña y personaliza tu bloque gutenberg: tabla o caja para tu nicho SEO de Amazon Afiliados o Adsense en Wordpress" />
+                        <link rel="icon" href="/favicon.ico" />
+                    </Head>
+                    <LandingTitle>Personaliza tu  <span style={{
+                        color: "#34d399",
+                        textAlign: "center"
+                    }}>plantilla</span></LandingTitle>
 
-
-    return (
-        <>
-            <Head>
-                <title>Personaliza tu bloque gutenberg | Bloques Gutenberg</title>
-                <meta name="description" content="Diseña y personaliza tu bloque gutenberg: tabla o caja para tu nicho SEO de Amazon Afiliados o Adsense en Wordpress" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <LandingTitle>Personaliza tu  <span style={{
-                color: "#34d399",
-                textAlign: "center"
-            }}>plantilla</span></LandingTitle>
-
-            <Workspace>
-                <DecorationArrow src="/images/decoration/curve-arrow-right.svg" type={template.type} />
-                <ArrowText type={template.type}>Así es como quedará en tu página web</ArrowText>
-                <div dangerouslySetInnerHTML={{ __html: template.TemplateHtml }}></div>
-                <Palette
-                    id={template.id}
-                    styling={styling}
-                    changeStyling={changeStyling}
-                    stylingButton={stylingButton}
-                    changeButton={changeButton}
-                />
-                <AddFavorites
-                    template={template}
-                    stylingButton={stylingButton}
-                    styling={styling}
-                />
-                <Button onClick={showResult}>OBTENER CÓDIGO</Button>
-            </Workspace>
-            <CodeSpace id="codespace">
-                <div>
-                    <p>Cópialo en la entrada/página de tu Wordpress para pegar el bloque</p>
-                    <HtmlGenerated id="html-output" value={template.TemplateHtml} readOnly onClick={HtmlClipBoard}></HtmlGenerated>
-                    <SuccessfulMessage id="html-copied" className="slide-top">¡Copiado!</SuccessfulMessage>
-                </div>
-                <div>
-                    <p>Cópialo en CSS Adicional (Personalizar {'>'} CSS Adicional)</p>
-                    <HtmlGenerated id="css-output" value={template.TemplateCss} readOnly onClick={CssClipBoard}></HtmlGenerated>
-                    <SuccessfulMessage id="css-copied" className="slide-top">¡Copiado!</SuccessfulMessage>
-                </div>
-            </CodeSpace>
-        </>
-    )
+                    <Workspace>
+                        <DecorationArrow src="/images/decoration/curve-arrow-right.svg" type={template.type} />
+                        <ArrowText type={template.type}>Así es como quedará en tu página web</ArrowText>
+                        <div dangerouslySetInnerHTML={{ __html: template.TemplateHtml }}></div>
+                        <Palette
+                            id={template.id}
+                            styling={styling}
+                            changeStyling={changeStyling}
+                            stylingButton={stylingButton}
+                            changeButton={changeButton}
+                        />
+                        <AddFavorites
+                            template={template}
+                            stylingButton={stylingButton}
+                            styling={styling}
+                        />
+                        <Button onClick={showResult}>OBTENER CÓDIGO</Button>
+                    </Workspace>
+                    <CodeSpace id="codespace">
+                        <div>
+                            <p>Cópialo en la entrada/página de tu Wordpress para pegar el bloque</p>
+                            <HtmlGenerated id="html-output" value={template.TemplateHtml} readOnly onClick={HtmlClipBoard}></HtmlGenerated>
+                            <SuccessfulMessage id="html-copied" className="slide-top">¡Copiado!</SuccessfulMessage>
+                        </div>
+                        <div>
+                            <p>Cópialo en CSS Adicional (Personalizar {'>'} CSS Adicional)</p>
+                            <HtmlGenerated id="css-output" value={template.TemplateCss} readOnly onClick={CssClipBoard}></HtmlGenerated>
+                            <SuccessfulMessage id="css-copied" className="slide-top">¡Copiado!</SuccessfulMessage>
+                        </div>
+                    </CodeSpace>
+                </>
+            )
+        }
+    } else {
+        return (
+            <div className="skeleton-2wv2iwtyaua"></div>
+        )
+    }
 
 
     function showResult() {
@@ -131,11 +145,11 @@ function PersonalizeTemplate(props) {
         let buttonStyles = "";
 
         for (let key in styling) {
-            templateStyles += `${key}:${styling[key]};`
+            templateStyles += `${key}:${styling[key]}!important;`
         }
 
         for (let key in stylingButton) {
-            buttonStyles += `${key}:${stylingButton[key]};`
+            buttonStyles += `${key}:${stylingButton[key]}!important;`
         }
 
         concatOutputCss(templateStyles, buttonStyles)

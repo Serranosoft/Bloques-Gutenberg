@@ -1,17 +1,9 @@
-import { getHowToPost } from '../lib/api'
 import React from "react";
 import styled from '@emotion/styled'
 import Link from "next/link"
 import Head from 'next/head'
 
-export async function getStaticProps() {
-  const data = await getHowToPost();
-  return {
-    props: { data }
-  }
-}
-
-export default function Home({ data }) {
+export default function Home() {
   return (
     <>
       <Head>

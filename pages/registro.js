@@ -178,6 +178,7 @@ const H3 = styled.h3`
     color: lightgray;
     @media(max-width: 768px) {
         font-size: 16px;
+        margin: 8px 0;
     }
 `
 
