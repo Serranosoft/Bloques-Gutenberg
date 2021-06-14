@@ -28,5 +28,5 @@ const MainSection = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 80px;
+    padding: 40px 0;
 `

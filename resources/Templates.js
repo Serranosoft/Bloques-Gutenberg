@@ -146,6 +146,17 @@ const Templates = [
         TemplateImg: "../images/box-template5.jpg"
     },
     {
+        id: 6,
+        name: "amazon-vertical-con-imagen",
+        type: "table",
+        TemplateHtml:`<!-- wp:table {"className":"template6"} -->
+        <figure class="wp-block-table template6"><table><tbody><tr><td class="has-text-align-center" data-align="center">Camiseta de Bloques Gutenberg</td></tr><tr><td class="has-text-align-center" data-align="center"><img class="wp-image-1543" style="width: 300px;" src="https://bg.manu-scholz.com/wp-content/uploads/2021/06/shirt.png" alt="ver el secreto de feriha en español"></td></tr><tr><td class="has-text-align-center" data-align="center">49€</td></tr><tr><td class="has-text-align-center" data-align="center">Característica del Producto 1</td></tr><tr><td class="has-text-align-center" data-align="center">Característica del Producto 2</td></tr><tr><td class="has-text-align-center" data-align="center">Característica del Producto 3</td></tr><tr><td class="has-text-align-center" data-align="center"><a href="https://bloques-gutenberg.com" target="_blank" rel="noreferrer noopener">Comprar</a></td></tr></tbody></table></figure>
+        <!-- /wp:table -->
+        `,
+        TemplateCss: ".template6{width:40%;margin:16px auto;padding:24px 24px;border:1px solid #d3d3d3}.template6 table{border-collapse:collapse;text-align:center}.template6 tbody>tr td{border:0!important}.template6 tbody>tr:first-child td{font-size:32px;line-height:1.2}.template6 tbody>tr:nth-child(2) td img{width:85%!important;max-height:300px;margin:8px 0}.template6 tbody>tr:nth-child(3) td{font-size:42px}.template6 tbody>tr:nth-child(n+4) td{font-weight:700;line-height:1.2;font-size:19px}.template6 tbody>tr:nth-child(7) td a{display:block;width:60%;margin:8px auto;border:1px solid #000;border-radius:7px;background-color:#272c30;color:#fff;cursor:pointer;transition:.7s;text-decoration:none;font-size:20px;text-align:center;line-height:2;transition:.7s}@media(max-width:768px){.template6{width:95%;padding:8px}}\n",
+        TemplateImg: "../images/table-template6.jpg"
+    },
+    {
         id: 10,
         name: "amazon-vertical",
         type: "table",

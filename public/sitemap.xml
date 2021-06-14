@@ -18,6 +18,6 @@
     <url>
         <loc>https://bloques-gutenberg.com/blog/crear-bloque-para-wordpress</loc>
         <changefreq>daily</changefreq>
-        <priority>1</priority>
+        <priority>0.9</priority>
     </url>
 </urlset>

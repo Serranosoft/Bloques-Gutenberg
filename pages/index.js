@@ -170,12 +170,12 @@ const OptionWrapper = styled.div`
 `
 
 const ImageOption = styled.img`
-    width: 280px;
+    width: 260px;
     height: 100%;
     cursor: pointer;
     transition: 1s;
     &:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
     @media(max-width: 768px) {
         width: 90%;

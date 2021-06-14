@@ -45,7 +45,7 @@ function Palette({ id, styling, changeStyling, changeButton, stylingButton }) {
                 </InputSection>
 
             </PaletteSection>
-            {id === 1 || id === 10 || id === 11 || id === 3 || id === 5 ?
+            {id === 1 || id === 10 || id === 11 || id === 3 || id === 5 || id === 6 ?
                 <PaletteSection>
                     <SectionTitle>BOTÓN</SectionTitle>
 

@@ -44,10 +44,10 @@ function Account() {
     }
 
     useEffect(() => {
-        if (!authUser) {
-            router.push("/");
+        if (authUser === null) {
+            router.push("/registro");
         }
-    }, [])
+    }, [authUser])
 
     return (
         <>

@@ -1,12 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "@emotion/styled"
 import Templates from "../../resources/Templates.js"
 import Palette from "../../components/Palette"
 import AddFavorites from "../../components/AddFavorites.js";
 import Head from 'next/head'
+import { AuthContext } from '../../components/Firebase/AuthDAO';
+import { useRouter } from "next/router";
 
 function PersonalizeTemplate(props) {
+
     const template = props;
+
+    const { authUser } = useContext(AuthContext);
+    const router = useRouter();
+
     const [styling, changeStyling] = useState({
         color: "#1C1C1C",
         background: "#ffffff",
@@ -21,6 +28,13 @@ function PersonalizeTemplate(props) {
         "border-radius": "7px"
     })
 
+    useEffect(() => {
+        if (authUser !== "") {
+            if (authUser === null && template.id === 1 || authUser === null && template.id === 6) {
+                router.push("/registro");
+            }
+        }
+    }, [authUser])
 
     useEffect(() => {
         let btn = document.querySelector(`.template${template.id} .wp-block-button a, .template${template.id} tr:last-child td a`);
@@ -32,6 +46,7 @@ function PersonalizeTemplate(props) {
     useEffect(() => {
         document.querySelector(`.template${template.id}`).setAttribute("style", applyStyles().templateStyles)
     }, [styling])
+
 
     return (
         <>
@@ -46,8 +61,8 @@ function PersonalizeTemplate(props) {
             }}>plantilla</span></LandingTitle>
 
             <Workspace>
-                <DecorationArrow src="/images/decoration/curve-arrow-right.svg" id={template.id} />
-                <ArrowText id={template.id}>Así es como quedará en tu página web</ArrowText>
+                <DecorationArrow src="/images/decoration/curve-arrow-right.svg" type={template.type} />
+                <ArrowText type={template.type}>Así es como quedará en tu página web</ArrowText>
                 <div dangerouslySetInnerHTML={{ __html: template.TemplateHtml }}></div>
                 <Palette
                     id={template.id}
@@ -82,7 +97,7 @@ function PersonalizeTemplate(props) {
     function showResult() {
         let codespace = document.getElementById("codespace");
         codespace.setAttribute("style", "display: grid");
-        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+        window.scrollTo({ top: document.body.scrollHeight - 1120, behavior: "smooth" });
     }
 
     function HtmlClipBoard() {
@@ -156,8 +171,7 @@ export default PersonalizeTemplate;
 
 
 const LandingTitle = styled.h1`
-    margin-top: 24px;
-    margin-bottom: 32px;
+    margin: 16px 0;
     font-size: 60px;
     font-family: 'Texturina', serif;
     color: white;
@@ -230,9 +244,9 @@ const DecorationArrow = styled.img`
     width: 50px;
     position: relative;
     top: ${props =>
-        props.id < 10 ? '50px' : '70px'};
+        props.type === "box" ? '50px' : '70px'};
     left: ${props =>
-        props.id < 10 ? '-450px' : '-240px'};
+        props.type === "box" ? '-450px' : '-240px'};
     @media(max-width: 768px) {
         display: none;
     }
@@ -242,9 +256,9 @@ const DecorationArrow = styled.img`
 const ArrowText = styled.span`
     position: relative;
     top: ${props =>
-        props.id < 10 ? '-30px' : '-10px'};
+        props.type === "box" ? '-30px' : '-10px'};
     left: ${props =>
-        props.id < 10 ? '-450px' : '-240px'};
+        props.type === "box" ? '-450px' : '-240px'};
     color: #34d399;
     text-align: center;
     font-family: 'Texturina', serif;
