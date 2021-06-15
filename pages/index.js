@@ -83,6 +83,16 @@ export default function Home() {
           </LandingInfoWrapper>
         </LandingInfo>
         <LandingInfo>
+        <LandingInfoTitle>Aprende a crear uno y publicarlo en 1 minuto</LandingInfoTitle>
+        <LandingInfoWrapper>
+          <LandingInfoBox style={{alignItems: "center"}}>
+            <video width="850" controls>
+              <source src="/images/videos/create-block.mp4" type="video/mp4" />
+            </video>
+          </LandingInfoBox>
+        </LandingInfoWrapper>
+        </LandingInfo>
+        <LandingInfo>
           <LandingInfoTitle>Compatible con todas las plantillas de Wordpress</LandingInfoTitle>
           <LandingInfoWrapper>
             <LandingInfoBox>
