@@ -32,9 +32,11 @@ function PersonalizeTemplate(props) {
         if (authUser !== "") {
             if (authUser === null && template.id === 1 || authUser === null && template.id === 6) {
             } else {
-                let btn = document.querySelector(`.template${template.id} .wp-block-button a, .template${template.id} tr:last-child td a`);
+                let btn = document.querySelectorAll(`.template${template.id} .wp-block-button a, .template${template.id} tr:last-child td a`);
                 if (btn != null) {
-                    btn.setAttribute("style", applyStyles().buttonStyles)
+                    for(let i = 0; i < btn.length ; i++) {
+                        btn[i].setAttribute("style", applyStyles().buttonStyles)
+                    }
                 }
             }
         }
@@ -257,9 +259,9 @@ const DecorationArrow = styled.img`
     width: 50px;
     position: relative;
     top: ${props =>
-        props.type === "box" ? '50px' : '70px'};
+        props.type === "box" ? '50px' : '30px'};
     left: ${props =>
-        props.type === "box" ? '-450px' : '-240px'};
+        props.type === "box" ? '-450px' : '-210px'};
     @media(max-width: 768px) {
         display: none;
     }
@@ -269,9 +271,9 @@ const DecorationArrow = styled.img`
 const ArrowText = styled.span`
     position: relative;
     top: ${props =>
-        props.type === "box" ? '-30px' : '-10px'};
+        props.type === "box" ? '-30px' : '-55px'};
     left: ${props =>
-        props.type === "box" ? '-450px' : '-240px'};
+        props.type === "box" ? '-450px' : '-230px'};
     color: #34d399;
     text-align: center;
     font-family: 'Texturina', serif;

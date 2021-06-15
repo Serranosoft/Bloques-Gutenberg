@@ -141,16 +141,32 @@ const Templates = [
         TemplateImg: "../images/box-template5.jpg"
     },
     {
-        id: 6,
-        name: "amazon-vertical-con-imagen",
+        id: 12,
+        name: "comparativa-de-tres-productos",
         type: "table",
-        TemplateHtml: `<!-- wp:table {"className":"template6"} -->
-        <figure class="wp-block-table template6"><table><tbody><tr><td class="has-text-align-center" data-align="center">Camiseta de Bloques Gutenberg</td></tr><tr><td class="has-text-align-center" data-align="center"><img class="wp-image-1543" style="width: 300px;" src="https://bg.manu-scholz.com/wp-content/uploads/2021/06/shirt.png" alt="ver el secreto de feriha en español"></td></tr><tr><td class="has-text-align-center" data-align="center">49€</td></tr><tr><td class="has-text-align-center" data-align="center">Característica del Producto 1</td></tr><tr><td class="has-text-align-center" data-align="center">Característica del Producto 2</td></tr><tr><td class="has-text-align-center" data-align="center">Característica del Producto 3</td></tr><tr><td class="has-text-align-center" data-align="center"><a href="https://bloques-gutenberg.com" target="_blank" rel="noreferrer noopener">Comprar</a></td></tr></tbody></table></figure>
-        <!-- /wp:table -->
-        `,
-        TemplateCss: ".template6{width:32%;margin:16px auto;padding:16px;border:1px solid #d3d3d3}.template6 table{border-collapse:collapse;text-align:center}.template6 tbody>tr td{border:0!important}.template6 tbody>tr:first-child td{font-size:32px;line-height:1.2}.template6 tbody>tr:nth-child(2) td img{width:85%!important;max-height:300px;margin:8px 0}.template6 tbody>tr:nth-child(3) td{font-size:42px}.template6 tbody>tr:nth-child(n+4) td{font-weight:700;line-height:1.2;font-size:19px}.template6 tbody>tr:nth-child(7) td a{display:block;width:60%;margin:8px auto;border:1px solid #000;border-radius:7px;background-color:#272c30;color:#fff;cursor:pointer;transition:.7s;text-decoration:none;font-size:20px;text-align:center;line-height:2;transition:.7s}@media(max-width:768px){.template6{width:95%;padding:8px}}\n",
-        TemplateImg: "../images/table-template6.jpg"
+        TemplateHtml: `<!-- wp:columns {"className":"template12"} -->
+        <div class="wp-block-columns template12"><!-- wp:column -->
+        <div class="wp-block-column"><!-- wp:table -->
+        <figure class="wp-block-table"><table><tbody><tr><td class="has-text-align-center" data-align="center">Camiseta S</td></tr><tr><td class="has-text-align-center" data-align="center"><img src="https://bg.manu-scholz.com/wp-content/uploads/2021/06/shirt.png" alt=""></td></tr><tr><td class="has-text-align-center" data-align="center"><img class="wp-image-99" style="width: 128px;" src="https://bg.manu-scholz.com/wp-content/uploads/2021/06/rating-3_prueba-removebg-preview.png" alt=""></td></tr><tr><td class="has-text-align-center" data-align="center">Tela</td></tr><tr><td class="has-text-align-center" data-align="center">67 x 115 x 107 cm</td></tr><tr><td class="has-text-align-center" data-align="center">25.4 kg</td></tr><tr><td class="has-text-align-center" data-align="center">15€</td></tr><tr><td class="has-text-align-center" data-align="center"><a href="https://bloques-gutenberg.com" target="_blank" rel="noreferrer noopener">Comprar</a></td></tr></tbody></table></figure>
+        <!-- /wp:table --></div>
+        <!-- /wp:column -->
+        
+        <!-- wp:column -->
+        <div class="wp-block-column"><!-- wp:table -->
+        <figure class="wp-block-table"><table><tbody><tr><td class="has-text-align-center" data-align="center">Camiseta M</td></tr><tr><td class="has-text-align-center" data-align="center"><img src="https://bg.manu-scholz.com/wp-content/uploads/2021/06/shirt.png" alt=""></td></tr><tr><td class="has-text-align-center" data-align="center"><img class="wp-image-99" style="width: 128px;" src="https://bg.manu-scholz.com/wp-content/uploads/2021/06/rating-3_prueba-removebg-preview.png" alt=""></td></tr><tr><td class="has-text-align-center" data-align="center">Lana</td></tr><tr><td class="has-text-align-center" data-align="center">67 x 115 x 107 cm</td></tr><tr><td class="has-text-align-center" data-align="center">25.4 kg</td></tr><tr><td class="has-text-align-center" data-align="center">25€</td></tr><tr><td class="has-text-align-center" data-align="center"><a rel="noreferrer noopener" href="https://bloques-gutenberg.com" target="_blank">Comprar</a></td></tr></tbody></table></figure>
+        <!-- /wp:table --></div>
+        <!-- /wp:column -->
+        
+        <!-- wp:column -->
+        <div class="wp-block-column"><!-- wp:table -->
+        <figure class="wp-block-table"><table><tbody><tr><td class="has-text-align-center" data-align="center">Camiseta L</td></tr><tr><td class="has-text-align-center" data-align="center"><img class="wp-image-40" style="width: px;" src="https://bg.manu-scholz.com/wp-content/uploads/2021/06/shirt.png" alt=""></td></tr><tr><td class="has-text-align-center" data-align="center"><img class="wp-image-99" style="width: 128px;" src="https://bg.manu-scholz.com/wp-content/uploads/2021/06/rating-3_prueba-removebg-preview.png" alt=""></td></tr><tr><td class="has-text-align-center" data-align="center">Lino</td></tr><tr><td class="has-text-align-center" data-align="center">67 x 115 x 107 cm</td></tr><tr><td class="has-text-align-center" data-align="center">25.4 kg</td></tr><tr><td class="has-text-align-center" data-align="center">30€</td></tr><tr><td class="has-text-align-center" data-align="center"><a rel="noreferrer noopener" href="https://bloques-gutenberg.com" target="_blank">Comprar</a></td></tr></tbody></table></figure>
+        <!-- /wp:table --></div>
+        <!-- /wp:column --></div>
+        <!-- /wp:columns -->`,
+        TemplateCss: ".template12{width:100%;padding:16px 0;margin:8px auto}.template12 div{width:100%;margin:0 auto}.template12 div figure{width:100%;overflow-x:hidden;border:1px solid gray;min-width:210px}.template12 div figure table{min-width:210px}@media(max-width:768px){.template12 div figure{width:100%}}.template12 table{border-collapse:collapse}.template12 table tr:first-child td{font-weight:700}.template12 table tr td{border:0;font-size:20px;line-height:1.5}.template12 table tr:nth-last-child(2) td{font-size:36px;font-weight:700}.template12 table tr:last-child td a{width:75%;display:block;padding:6px 16px;border:1px solid #000;border-radius:15px;margin:5px auto;color:#fff;background-color:#272c30;font-weight:700;transition:.7s;font-size:20px;text-decoration:none}\n",
+        TemplateImg: "../images/table-template12.jpg"
     },
+    
     {
         id: 10,
         name: "amazon-vertical",
@@ -171,6 +187,18 @@ const Templates = [
         TemplateCss: ".template11{width:30%;border:2px solid #d3d3d3;padding:8px;margin:8px auto;}.template11 table{border-collapse:collapse;}.template11 table tr td{border:0;}.template11 table tr{line-height:1.5;}.template11 table tr:nth-child(2) td{font-size:24px}.template11 table tr:nth-child(4) td a{display:block;width:60%;margin:0 auto;padding:5px 24px;border-radius:30px;background-color:#272c30;color:#fff;cursor:pointer;text-decoration: none;font-size:20px;}@media(max-width:768px){.template11{width:95%;}}\n",
         TemplateImg: "../images/table-template11.jpg",
     },
+    {
+        id: 6,
+        name: "amazon-vertical-con-imagen",
+        type: "table",
+        TemplateHtml: `<!-- wp:table {"className":"template6"} -->
+        <figure class="wp-block-table template6"><table><tbody><tr><td class="has-text-align-center" data-align="center">Camiseta de Bloques Gutenberg</td></tr><tr><td class="has-text-align-center" data-align="center"><img class="wp-image-1543" style="width: 300px;" src="https://bg.manu-scholz.com/wp-content/uploads/2021/06/shirt.png" alt="ver el secreto de feriha en español"></td></tr><tr><td class="has-text-align-center" data-align="center">49€</td></tr><tr><td class="has-text-align-center" data-align="center">Característica del Producto 1</td></tr><tr><td class="has-text-align-center" data-align="center">Característica del Producto 2</td></tr><tr><td class="has-text-align-center" data-align="center">Característica del Producto 3</td></tr><tr><td class="has-text-align-center" data-align="center"><a href="https://bloques-gutenberg.com" target="_blank" rel="noreferrer noopener">Comprar</a></td></tr></tbody></table></figure>
+        <!-- /wp:table -->
+        `,
+        TemplateCss: ".template6{width:32%;margin:16px auto;padding:16px;border:1px solid #d3d3d3}.template6 table{border-collapse:collapse;text-align:center}.template6 tbody>tr td{border:0!important}.template6 tbody>tr:first-child td{font-size:32px;line-height:1.2}.template6 tbody>tr:nth-child(2) td img{width:85%!important;max-height:300px;margin:8px 0}.template6 tbody>tr:nth-child(3) td{font-size:42px}.template6 tbody>tr:nth-child(n+4) td{font-weight:700;line-height:1.2;font-size:19px}.template6 tbody>tr:nth-child(7) td a{display:block;width:60%;margin:8px auto;border:1px solid #000;border-radius:7px;background-color:#272c30;color:#fff;cursor:pointer;transition:.7s;text-decoration:none;font-size:20px;text-align:center;line-height:2;transition:.7s}@media(max-width:768px){.template6{width:95%;padding:8px}}\n",
+        TemplateImg: "../images/table-template6.jpg"
+    },
+
 ]
 
 export default Templates

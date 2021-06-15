@@ -76,7 +76,7 @@ const LandingTitle = styled.h1`
 
 const TemplateListWrapper = styled.section`
     width: ${props =>
-        props.type === "box" ? "67%" : "73%"};
+        props.type === "box" ? "52%" : "70%"};
     display: grid;
     grid-template-columns: ${props =>
         props.type === "box" ? '1fr' : '1fr 1fr 1fr'};
@@ -85,7 +85,7 @@ const TemplateListWrapper = styled.section`
     gap: 20px;
     margin-top: 40px;
     & a, & div:first-child {
-        width: 75%;
+        width: 95%;
         margin: 0 auto;
     }
     @media(max-width: 768px) {
