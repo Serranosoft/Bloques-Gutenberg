@@ -32,8 +32,8 @@ function TemplateList({ router: { query } }) {
                 color: "#34d399",
                 textAlign: "center"
             }}>plantilla</span></LandingTitle>
-            <DecorationArrow src="/images/decoration/curve-arrow-right.svg" optionChosed={optionChosed}/>
-            <ArrowText optionChosed={optionChosed}>¡Escoge una plantilla y personalízala!</ArrowText>
+            <DecorationArrow src="/images/decoration/curve-arrow-right.svg" className="scale-up-hor-right" optionChosed={optionChosed}/>
+            <ArrowText className="scale-up-hor-right" optionChosed={optionChosed}>¡Escoge una plantilla y personalízala!</ArrowText>
             <TemplateListWrapper type={query.optionChosed}>
                 {Templates.map((el => {
                     if (el.type === query.optionChosed) {

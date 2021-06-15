@@ -19,9 +19,7 @@ function Header() {
             <Menu>
                 <DropdownMenuWrapper>
                     <Link href="/blog">Blog »</Link>
-                    <DropdownContent>
-                        <Link href="/blog/crear-bloque-para-wordpress"><DropdownOption>¿Como crear una caja o tabla en bloques gutenberg?</DropdownOption></Link>
-                    </DropdownContent>
+                    {/* <Link href="/enviar-idea">Envia tu idea »</Link> */}
                 </DropdownMenuWrapper>
             </Menu>
             <DropdownMenu />
@@ -72,7 +70,7 @@ const Menu = styled.div`
     display: flex;
     justify-self: flex-end;
     @media(max-width: 768px) {
-        margin: 12px 0;
+        display: none;
     }
 `
 
@@ -80,29 +78,15 @@ const DropdownMenuWrapper = styled.div`
     display: inline-block;
     cursor: pointer;
     color: white;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     & > a {
         color: white;
         text-decoration: none;
         padding: 8px 24px;
     }
-    &:hover > div {
-        display: block;
+    & > a:hover {
+        text-decoration: underline;
     }
-`
-
-const DropdownContent = styled.div`
-    display: none;
-    position: absolute;
-    margin: 8px 0;
-    background-color: #11171f;
-    box-shadow: 0px 8px 16px 0px black;
-    z-index: 1;
-    & > span:hover, link:hover {
-        background-color: #333333;
-    }
-`
-
-const DropdownOption = styled.span`
-    padding: 16px 16px;
-    display: block;
 `

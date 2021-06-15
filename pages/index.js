@@ -53,7 +53,7 @@ export default function Home() {
             }}
             as="/bloques"
           >
-            <ImageOption src="/images/opcion-tabla.png" />
+            <ImageOption src="/images/opcion-tabla2.png" />
           </Link>
         </OptionWrapper>
       </LandingWrapper>
@@ -142,7 +142,7 @@ const LandingWrapper = styled.div`
     margin-top: 20px;
     text-align: center;
     @media(max-width: 768px) {
-        width: 95%;
+        width: 90%;
         margin-top: 8px;
     }
 `
@@ -220,10 +220,10 @@ const ArrowText = styled.span`
     @media(max-width: 768px) {
         position: absolute;
         top: ${props =>
-    props.arrowLeft ? '600px' : '420px'};
+    props.arrowLeft ? '640px' : '465px'};
         left: ${props =>
     props.arrowLeft ? '35px' : '35px'};
-        font-size: 13px;
+        font-size: 12px;
     }
 `
 

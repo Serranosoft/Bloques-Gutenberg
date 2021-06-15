@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "@emotion/styled"
-import { css } from "@emotion/react";
 import Templates from "../../resources/Templates.js"
 import Palette from "../../components/Palette"
 import AddFavorites from "../../components/AddFavorites.js";
@@ -69,8 +68,8 @@ function PersonalizeTemplate(props) {
                     }}>plantilla</span></LandingTitle>
 
                     <Workspace>
-                        <DecorationArrow src="/images/decoration/curve-arrow-right.svg" type={template.type} />
-                        <ArrowText type={template.type}>Así es como quedará en tu página web</ArrowText>
+                        <DecorationArrow src="/images/decoration/curve-arrow-right.svg" className="scale-up-hor-right" type={template.type} />
+                        <ArrowText className="scale-up-hor-right" type={template.type}>Así es como quedará en tu página web</ArrowText>
                         <div dangerouslySetInnerHTML={{ __html: template.TemplateHtml }}></div>
                         <Palette
                             id={template.id}
@@ -111,7 +110,7 @@ function PersonalizeTemplate(props) {
     function showResult() {
         let codespace = document.getElementById("codespace");
         codespace.setAttribute("style", "display: grid");
-        window.scrollTo({ top: document.body.scrollHeight - 1120, behavior: "smooth" });
+        window.scrollTo({ top: document.body.scrollHeight - 1000, behavior: "smooth" });
     }
 
     function HtmlClipBoard() {
