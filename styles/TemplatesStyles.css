@@ -30,11 +30,11 @@
 	margin: 16px;
 }
 
-.wp-block-column:not(:first-child) {
+.template1 .wp-block-column:not(:first-child) {
     margin-left: 0px;
 }
 
-.wp-block-buttons .wp-block-button {
+.template1 .wp-block-buttons .wp-block-button {
 	margin: 0;
 }
 
@@ -44,19 +44,18 @@
 	color: white;
 	font-size: 20px;
 	transition: 1s;
+	cursor: pointer;
 }
 
 .template1 .wp-block-column .wp-block-buttons .wp-block-button a:hover {
-	border: 2px solid black;
-	color: white;
-	transform: scale(1.15);
-	cursor: pointer;
+	transform: scale(0.93);
 }
 
 .template1 .wp-block-column ul li {
 	margin: 16px 0;
 	text-align: center;
 	font-size: 18px;
+	list-style-position:inside;
 }
 
 .template1 .wp-block-column ul li::marker {
@@ -172,6 +171,11 @@
 	transition: 1s;
 }
 
+.template3 tbody > tr:nth-child(3) td a:hover{
+	transform: scale(0.93);
+}
+
+
 /* TEMPLATE 4 */
 
 .template4 {
@@ -280,6 +284,10 @@
 	text-align: center;
 	line-height: 2;
 	transition: 0.7s;
+}
+
+.template5 > div:first-child tr:nth-child(6) td a:hover {
+	transform: scale(0.93);
 }
 
 .template5 > div:nth-child(2) figure table tbody tr td img{
@@ -429,6 +437,10 @@
 	font-size: 20px;
 }
 
+.template10 tbody > tr:nth-child(7) td a:hover {
+	transform: scale(0.93);
+}
+
 @media(max-width: 768px) {
 	.template10 {
 		width: 100%;
@@ -463,6 +475,7 @@
 
 .template11 table tr:nth-child(3) td img {
 	width: 100px !important;
+	margin: 16px 0;
 }
 
 .template11 table tr:nth-child(4) td a{
@@ -476,6 +489,10 @@
 	transition: 0.7s;
 	text-decoration: none;
 	font-size: 20px;
+}
+
+.template11 table tr:nth-child(4) td a:hover {
+	transform: scale(0.93);
 }
 
 @media(max-width: 768px) {
@@ -561,4 +578,8 @@
 	transition:.7s;
 	font-size:20px;
 	text-decoration:none;
+}
+
+.template12 table tr:last-child td a:hover {
+	transform: scale(0.93);
 }

@@ -18,7 +18,8 @@ function Header() {
             </Link>
             <Menu>
                 <DropdownMenuWrapper>
-                    <Link href="/blog">Blog »</Link>
+                    {/* <Link href="/blog">Blog »</Link> */}
+                    <a href="https://twitter.com/ImScholz" target="_blank">Beta: notificar errores por Twitter</a>
                     {/* <Link href="/enviar-idea">Envia tu idea »</Link> */}
                 </DropdownMenuWrapper>
             </Menu>
@@ -85,6 +86,7 @@ const DropdownMenuWrapper = styled.div`
         color: white;
         text-decoration: none;
         padding: 8px 24px;
+        transform: translateX(-50%);
     }
     & > a:hover {
         text-decoration: underline;

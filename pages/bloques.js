@@ -25,7 +25,7 @@ function TemplateList({ router: { query } }) {
     return (
         <>
             <Head>
-                <title>TODA la lista de BLOQUES y DISEÑOS para nichos de Adsense y Amazon para Wordpress</title>
+                <title>BLOQUES y DISEÑOS para nichos de Adsense y Amazon para Wordpress</title>
                 <meta name="description" content="Crea bloques gutenberg para wordpress en nichos de SEO en Adsense o Amazon sin saber programar y sin plugins. SEO amistoso, rápido y adaptables a móvil." />
             </Head>
             <LandingTitle>Elige una  <span style={{

@@ -6,14 +6,12 @@ import AddFavorites from "../../components/AddFavorites.js";
 import RestrictedContent from "../../components/RestrictedContent";
 import Head from 'next/head'
 import { AuthContext } from '../../components/Firebase/AuthDAO';
-import { useRouter } from "next/router";
 
 function PersonalizeTemplate(props) {
 
     const template = props;
 
     const { authUser } = useContext(AuthContext);
-    const router = useRouter();
     const [styling, changeStyling] = useState({
         color: "#1C1C1C",
         background: "#ffffff",
@@ -64,7 +62,7 @@ function PersonalizeTemplate(props) {
             return (
                 <>
                     <Head>
-                        <title>Personaliza tu bloque gutenberg | Bloques Gutenberg</title>
+                        <title>Personalizar: {template.name.replace(/-/g, ' ')} - Bloques Gutenberg</title>
                         <meta name="description" content="Diseña y personaliza tu bloque gutenberg: tabla o caja para tu nicho SEO de Amazon Afiliados o Adsense en Wordpress" />
                         <link rel="icon" href="/favicon.ico" />
                     </Head>
@@ -75,7 +73,7 @@ function PersonalizeTemplate(props) {
 
                     <Workspace>
                         <DecorationArrow src="/images/decoration/curve-arrow-right.svg" className="scale-up-hor-right" type={template.type} />
-                        <ArrowText className="scale-up-hor-right" type={template.type}>Así es como quedará en tu página web</ArrowText>
+                        <ArrowText className="scale-up-hor-right" type={template.type}>Así es como quedará en tu página web, visita la web en tu móvil para ver la versión adaptada</ArrowText>
                         <div dangerouslySetInnerHTML={{ __html: template.TemplateHtml }}></div>
                         <Palette
                             id={template.id}
@@ -275,9 +273,9 @@ const DecorationArrow = styled.img`
 const ArrowText = styled.span`
     position: relative;
     top: ${props =>
-        props.type === "box" ? '-30px' : '-55px'};
+        props.type === "box" ? '-35px' : '-55px'};
     left: ${props =>
-        props.type === "box" ? '-450px' : '-230px'};
+        props.type === "box" ? '-300px' : '-230px'};
     color: #34d399;
     text-align: center;
     font-family: 'Texturina', serif;
