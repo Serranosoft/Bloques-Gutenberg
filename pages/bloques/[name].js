@@ -19,13 +19,17 @@ function PersonalizeTemplate(props) {
         background: "#ffffff",
         "letter-spacing": "0px",
         "word-spacing": "1px",
-        "border-radius": "0px"
+        "border-top-left-radius": "0px",
+        "border-top-right-radius": "0px",
+        "border-bottom-left-radius": "0px",
+        "border-bottom-right-radius": "0px"
     });
 
     const [stylingButton, changeButton] = useState({
         background: "#272c30",
         color: "#ffffff",
-        "border-radius": "7px"
+        "border-radius": "7px",
+        "font-weight":"normal"
     })
 
     useEffect(() => {

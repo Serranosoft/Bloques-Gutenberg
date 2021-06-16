@@ -163,7 +163,7 @@ const Templates = [
         <!-- /wp:table --></div>
         <!-- /wp:column --></div>
         <!-- /wp:columns -->`,
-        TemplateCss: ".template12{width:100%;padding:16px 0;margin:8px auto}.template12 div{width:100%;margin:0 auto}.template12 div figure{width:100%;overflow-x:hidden;border:1px solid gray;min-width:210px}.template12 div figure table{min-width:210px}@media(max-width:768px){.template12 div figure{width:100%}}.template12 table{border-collapse:collapse}.template12 table tr:first-child td{font-weight:700}.template12 table tr td{border:0;font-size:20px;line-height:1.5}.template12 table tr:nth-last-child(2) td{font-size:36px;font-weight:700}.template12 table tr:last-child td a{width:75%;display:block;padding:6px 16px;border:1px solid #000;border-radius:15px;margin:5px auto;color:#fff;background-color:#272c30;font-weight:700;transition:.7s;font-size:20px;text-decoration:none}\n",
+        TemplateCss: ".template12{width:100%;padding:16px 0;margin:8px auto}.template12 div{width:100%;margin:0 auto}.template12 div figure{width:100%;overflow-x:hidden;border:1px solid gray;min-width:210px;margin:0;}.template12 div figure table{min-width:210px}@media(max-width:768px){.template12 div figure{width:100%}}.template12 table{border-collapse:collapse}.template12 table tr:first-child td{font-weight:700}.template12 table tr td{border:0;font-size:20px;line-height:1.5}.template12 table tr:nth-last-child(2) td{font-size:36px;font-weight:700}.template12 table tr:last-child td a{width:75%;display:block;padding:6px 16px;border:1px solid #000;border-radius:15px;margin:5px auto;color:#fff;background-color:#272c30;font-weight:700;transition:.7s;font-size:20px;text-decoration:none}\n",
         TemplateImg: "../images/table-template12.jpg"
     },
     

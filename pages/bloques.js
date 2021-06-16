@@ -76,7 +76,7 @@ const LandingTitle = styled.h1`
 
 const TemplateListWrapper = styled.section`
     width: ${props =>
-        props.type === "box" ? "52%" : "70%"};
+        props.type === "box" ? "55%" : "73%"};
     display: grid;
     grid-template-columns: ${props =>
         props.type === "box" ? '1fr' : '1fr 1fr 1fr'};
@@ -84,7 +84,7 @@ const TemplateListWrapper = styled.section`
     justify-items: center;
     gap: 20px;
     margin-top: 40px;
-    & a, & div:first-child {
+    & a, & div {
         width: 95%;
         margin: 0 auto;
     }
@@ -102,6 +102,7 @@ const PremiumContentWarn = styled.p`
     text-decoration: none;
     font-size: 13px;
     opacity: 1 !important;
+    margin-left: 13px;
 `
 
 const PremiumContentWrapper = styled.div`
@@ -121,7 +122,7 @@ const DecorationArrow = styled.img`
     top: ${props =>
         props.optionChosed === "box" ? '120px' : '120px'};
     left: ${props =>
-        props.optionChosed === "box" ? '-420px' : '-550px'};
+        props.optionChosed === "box" ? '-420px' : '-570px'};
     @media(max-width: 768px) {
         display: none;
     }
@@ -134,7 +135,7 @@ const ArrowText = styled.span`
     top: ${props =>
         props.optionChosed === "box" ? '30px' : '30px'};
     left: ${props =>
-        props.optionChosed === "box" ? '-425px' : '-550px'};
+        props.optionChosed === "box" ? '-425px' : '-570px'};
     color: #34d399;
     text-align: center;
     font-family: 'Texturina', serif;

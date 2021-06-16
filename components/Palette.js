@@ -15,10 +15,19 @@ function Palette({ id, styling, changeStyling, changeButton, stylingButton }) {
                 </InputSection>
 
                 <InputSection>
-                    <label>Bordes redondeados
+                    <label>Bordes superiores redondeados
                         <OptionsWrapper>
-                            <label>Si<InputOption type="radio" onChange={handleBorderRadius} value="30px" name="border-template" /></label>
-                            <label>No<InputOption type="radio" onChange={handleBorderRadius} value="0px" name="border-template" defaultChecked /></label>
+                            <label>Si<InputOption type="radio" onChange={handleTopBorderRadius} value="30px" name="border-top-template" /></label>
+                            <label>No<InputOption type="radio" onChange={handleTopBorderRadius} value="0px" name="border-top-template" defaultChecked /></label>
+                        </OptionsWrapper>
+                    </label>
+                </InputSection>
+
+                <InputSection>
+                    <label>Bordes inferiores redondeados
+                        <OptionsWrapper>
+                            <label>Si<InputOption type="radio" onChange={handleBottomBorderRadius} value="30px" name="border-bottom-template" /></label>
+                            <label>No<InputOption type="radio" onChange={handleBottomBorderRadius} value="0px" name="border-bottom-template" defaultChecked /></label>
                         </OptionsWrapper>
                     </label>
                 </InputSection>
@@ -59,6 +68,13 @@ function Palette({ id, styling, changeStyling, changeButton, stylingButton }) {
                         <InputColor type="color" value={stylingButton.color} onChange={handleButtonColor} />
                     </InputSection>
 
+                    <label>Botón en negrita
+                        <OptionsWrapper>
+                            <label>Si<InputOption type="radio" onChange={handleWeightButton} value="bold" name="font-weight" /></label>
+                            <label>No<InputOption type="radio" onChange={handleWeightButton} value="normal" name="font-weight" defaultChecked /></label>
+                        </OptionsWrapper>
+                    </label>
+
                     <label>Bordes redondeados
                         <OptionsWrapper>
                             <label>Si<InputOption type="radio" onChange={handleBorderButton} value="30px" name="border-button" /></label>
@@ -66,6 +82,7 @@ function Palette({ id, styling, changeStyling, changeButton, stylingButton }) {
                         </OptionsWrapper>
                     </label>
 
+                    
                 </PaletteSection> : ""
             }
 
@@ -102,10 +119,19 @@ function Palette({ id, styling, changeStyling, changeButton, stylingButton }) {
         })
     }
 
-    function handleBorderRadius(event) {
+    function handleTopBorderRadius(event) {
         changeStyling({
             ...styling,
-            "border-radius": event.target.value
+            "border-top-left-radius": event.target.value,
+            "border-top-right-radius": event.target.value
+        })
+    }
+
+    function handleBottomBorderRadius(event) {
+        changeStyling({
+            ...styling,
+            "border-bottom-left-radius": event.target.value,
+            "border-bottom-right-radius": event.target.value
         })
     }
 
@@ -121,6 +147,13 @@ function Palette({ id, styling, changeStyling, changeButton, stylingButton }) {
         changeButton({
             ...stylingButton,
             color: event.target.value
+        })
+    }
+
+    function handleWeightButton(event) {
+        changeButton({
+            ...stylingButton,
+            "font-weight": event.target.value
         })
     }
 
@@ -178,6 +211,7 @@ const OptionsWrapper = styled.form`
         align-items: center;
         font-size: 16.5px;
         cursor: pointer;
+        margin-bottom: 10px;
     }
 `
 
