@@ -10,6 +10,19 @@ export default function Home() {
         <title>Crea BLOQUES GUTENBERG para Wordpress: SEO amistoso, rápido y sin plugins</title>
         <meta name="description" content="Crea bloques gutenberg para wordpress en nichos de SEO en Adsense o Amazon sin saber programar y sin plugins. SEO amistoso, rápido y adaptables a móvil." />
         <link rel="icon" href="/favicon.ico" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:description" content="Crea bloques gutenberg para wordpress en nichos de SEO en Adsense o Amazon sin saber programar y sin plugins. SEO amistoso, rápido y adaptables a móvil." />
+        <meta name="twitter:image" content="https://bg.manu-scholz.com/wp-content/uploads/2021/06/open-graph.jpg" />
+
+        <meta name="og:title" content="Crea elegantes BLOQUES GUTENBERG para Wordpress SEO amistoso, rápido y sin plugins" />
+        <meta name="og:description" content="Crea bloques gutenberg para wordpress en nichos de SEO en Adsense o Amazon sin saber programar y sin plugins. SEO amistoso, rápido y adaptables a móvil." />
+        <meta property="og:image" content="https://bg.manu-scholz.com/wp-content/uploads/2021/06/open-graph.jpg" />
+        <meta name="og:image" content="https://bg.manu-scholz.com/wp-content/uploads/2021/06/open-graph.jpg" />
+        <meta property="og:image:width" content="600" />
+        <meta property="og:image:height" content="550" />
+        <meta property="og:url" content="https://bloques-gutenberg.com/" />
+        <meta property="og:type" content="website" />
       </Head>
       <LandingTitle>Crear Bloques en Wordpress <span style={{
         textDecoration: "line-through",
@@ -83,14 +96,14 @@ export default function Home() {
           </LandingInfoWrapper>
         </LandingInfo>
         <LandingInfo>
-        <LandingInfoTitle>Aprende a crear uno y publicarlo en 1 minuto</LandingInfoTitle>
-        <LandingInfoWrapper>
-          <LandingInfoBox style={{alignItems: "center"}}>
-            <video width="850" controls>
-              <source src="/images/videos/create-block.mp4" type="video/mp4" />
-            </video>
-          </LandingInfoBox>
-        </LandingInfoWrapper>
+          <LandingInfoTitle>Aprende a crear uno y publicarlo en 1 minuto</LandingInfoTitle>
+          <LandingInfoWrapper>
+            <LandingInfoBox style={{ alignItems: "center" }}>
+              <video width="850" controls>
+                <source src="/images/videos/create-block.mp4" type="video/mp4" />
+              </video>
+            </LandingInfoBox>
+          </LandingInfoWrapper>
         </LandingInfo>
         <LandingInfo>
           <LandingInfoTitle>Compatible con todas las plantillas de Wordpress</LandingInfoTitle>
@@ -110,7 +123,7 @@ export default function Home() {
           <LandingInfoTitle>Elige {'&'} Personaliza</LandingInfoTitle>
           <LandingInfoBoxDescr>Desbloquea todas las cajas y tablas premium <Link href="/registro">creando una cuenta</Link> gratis</LandingInfoBoxDescr>
           <LandingInfoWrapper>
-            <LandingInfoBox style={{width: "60%"}}>
+            <LandingInfoBox style={{ width: "60%" }}>
               <Gif src="/images/decoration/personalize-template-example.gif" />
             </LandingInfoBox>
           </LandingInfoWrapper>

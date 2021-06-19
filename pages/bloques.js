@@ -92,7 +92,7 @@ const TemplateListWrapper = styled.section`
         width: 95%;
         grid-template-columns: 1fr;
         & > * {
-            width: 90% !important;
+            width: 100% !important;
         }
     }
 `
