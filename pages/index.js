@@ -37,8 +37,9 @@ export default function Home() {
       </LandingTitle>
 
       <LandingWrapper>
-        <LandingSubtitle>Elige una plantilla y personaliza tu bloque gutenberg de Wordpress para SEO,
-          nichos de Amazon, Adsense y todo tipo de webs sin el uso de plugins
+        <LandingSubtitle>
+          Bloques gutenberg es una herramienta para crear, personalizar e integrar cajas informativas y tablas de productos
+          en tus nichos de Amazon, Adsense y todo tipo de webs sin instalar plugins
         </LandingSubtitle>
         <ArrowText arrowLeft>Plantillas Verticales <span>(Recomendado para Amazon)</span></ArrowText>
         <DecorationArrow
@@ -73,6 +74,14 @@ export default function Home() {
       <Wave src="/images/decoration/wave.svg/" />
       <LandingContent>
         <LandingInfo>
+          <AvatarWrapper>
+            <div>
+              <Avatar src="/images/decoration/avatar.jpg" />  
+            </div>
+            <div>
+              <AvatarDescr>Hola, soy Manuel Scholz, fundador de Bloques Gutenberg, puedes seguir el progreso de la construcción de esta herramienta en <a href="https://twitter.com/ImScholz" target="_blank" style={{color: "#34d399", textDecoration: "underline"}}>mi Twitter</a></AvatarDescr>
+            </div>
+          </AvatarWrapper>
           <LandingInfoTitle>Decora tu web, en segundos</LandingInfoTitle>
           <LandingInfoWrapper>
             <LandingInfoBox>
@@ -209,8 +218,20 @@ const DecorationArrow = styled.img`
     props.arrowLeft ? '70px' : '110px'};
     left: ${props =>
     props.arrowLeft ? '445px' : '-790px'};
-    @media(max-width: 768px) {
+    @media(max-width: 920px) {
         display: none;
+    }
+    @media(min-width: 1920px) {
+      top: ${props =>
+    props.arrowLeft ? '70px' : '110px'};
+      left: ${props =>
+    props.arrowLeft ? '485px' : '-830px'};
+    }
+    @media(min-width: 3840px) {
+      top: ${props =>
+    props.arrowLeft ? '70px' : '110px'};
+      left: ${props =>
+    props.arrowLeft ? '730px' : '-1065px'};
     }
     
 `
@@ -230,13 +251,21 @@ const ArrowText = styled.span`
       margin-left: 6px;
       color: white;
     }
-    @media(max-width: 768px) {
-        position: absolute;
-        top: ${props =>
-    props.arrowLeft ? '640px' : '465px'};
-        left: ${props =>
-    props.arrowLeft ? '35px' : '35px'};
-        font-size: 12px;
+    @media(max-width: 920px) {
+      display: none;
+    }
+
+    @media(min-width: 1920px) {
+      top: ${props =>
+    props.arrowLeft ? '10px' : '45px'};
+      left: ${props =>
+    props.arrowLeft ? '720px' : '-570px'};
+    }
+    @media(min-width: 3840px) {
+      top: ${props =>
+    props.arrowLeft ? '10px' : '45px'};
+      left: ${props =>
+    props.arrowLeft ? '990px' : '-820px'};
     }
 `
 
@@ -335,7 +364,6 @@ const LandingInfoBoxButton = styled.button`
     @media(max-width: 768px) {
       width: 50%;
     }
-
 `
 
 const Gif = styled.img`
@@ -344,4 +372,36 @@ const Gif = styled.img`
     @media(max-width: 768px) {
       margin-top: 16px;
     }
+`
+
+const AvatarWrapper = styled.div`
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 16px;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 32px;
+    border: 1px solid gray;
+    border-radius: 7px;
+    padding: 16px 24px;
+    & > div {
+      width: 100%;
+      margin: 0 auto;
+    }
+    @media(max-width: 768px) {
+      width: 100%;
+    }
+`
+
+const Avatar = styled.img`
+    width: 100%;
+    border-radius: 50%;
+    margin: 0 auto;
+    text-align: center;
+`
+
+const AvatarDescr = styled.span`
+    font-size: 14px;
+    color: lightgray;
 `

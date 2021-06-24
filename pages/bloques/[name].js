@@ -6,6 +6,7 @@ import AddFavorites from "../../components/AddFavorites.js";
 import RestrictedContent from "../../components/RestrictedContent";
 import Head from 'next/head'
 import { AuthContext } from '../../components/Firebase/AuthDAO';
+import {generateRandomId} from "../../lib/utils"
 
 function PersonalizeTemplate(props) {
 
@@ -20,15 +21,23 @@ function PersonalizeTemplate(props) {
         "border-top-left-radius": "0px",
         "border-top-right-radius": "0px",
         "border-bottom-left-radius": "0px",
-        "border-bottom-right-radius": "0px"
+        "border-bottom-right-radius": "0px",
+        "border":"1px solid #d3d3d3",
+        "border-color": "#d3d3d3"
     });
 
     const [stylingButton, changeButton] = useState({
         background: "#272c30",
         color: "#ffffff",
         "border-radius": "7px",
-        "font-weight":"normal"
+        "font-weight": "normal",
+        "padding-top":"10px",
+        "padding-bottom":"10px",
+        "padding-left":"20px",
+        "padding-right":"20px"
     })
+
+    const [id, inmutableId] = useState(generateRandomId());
 
     useEffect(() => {
         if (authUser !== "") {
@@ -36,7 +45,7 @@ function PersonalizeTemplate(props) {
             } else {
                 let btn = document.querySelectorAll(`.template${template.id} .wp-block-button a, .template${template.id} tr:last-child td a`);
                 if (btn != null) {
-                    for(let i = 0; i < btn.length ; i++) {
+                    for (let i = 0; i < btn.length; i++) {
                         btn[i].setAttribute("style", applyStyles().buttonStyles)
                     }
                 }
@@ -110,6 +119,39 @@ function PersonalizeTemplate(props) {
         )
     }
 
+    function applyStyles() {
+        let templateStyles = "";
+        let buttonStyles = "";
+
+        for (let key in styling) {
+            templateStyles += `${key}:${styling[key]}!important;`
+        }
+
+        for (let key in stylingButton) {
+            buttonStyles += `${key}:${stylingButton[key]}!important;`
+        }
+
+        concatOutputCss(templateStyles, buttonStyles)
+        return { templateStyles, buttonStyles }
+    }
+
+    function applyIdToHtml() {
+        // Empezar con el bloque normal
+        document.getElementById("html-output").value = template.TemplateHtml
+        // Obtener el indice del ultimo templateId
+        let index = template.TemplateHtml.lastIndexOf(`template${template.id}`);
+        // Value del html output
+        let value = document.getElementById("html-output").value
+        // cambiar el value del result
+        document.getElementById("html-output").value = value.substring(0, index) + `template${template.id} ${id}` + value.substring(index + `template${template.id}`.length)
+    }
+
+    function concatOutputCss(templateStyles, buttonStyles) {
+        let index = document.getElementById("css-output").value.indexOf("\n")
+        let str = document.getElementById("css-output").value.substring(0, index);
+        document.getElementById("css-output").value = `${str}\n.${id}{${templateStyles}}\n .${id} .wp-block-button a, .${id} tr:last-child td a {${buttonStyles}}\n `
+        applyIdToHtml();
+    }
 
     function showResult() {
         let codespace = document.getElementById("codespace");
@@ -141,28 +183,6 @@ function PersonalizeTemplate(props) {
         setTimeout(() => {
             copied.setAttribute("style", "display: none")
         }, 1500)
-    }
-
-    function applyStyles() {
-        let templateStyles = "";
-        let buttonStyles = "";
-
-        for (let key in styling) {
-            templateStyles += `${key}:${styling[key]}!important;`
-        }
-
-        for (let key in stylingButton) {
-            buttonStyles += `${key}:${stylingButton[key]}!important;`
-        }
-
-        concatOutputCss(templateStyles, buttonStyles)
-        return { templateStyles, buttonStyles }
-    }
-
-    function concatOutputCss(templateStyles, buttonStyles) {
-        let index = document.getElementById("css-output").value.indexOf("\n")
-        let str = document.getElementById("css-output").value.substring(0, index);
-        document.getElementById("css-output").value = `${str}\n .template${template.id}{${templateStyles}}\n .template${template.id} .wp-block-button a, .template${template.id} tr:last-child td a {${buttonStyles}}\n `
     }
 }
 
@@ -264,10 +284,15 @@ const DecorationArrow = styled.img`
         props.type === "box" ? '50px' : '30px'};
     left: ${props =>
         props.type === "box" ? '-450px' : '-210px'};
-    @media(max-width: 768px) {
+    @media(max-width: 920px) {
         display: none;
     }
-    
+    @media(max-width: 1280px) {
+        top: ${props =>
+            props.type === "box" ? '80px' : '80px'};
+        left: ${props =>
+            props.type === "box" ? '-400px' : '-390px'};
+    } 
 `
 
 const ArrowText = styled.span`
@@ -280,8 +305,26 @@ const ArrowText = styled.span`
     text-align: center;
     font-family: 'Texturina', serif;
     font-size: 19px;
-    @media(max-width: 768px) {
+    @media(max-width: 920px) {
         display: none;
+    }
+    @media(max-width: 1280px) {
+        top: ${props =>
+            props.type === "box" ? '-5px' : '-15px'};
+        left: ${props =>
+            props.type === "box" ? '-250px' : '-270px'};
+    }
+    @media(min-width: 1920px) {
+        top: ${props =>
+            props.type === "box" ? '-15px' : '-55px'};
+        left: ${props =>
+            props.type === "box" ? '-500px' : '-230px'};
+    }
+    @media(min-width: 3840px) {
+        top: ${props =>
+            props.type === "box" ? '-15px' : '-55px'};
+        left: ${props =>
+            props.type === "box" ? '-990px' : '-230px'};
     }
 `
 

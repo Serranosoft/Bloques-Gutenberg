@@ -19,7 +19,7 @@ function Header() {
             <Menu>
                 <DropdownMenuWrapper>
                     {/* <Link href="/blog">Blog »</Link> */}
-                    <a href="https://twitter.com/ImScholz" target="_blank">Beta: notificar errores por Twitter</a>
+                    <a href="https://bloques-gutenberg.com/blog/notas-parche-1-1" target="_blank">Beta v1.1: Notas del parche</a>
                     {/* <Link href="/enviar-idea">Envia tu idea »</Link> */}
                 </DropdownMenuWrapper>
             </Menu>

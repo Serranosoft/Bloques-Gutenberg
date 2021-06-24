@@ -15,7 +15,21 @@ function Palette({ id, styling, changeStyling, changeButton, stylingButton }) {
                 </InputSection>
 
                 <InputSection>
-                    <label>Bordes superiores redondeados
+                    <label>Colocar borde
+                        <OptionsWrapper>
+                            <label>Si<InputOption type="radio" onChange={handleBorder} value="1px solid #d3d3d3" name="border-template" defaultChecked /></label>
+                            <label>No<InputOption type="radio" onChange={handleBorder} value="0" name="border-template" /></label>
+                        </OptionsWrapper>
+                    </label>
+                </InputSection>
+
+                <InputSection>
+                    <label>Color del borde</label>
+                    <InputColor type="color" value={styling["border-color"]} onChange={handleBorderColor} />
+                </InputSection>
+
+                <InputSection>
+                    <label>Esquinas superiores redondeados
                         <OptionsWrapper>
                             <label>Si<InputOption type="radio" onChange={handleTopBorderRadius} value="30px" name="border-top-template" /></label>
                             <label>No<InputOption type="radio" onChange={handleTopBorderRadius} value="0px" name="border-top-template" defaultChecked /></label>
@@ -24,13 +38,14 @@ function Palette({ id, styling, changeStyling, changeButton, stylingButton }) {
                 </InputSection>
 
                 <InputSection>
-                    <label>Bordes inferiores redondeados
+                    <label>Esquinas inferiores redondeados
                         <OptionsWrapper>
                             <label>Si<InputOption type="radio" onChange={handleBottomBorderRadius} value="30px" name="border-bottom-template" /></label>
                             <label>No<InputOption type="radio" onChange={handleBottomBorderRadius} value="0px" name="border-bottom-template" defaultChecked /></label>
                         </OptionsWrapper>
                     </label>
                 </InputSection>
+
 
             </PaletteSection>
             <PaletteSection>
@@ -54,7 +69,7 @@ function Palette({ id, styling, changeStyling, changeButton, stylingButton }) {
                 </InputSection>
 
             </PaletteSection>
-            {id === 1 || id === 10 || id === 11 || id === 3 || id === 5 || id === 6 || id === 12?
+            {id === 1 || id === 10 || id === 11 || id === 3 || id === 5 || id === 6 || id === 12 ?
                 <PaletteSection>
                     <SectionTitle>BOTÓN</SectionTitle>
 
@@ -82,7 +97,19 @@ function Palette({ id, styling, changeStyling, changeButton, stylingButton }) {
                         </OptionsWrapper>
                     </label>
 
-                    
+                    <InputSection>
+                        <label>Relleno horizontal</label>
+                        <InputSlider type="range" value={parseInt(stylingButton["padding-left"].substring(0, 2))} onChange={handleHorizontalPadding} min="0" max="50" />
+                        <p>{parseInt(stylingButton["padding-left"].substring(0, 2))+parseInt(stylingButton["padding-right"].substring(0, 2))}px</p>
+                    </InputSection>
+
+                    <InputSection>
+                        <label>Relleno vertical</label>
+                        <InputSlider type="range" value={parseInt(stylingButton["padding-top"].substring(0, 2))} onChange={handleVerticalPadding} min="0" max="15" />
+                        <p>{parseInt(stylingButton["padding-top"].substring(0, 2))+parseInt(stylingButton["padding-bottom"].substring(0, 2))}px</p>
+                    </InputSection>
+
+
                 </PaletteSection> : ""
             }
 
@@ -135,6 +162,20 @@ function Palette({ id, styling, changeStyling, changeButton, stylingButton }) {
         })
     }
 
+    function handleBorder(event) {
+        changeStyling({
+            ...styling,
+            "border": event.target.value
+        })
+    }
+
+    function handleBorderColor(event) {
+        changeStyling({
+            ...styling,
+            "border-color": event.target.value
+        })
+    }
+
     /* BUTTON FUNCTIONS */
     function handleBgButtonColor(event) {
         changeButton({
@@ -161,6 +202,24 @@ function Palette({ id, styling, changeStyling, changeButton, stylingButton }) {
         changeButton({
             ...stylingButton,
             "border-radius": event.target.value
+        })
+    }
+
+    function handleVerticalPadding(event) {
+        console.log(event.target.value);
+        changeButton({
+            ...stylingButton,
+            "padding-top": event.target.value+"px",
+            "padding-bottom": event.target.value+"px"
+        })
+    }
+
+    function handleHorizontalPadding(event) {
+        console.log(event.target.value);
+        changeButton({
+            ...stylingButton,
+            "padding-left": event.target.value+"px",
+            "padding-right": event.target.value+"px"
         })
     }
 }
