@@ -306,9 +306,19 @@
 	.template5 > div:first-child tr td {
 		font-size: 16px;
 		line-height: 2;
+		text-align: center;
+	}
+	.template5 > div:nth-child(2) tr td {
+		text-align: center;
 	}
 	.template5 > div:nth-child(2) figure table tbody tr td img{
-		max-height: 200px;
+		width: 50%!important;
+	}
+}
+
+@media(max-width: 480px) {
+	.template5 > div:nth-child(2) figure table tbody tr td img{
+		width: 95%!important;
 	}
 }
 
