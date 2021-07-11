@@ -6,13 +6,18 @@ import AddFavorites from "../../components/AddFavorites.js";
 import RestrictedContent from "../../components/RestrictedContent";
 import Head from 'next/head'
 import { AuthContext } from '../../components/Firebase/AuthDAO';
-import {generateRandomId} from "../../lib/utils"
+import { DBContext } from "../../components/Firebase/UserDAO.js";
+import { generateRandomId } from "../../lib/utils"
+import StarRatingComponent from 'react-star-rating-component';
+import RateTemplate from "../../components/RateTemplate"
 
 function PersonalizeTemplate(props) {
 
     const template = props;
 
     const { authUser } = useContext(AuthContext);
+    const { getTemplateTotalRating } = useContext(DBContext)
+
     const [styling, changeStyling] = useState({
         color: "#1C1C1C",
         background: "#ffffff",
@@ -22,7 +27,7 @@ function PersonalizeTemplate(props) {
         "border-top-right-radius": "0px",
         "border-bottom-left-radius": "0px",
         "border-bottom-right-radius": "0px",
-        "border":"1px solid #d3d3d3",
+        "border": "1px solid #d3d3d3",
         "border-color": "#d3d3d3"
     });
 
@@ -31,38 +36,38 @@ function PersonalizeTemplate(props) {
         color: "#ffffff",
         "border-radius": "7px",
         "font-weight": "normal",
-        "padding-top":"10px",
-        "padding-bottom":"10px",
-        "padding-left":"20px",
-        "padding-right":"20px"
+        "padding-top": "10px",
+        "padding-bottom": "10px",
+        "padding-left": "20px",
+        "padding-right": "20px"
     })
 
     const [id, inmutableId] = useState(generateRandomId());
+    const [templateRating, getTotalRating] = useState(null);
+    const [isReady, handleReady] = useState(false)
 
     useEffect(() => {
-        if (authUser !== "") {
-            if (authUser === null && template.id === 1 || authUser === null && template.id === 6) {
-            } else {
-                let btn = document.querySelectorAll(`.template${template.id} .wp-block-button a, .template${template.id} tr:last-child td a`);
-                if (btn != null) {
-                    for (let i = 0; i < btn.length; i++) {
-                        btn[i].setAttribute("style", applyStyles().buttonStyles)
-                    }
+        if (isReady) {
+            let btn = document.querySelectorAll(`.template${template.id} .wp-block-button a, .template${template.id} tr:last-child td a`);
+            if (btn != null) {
+                for (let i = 0; i < btn.length; i++) {
+                    btn[i].setAttribute("style", applyStyles().buttonStyles)
                 }
             }
         }
-    }, [stylingButton, authUser])
+    }, [stylingButton, isReady])
 
     useEffect(() => {
-        if (authUser !== "") {
-            if (authUser === null && template.id === 1 || authUser === null && template.id === 6) {
-            } else {
-                document.querySelector(`.template${template.id}`).setAttribute("style", applyStyles().templateStyles)
-            }
+        if (isReady) {
+            document.querySelector(`.template${template.id}`).setAttribute("style", applyStyles().templateStyles)
         }
-    }, [styling, authUser])
+    }, [styling, isReady])
 
-    if (authUser !== "") {
+    useEffect(() => {
+        getTemplateTotalRating(template.id, getTotalRating)
+    }, [isReady])
+
+    if (isReady) {
         if (authUser === null && template.id === 1 || authUser === null && template.id === 6) {
             return (
                 <RestrictedContent />
@@ -83,6 +88,13 @@ function PersonalizeTemplate(props) {
                     <Workspace>
                         <DecorationArrow src="/images/decoration/curve-arrow-right.svg" className="scale-up-hor-right" type={template.type} />
                         <ArrowText className="scale-up-hor-right" type={template.type}>Así es como quedará en tu página web, visita la web en tu móvil para ver la versión adaptada</ArrowText>
+                        <div style={{ fontSize: 28, textAlign: "center" }}>
+                            <StarRatingComponent
+                                name={"templateRate"}
+                                value={templateRating}
+                                editing={false}
+                            />
+                        </div>
                         <div dangerouslySetInnerHTML={{ __html: template.TemplateHtml }}></div>
                         <Palette
                             id={template.id}
@@ -91,12 +103,18 @@ function PersonalizeTemplate(props) {
                             stylingButton={stylingButton}
                             changeButton={changeButton}
                         />
+                        <RateTemplate 
+                            isReady={isReady} 
+                            template={template} 
+                            authUser={authUser} 
+                            getTotalRating={getTotalRating} 
+                        />
+                        <Button onClick={showResult}>OBTENER CÓDIGO</Button>
                         <AddFavorites
                             template={template}
                             stylingButton={stylingButton}
                             styling={styling}
                         />
-                        <Button onClick={showResult}>OBTENER CÓDIGO</Button>
                     </Workspace>
                     <CodeSpace id="codespace">
                         <div>
@@ -114,6 +132,12 @@ function PersonalizeTemplate(props) {
             )
         }
     } else {
+        if (authUser !== "" && templateRating !== null) {
+            if (authUser === null && template.id === 1 || authUser === null && template.id === 6) {
+            } else {
+                handleReady(true)
+            }
+        }
         return (
             <div className="skeleton-2wv2iwtyaua"></div>
         )
@@ -136,13 +160,9 @@ function PersonalizeTemplate(props) {
     }
 
     function applyIdToHtml() {
-        // Empezar con el bloque normal
         document.getElementById("html-output").value = template.TemplateHtml
-        // Obtener el indice del ultimo templateId
         let index = template.TemplateHtml.lastIndexOf(`template${template.id}`);
-        // Value del html output
         let value = document.getElementById("html-output").value
-        // cambiar el value del result
         document.getElementById("html-output").value = value.substring(0, index) + `template${template.id} ${id}` + value.substring(index + `template${template.id}`.length)
     }
 
@@ -228,7 +248,7 @@ const Workspace = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 24px auto;
+    margin: 16px auto 24px auto;
     & > div {
         width: 100%;
     }
@@ -281,7 +301,7 @@ const DecorationArrow = styled.img`
     width: 50px;
     position: relative;
     top: ${props =>
-        props.type === "box" ? '50px' : '30px'};
+        props.type === "box" ? '80px' : '30px'};
     left: ${props =>
         props.type === "box" ? '-450px' : '-210px'};
     @media(max-width: 920px) {
@@ -289,16 +309,16 @@ const DecorationArrow = styled.img`
     }
     @media(max-width: 1280px) {
         top: ${props =>
-            props.type === "box" ? '80px' : '80px'};
+        props.type === "box" ? '80px' : '80px'};
         left: ${props =>
-            props.type === "box" ? '-400px' : '-390px'};
+        props.type === "box" ? '-400px' : '-390px'};
     } 
 `
 
 const ArrowText = styled.span`
     position: relative;
     top: ${props =>
-        props.type === "box" ? '-35px' : '-55px'};
+        props.type === "box" ? '-5px' : '-55px'};
     left: ${props =>
         props.type === "box" ? '-300px' : '-230px'};
     color: #34d399;
@@ -310,21 +330,21 @@ const ArrowText = styled.span`
     }
     @media(max-width: 1280px) {
         top: ${props =>
-            props.type === "box" ? '-5px' : '-15px'};
+        props.type === "box" ? '-5px' : '-15px'};
         left: ${props =>
-            props.type === "box" ? '-250px' : '-270px'};
+        props.type === "box" ? '-250px' : '-270px'};
     }
     @media(min-width: 1920px) {
         top: ${props =>
-            props.type === "box" ? '-15px' : '-55px'};
+        props.type === "box" ? '-15px' : '-55px'};
         left: ${props =>
-            props.type === "box" ? '-500px' : '-230px'};
+        props.type === "box" ? '-500px' : '-230px'};
     }
     @media(min-width: 3840px) {
         top: ${props =>
-            props.type === "box" ? '-15px' : '-55px'};
+        props.type === "box" ? '-15px' : '-55px'};
         left: ${props =>
-            props.type === "box" ? '-990px' : '-230px'};
+        props.type === "box" ? '-990px' : '-230px'};
     }
 `
 

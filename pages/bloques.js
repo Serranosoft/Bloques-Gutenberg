@@ -19,7 +19,7 @@ function TemplateList({ router: { query } }) {
     }, [])
 
     const ConditionalLink = ({ children, href, condition }) => (!condition && href)
-        ? <Link href={href}>{children}</Link>
+        ? <Link href={href} passHref>{children}</Link>
         : <PremiumContentWrapper>{children}</PremiumContentWrapper>;
 
     return (

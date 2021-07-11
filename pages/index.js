@@ -51,35 +51,35 @@ export default function Home() {
           src="/images/decoration/curve-arrow-right.svg"
           arrowRight />
         <OptionWrapper>
-          <Link href="/bloques"
-            href={{
-              pathname: '/bloques',
-              query: { optionChosed: "box" },
-            }}
-            as="/bloques"
-          >
-            <ImageOption src="/images/opcion-caja.png" />
+          <Link href={{
+            pathname: '/bloques',
+            query: { optionChosed: "box" },
+          }} as="/bloques" passHref>
+            <a>
+              <ImageOption src="/images/opcion-caja.png" />
+            </a>
           </Link>
-          <Link
-            href={{
-              pathname: '/bloques',
-              query: { optionChosed: "table" },
-            }}
-            as="/bloques"
-          >
-            <ImageOption src="/images/opcion-tabla2.png" />
+          <Link href={{
+            pathname: '/bloques',
+            query: { optionChosed: "table" },
+          }} as="/bloques" passHref>
+            <a>
+              <ImageOption src="/images/opcion-tabla2.png" />
+            </a>
           </Link>
         </OptionWrapper>
       </LandingWrapper>
-      <Wave src="/images/decoration/wave.svg/" />
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200">
+        <path fill="#151b24" fill-opacity="1" d="M0,0L48,10.7C96,21,192,43,288,74.7C384,107,480,149,576,144C672,139,768,85,864,85.3C960,85,1056,139,1152,154.7C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
       <LandingContent>
         <LandingInfo>
           <AvatarWrapper>
             <div>
-              <Avatar src="/images/decoration/avatar.jpg" />  
+              <Avatar src="/images/decoration/avatar.jpg" />
             </div>
             <div>
-              <AvatarDescr>Hola, soy Manuel Scholz, fundador de Bloques Gutenberg, puedes seguir el progreso de la construcción de esta herramienta en <a href="https://twitter.com/ImScholz" target="_blank" style={{color: "#34d399", textDecoration: "underline"}}>mi Twitter</a></AvatarDescr>
+              <AvatarDescr>Hola, soy Manuel Scholz, fundador de Bloques Gutenberg, puedes seguir el progreso de la construcción de esta herramienta en <a href="https://twitter.com/ImScholz" target="_blank" style={{ color: "#34d399", textDecoration: "underline" }}>mi Twitter</a></AvatarDescr>
             </div>
           </AvatarWrapper>
           <LandingInfoTitle>Decora tu web, en segundos</LandingInfoTitle>
@@ -87,20 +87,30 @@ export default function Home() {
             <LandingInfoBox>
               <LandingInfoBoxTitle>Cajas Informativas</LandingInfoBoxTitle>
               <LandingInfoBoxDescr>Construye tus artículos, plantillas o páginas con elegantes y personalizables cajas con el objetivo de mostrar información mas clara y mejorar tu marca.</LandingInfoBoxDescr>
-              <Link href={{
-                pathname: '/bloques',
-                query: { optionChosed: "box" },
-              }}
-                as="/bloques"><LandingInfoBoxButton>Elige una Caja</LandingInfoBoxButton></Link>
+              <LandingInfoBoxButton>
+                <Link href={{
+                  pathname: '/bloques',
+                  query: { optionChosed: "box" },
+                }} as="/bloques" passHref>
+                  <a>
+                    Elige una Caja
+                  </a>
+                </Link>
+              </LandingInfoBoxButton>
             </LandingInfoBox>
             <LandingInfoBox>
               <LandingInfoBoxTitle>Tablas de Productos</LandingInfoBoxTitle>
               <LandingInfoBoxDescr>Elabora listas de productos de Amazon Afiliados o destaca un producto diferenciandote de la competencia optimizando tu nicho y mejorando la conversión.</LandingInfoBoxDescr>
-              <Link href={{
-                pathname: '/bloques',
-                query: { optionChosed: "table" },
-              }}
-                as="/bloques"><LandingInfoBoxButton>Elige una Tabla</LandingInfoBoxButton></Link>
+              <LandingInfoBoxButton>
+                <Link href={{
+                  pathname: '/bloques',
+                  query: { optionChosed: "table" },
+                }} as="/bloques" passHref>
+                  <a>
+                    Elige una Tabla
+                  </a>
+                </Link>
+              </LandingInfoBoxButton>
             </LandingInfoBox>
           </LandingInfoWrapper>
         </LandingInfo>
@@ -348,16 +358,20 @@ const LandingInfoBoxDescr = styled.span`
 
 const LandingInfoBoxButton = styled.button`
     width: 35%;
-    padding: 10px 16px;
     margin: 24px 0;
     background: #1f6952;
     font-size: 17px;
     text-align: center;
-    color: white;
     cursor: pointer;
     transition: 0.5s;
     border: 0;
     border-radius: 3px;
+    & > a {
+      display: block;
+      padding: 10px 16px;
+      text-decoration: none;
+      color: white;
+    }
     &:hover {
         transform: scale(0.95);
     }

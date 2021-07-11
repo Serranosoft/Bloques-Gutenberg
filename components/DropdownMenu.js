@@ -18,27 +18,33 @@ function DropdownMenu() {
     return (
         <div>
             {!authUser && authUser !== "" ?
-                <> 
-                    <DropdownMenuWrapper>
-                        <LinkWrapper href="/registro">
-                            <span>Registro</span>
-                        </LinkWrapper>
-                    </DropdownMenuWrapper>
-                    <DropdownMenuWrapper>
-                        <LinkWrapper href="/iniciar-sesion">
-                            <span>Iniciar Sesión</span>
-                        </LinkWrapper>
-                    </DropdownMenuWrapper>
+                <>
+                    <Link href="/registro" passHref>
+                        <a>
+                            <DropdownMenuWrapper>
+                                <span>Registro</span>
+                            </DropdownMenuWrapper>
+                        </a>
+                    </Link>
+                    <Link href="/iniciar-sesion">
+                        <a>
+                            <DropdownMenuWrapper>
+                                <span>Iniciar Sesión</span>
+                            </DropdownMenuWrapper>
+                        </a>
+                    </Link>
                 </>
                 :
-                <DropdownMenuWrapper>
-                    <LinkWrapper href="/cuenta">
-                        <span>{userName !== "" ? userName : "Cargando..."}</span>
-                    </LinkWrapper>
-                    <DropdownContent>
-                        <DropdownOption onClick={closeSession}>Cerrar Sesión</DropdownOption>
-                    </DropdownContent>
-                </DropdownMenuWrapper>
+                <Link href="/cuenta" passHref>
+                    <a>
+                        <DropdownMenuWrapper>
+                            <span>{userName !== "" ? userName : "Cargando..."}</span>
+                            <DropdownContent>
+                                <DropdownOption onClick={closeSession}>Cerrar Sesión</DropdownOption>
+                            </DropdownContent>
+                        </DropdownMenuWrapper>
+                    </a>
+                </Link>
             }
         </div>
     )
