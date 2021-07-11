@@ -68,72 +68,67 @@ function PersonalizeTemplate(props) {
     }, [isReady])
 
     if (isReady) {
-        if (authUser === null && template.id === 1 || authUser === null && template.id === 6) {
-            return (
-                <RestrictedContent />
-            )
-        } else {
-            return (
-                <>
-                    <Head>
-                        <title>Personalizar: {template.name.replace(/-/g, ' ')} - Bloques Gutenberg</title>
-                        <meta name="description" content="Diseña y personaliza tu bloque gutenberg: tabla o caja para tu nicho SEO de Amazon Afiliados o Adsense en Wordpress" />
-                        <link rel="icon" href="/favicon.ico" />
-                    </Head>
-                    <LandingTitle>Personaliza tu  <span style={{
-                        color: "#34d399",
-                        textAlign: "center"
-                    }}>plantilla</span></LandingTitle>
+        return (
+            <>
+                <Head>
+                    <title>Personalizar: {template.name.replace(/-/g, ' ')} - Bloques Gutenberg</title>
+                    <meta name="description" content="Diseña y personaliza tu bloque gutenberg: tabla o caja para tu nicho SEO de Amazon Afiliados o Adsense en Wordpress" />
+                    <link rel="icon" href="/favicon.ico" />
+                </Head>
+                <LandingTitle>Personaliza tu  <span style={{
+                    color: "#34d399",
+                    textAlign: "center"
+                }}>plantilla</span></LandingTitle>
 
-                    <Workspace>
-                        <DecorationArrow src="/images/decoration/curve-arrow-right.svg" className="scale-up-hor-right" type={template.type} />
-                        <ArrowText className="scale-up-hor-right" type={template.type}>Así es como quedará en tu página web, visita la web en tu móvil para ver la versión adaptada</ArrowText>
-                        <div style={{ fontSize: 28, textAlign: "center" }}>
-                            <StarRatingComponent
-                                name={"templateRate"}
-                                value={templateRating}
-                                editing={false}
-                            />
-                        </div>
-                        <div dangerouslySetInnerHTML={{ __html: template.TemplateHtml }}></div>
-                        <Palette
-                            id={template.id}
-                            styling={styling}
-                            changeStyling={changeStyling}
-                            stylingButton={stylingButton}
-                            changeButton={changeButton}
+                <Workspace>
+                    <DecorationArrow src="/images/decoration/curve-arrow-right.svg" className="scale-up-hor-right" type={template.type} />
+                    <ArrowText className="scale-up-hor-right" type={template.type}>Así es como quedará en tu página web, visita la web en tu móvil para ver la versión adaptada</ArrowText>
+                    <div style={{ fontSize: 28, textAlign: "center" }}>
+                        <StarRatingComponent
+                            name={"templateRate"}
+                            value={templateRating}
+                            editing={false}
                         />
-                        <RateTemplate 
-                            isReady={isReady} 
-                            template={template} 
-                            authUser={authUser} 
-                            getTotalRating={getTotalRating} 
-                        />
-                        <Button onClick={showResult}>OBTENER CÓDIGO</Button>
-                        <AddFavorites
-                            template={template}
-                            stylingButton={stylingButton}
-                            styling={styling}
-                        />
-                    </Workspace>
-                    <CodeSpace id="codespace">
-                        <div>
-                            <p>Cópialo en la entrada/página de tu Wordpress para pegar el bloque</p>
-                            <HtmlGenerated id="html-output" value={template.TemplateHtml} readOnly onClick={HtmlClipBoard}></HtmlGenerated>
-                            <SuccessfulMessage id="html-copied" className="slide-top">¡Copiado!</SuccessfulMessage>
-                        </div>
-                        <div>
-                            <p>Cópialo en CSS Adicional (Personalizar {'>'} CSS Adicional)</p>
-                            <HtmlGenerated id="css-output" value={template.TemplateCss} readOnly onClick={CssClipBoard}></HtmlGenerated>
-                            <SuccessfulMessage id="css-copied" className="slide-top">¡Copiado!</SuccessfulMessage>
-                        </div>
-                    </CodeSpace>
-                </>
-            )
-        }
+                    </div>
+                    <div dangerouslySetInnerHTML={{ __html: template.TemplateHtml }}></div>
+                    <Palette
+                        id={template.id}
+                        styling={styling}
+                        changeStyling={changeStyling}
+                        stylingButton={stylingButton}
+                        changeButton={changeButton}
+                    />
+                    <RateTemplate
+                        isReady={isReady}
+                        template={template}
+                        authUser={authUser}
+                        getTotalRating={getTotalRating}
+                    />
+                    <Button onClick={showResult}>OBTENER CÓDIGO</Button>
+                    <AddFavorites
+                        template={template}
+                        stylingButton={stylingButton}
+                        styling={styling}
+                    />
+                </Workspace>
+                <CodeSpace id="codespace">
+                    <div>
+                        <p>Cópialo en la entrada/página de tu Wordpress para pegar el bloque</p>
+                        <HtmlGenerated id="html-output" value={template.TemplateHtml} readOnly onClick={HtmlClipBoard}></HtmlGenerated>
+                        <SuccessfulMessage id="html-copied" className="slide-top">¡Copiado!</SuccessfulMessage>
+                    </div>
+                    <div>
+                        <p>Cópialo en CSS Adicional (Personalizar {'>'} CSS Adicional)</p>
+                        <HtmlGenerated id="css-output" value={template.TemplateCss} readOnly onClick={CssClipBoard}></HtmlGenerated>
+                        <SuccessfulMessage id="css-copied" className="slide-top">¡Copiado!</SuccessfulMessage>
+                    </div>
+                </CodeSpace>
+            </>
+        )
     } else {
         if (authUser !== "" && templateRating !== null) {
             if (authUser === null && template.id === 1 || authUser === null && template.id === 6) {
+                return (<RestrictedContent />)
             } else {
                 handleReady(true)
             }

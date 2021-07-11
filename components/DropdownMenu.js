@@ -35,16 +35,18 @@ function DropdownMenu() {
                     </Link>
                 </>
                 :
-                <Link href="/cuenta" passHref>
-                    <a>
-                        <DropdownMenuWrapper>
-                            <span>{userName !== "" ? userName : "Cargando..."}</span>
-                            <DropdownContent>
-                                <DropdownOption onClick={closeSession}>Cerrar Sesión</DropdownOption>
-                            </DropdownContent>
-                        </DropdownMenuWrapper>
-                    </a>
-                </Link>
+                <DropdownMenuWrapper logged>
+                    <Link href="/cuenta" passHref>
+                        <a>
+                            <div>
+                                <span>{userName !== "" ? userName : "Cargando..."}</span>
+                            </div>
+                        </a>
+                    </Link>
+                    <DropdownContent>
+                        <DropdownOption onClick={closeSession}>Cerrar Sesión</DropdownOption>
+                    </DropdownContent>
+                </DropdownMenuWrapper>
             }
         </div>
     )
@@ -55,15 +57,23 @@ export default DropdownMenu;
 
 const DropdownMenuWrapper = styled.div`
     display: inline-block;
-    padding: 8px 24px;
+    padding: ${props =>
+        props.logged ? '0px' : '8px 24px'};
+    color: white;
     border-radius: 15px;
     border: 1px solid #34d399;
     cursor: pointer;
-    color: white;
     margin: 8px 18px;
-    transition: 1s;
+    transition: .7s;
+    & > a {
+        padding: ${props =>
+            props.logged ? '8px 24px' : '0px'};
+        display: block;
+        color: white;
+        text-decoration: none;
+    } 
     &:hover {
-        transform: scale(0.92);   
+        transform: scale(0.95);   
     }
     &:hover > div {
         display: block;
@@ -73,7 +83,7 @@ const DropdownMenuWrapper = styled.div`
 const DropdownContent = styled.div`
     display: none;
     position: absolute;
-    margin: 8px 0;
+    margin: 0px 0;
     background-color: #11171f;
     box-shadow: 0px 8px 16px 0px black;
     z-index: 1;
@@ -85,9 +95,4 @@ const DropdownContent = styled.div`
 const DropdownOption = styled.span`
     padding: 16px 16px;
     display: block;
-`
-
-const LinkWrapper = styled(Link)`
-    color: white;
-    text-decoration: none;
 `
