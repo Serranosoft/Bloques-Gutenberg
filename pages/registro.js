@@ -234,16 +234,16 @@ const Input = styled.input`
 
 const Button = styled.button`
     width: 100%;
-    padding: 10px 24px;
+    padding: 16px 24px;
     margin: 16px auto;
     background: #1f6952;
-    font-size: 17px;
+    font-size: 20px;
     text-align: center;
     color: white;
     cursor: pointer;
     transition: 0.5s;
     border: 0;
-    border-radius: 3px;
+    border-radius: 30px;
     &:hover {
         transform: scale(0.95);
     }

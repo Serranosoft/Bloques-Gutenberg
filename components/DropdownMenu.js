@@ -78,6 +78,14 @@ const DropdownMenuWrapper = styled.div`
     &:hover > div {
         display: block;
     }
+    @media(max-width:768px) {
+        padding: ${props =>
+            props.logged ? '0 8px' : '8px 16px'};
+        margin: 8px;
+        & > span {
+            font-size: 13px;
+        }
+    }
 `
 
 const DropdownContent = styled.div`

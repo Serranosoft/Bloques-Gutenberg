@@ -277,7 +277,7 @@ const HtmlGenerated = styled.textarea`
 
 const Button = styled.button`
     width: 65%;
-    padding: 10px 24px;
+    padding: 16px 24px;
     margin: 16px auto;
     background: #1f6952;
     font-size: 17px;
@@ -286,7 +286,7 @@ const Button = styled.button`
     cursor: pointer;
     transition: 0.5s;
     border: 0;
-    border-radius: 3px;
+    border-radius: 30px;
     &:hover {
         transform: scale(0.95);
     }
@@ -296,7 +296,7 @@ const DecorationArrow = styled.img`
     width: 50px;
     position: relative;
     top: ${props =>
-        props.type === "box" ? '80px' : '30px'};
+        props.type === "box" ? '80px' : '70px'};
     left: ${props =>
         props.type === "box" ? '-450px' : '-210px'};
     @media(max-width: 920px) {
@@ -313,7 +313,7 @@ const DecorationArrow = styled.img`
 const ArrowText = styled.span`
     position: relative;
     top: ${props =>
-        props.type === "box" ? '-5px' : '-55px'};
+        props.type === "box" ? '-5px' : '-15px'};
     left: ${props =>
         props.type === "box" ? '-300px' : '-230px'};
     color: #34d399;

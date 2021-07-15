@@ -29,4 +29,7 @@ const MainSection = styled.section`
     flex-direction: column;
     align-items: center;
     padding: 40px 0;
+    @media(max-width: 768px) {
+      padding: 16px 0px;
+    }
 `

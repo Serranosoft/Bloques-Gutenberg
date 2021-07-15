@@ -16,11 +16,11 @@ function Header() {
                     </HeaderTitle>
                 </a>
             </Link>
-            <Menu>
+{/*             <Menu>
                 <DropdownMenuWrapper>
-                    {/* <Link href="/enviar-idea">Envia tu idea »</Link> */}
+                    <Link href="/enviar-idea">Envia tu idea »</Link>
                 </DropdownMenuWrapper>
-            </Menu>
+            </Menu> */}
             <DropdownMenu />
         </HeaderSection>
     )
@@ -36,8 +36,9 @@ const HeaderSection = styled.header`
   align-items: center;
   justify-content: space-between;
   @media(max-width: 768px) {
-      flex-direction: column;
-      padding: 10px 8px;
+      padding: 8px;
+      flex-direction: row;
+      align-items: center;
   }
   & > a {
       text-decoration: none;
@@ -53,15 +54,16 @@ const HeaderTitle = styled.div`
     font-weight: bold;
     font-family: 'Texturina', serif;
     & > img {
-        align-self: start;
-        width: 25px;
+        width: 40px;
         color: white;
-        margin: 0 5px;
+        margin: 8px 12px;
     }
     @media(max-width: 768px) {
         display: block;
-        font-size: 18px;
-        margin: 8px 0;
+        
+        & > span {
+            display: none;
+        }
     }
 `
 
