@@ -7,20 +7,20 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Crea BLOQUES GUTENBERG para Wordpress: SEO amistoso, rápido y sin plugins</title>
-        <meta name="description" content="Crea bloques gutenberg para wordpress en nichos de SEO en Adsense o Amazon sin saber programar y sin plugins. SEO amistoso, rápido y adaptables a móvil." />
+        <title>Elige &#38; Personaliza Bloques para Wordpress sin instalar Plugins</title>
+        <meta name="description" content="Elige y personaliza un bloque gutenberg (Adsense y Amazon) sin instalar plugins en tu página web, optimizados y adaptado a todos los dispositivos." />
         <link rel="icon" href="/favicon.ico" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:description" content="Crea bloques gutenberg para wordpress en nichos de SEO en Adsense o Amazon sin saber programar y sin plugins. SEO amistoso, rápido y adaptables a móvil." />
-        <meta name="twitter:image" content="https://bg.manu-scholz.com/wp-content/uploads/2021/06/open-graph.jpg" />
+        <meta name="twitter:description" content="Elige y personaliza un bloque gutenberg (Adsense y Amazon) sin instalar plugins en tu página web, optimizados y adaptado a todos los dispositivos." />
+        <meta name="twitter:image" content="https://bg.manu-scholz.com/wp-content/uploads/2021/07/bloques-gutenberg-twitter2.jpg" />
 
-        <meta name="og:title" content="Crea elegantes BLOQUES GUTENBERG para Wordpress SEO amistoso, rápido y sin plugins" />
-        <meta name="og:description" content="Crea bloques gutenberg para wordpress en nichos de SEO en Adsense o Amazon sin saber programar y sin plugins. SEO amistoso, rápido y adaptables a móvil." />
-        <meta property="og:image" content="https://bg.manu-scholz.com/wp-content/uploads/2021/06/open-graph.jpg" />
-        <meta name="og:image" content="https://bg.manu-scholz.com/wp-content/uploads/2021/06/open-graph.jpg" />
-        <meta property="og:image:width" content="600" />
-        <meta property="og:image:height" content="550" />
+        <meta name="og:title" content="Elige y Personaliza Bloques para Wordpress sin Plugins" />
+        <meta name="og:description" content="Elige y personaliza un bloque gutenberg (Adsense y Amazon) sin instalar plugins en tu página web, optimizados y adaptado a todos los dispositivos" />
+        <meta property="og:image" content="https://bg.manu-scholz.com/wp-content/uploads/2021/07/bloques-gutenberg-twitter2.jpg" />
+        <meta name="og:image" content="https://bg.manu-scholz.com/wp-content/uploads/2021/07/bloques-gutenberg-twitter2.jpg" />
+        {/* <meta property="og:image:width" content="600" />
+        <meta property="og:image:height" content="550" /> */}
         <meta property="og:url" content="https://bloques-gutenberg.com/" />
         <meta property="og:type" content="website" />
       </Head>
@@ -85,28 +85,28 @@ export default function Home() {
           <div>
             <img src="/images/decoration/feature1.svg" />
             <LandingInfoBoxDescr>
-            Ahorra tiempo creando bloques atractivos para destacar información
+              Ahorra tiempo creando bloques atractivos para destacar información
             </LandingInfoBoxDescr>
             <span>&lt; de 1 mínuto</span>
           </div>
           <div>
             <img src="/images/decoration/feature2.svg" />
             <LandingInfoBoxDescr>
-            Mejora las métricas LCP, FID y CLS con bloques sin instalar plugins
+              Mejora las métricas LCP, FID y CLS con bloques sin instalar plugins
             </LandingInfoBoxDescr>
             <span>20% mejora en LCP</span>
           </div>
           <div>
             <img src="/images/decoration/feature3.svg" />
             <LandingInfoBoxDescr>
-            Edita los textos, colores y formas de todos los diseños para crear tu propia marca
+              Edita los textos, colores y formas de todos los diseños para crear tu propia marca
             </LandingInfoBoxDescr>
             <span>Diferente a la competencia</span>
           </div>
           <div>
             <img src="/images/decoration/feature4.svg" />
             <LandingInfoBoxDescr>
-            La lista de bloques y tablas se amplía y se actualizan mejorando su rendimiento
+              La lista de bloques y tablas se amplía y se actualizan mejorando su rendimiento
             </LandingInfoBoxDescr>
             <span>Producto actual</span>
           </div>
