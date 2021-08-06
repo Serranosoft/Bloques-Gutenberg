@@ -7,7 +7,7 @@ import Link from "next/link";
 
 
 export async function getStaticProps({ params }) {
-    const data = await getPostBySlug(params.slug)
+    const data = await getPostBySlug("blog", params.slug)
 
     return {
         props: {

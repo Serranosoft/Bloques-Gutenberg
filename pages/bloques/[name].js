@@ -231,7 +231,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
     const name = context.params.name;
-    const data = await getPostBySlug(context.params.name)
+    const data = await getPostBySlug("bloques", context.params.name)
     return {
         props: {
             template: Templates.find((el) => el.name === name),
