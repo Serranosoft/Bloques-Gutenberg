@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import styled from "@emotion/styled"
 import { DBContext } from "./Firebase/UserDAO";
 import { AuthContext } from "./Firebase/AuthDAO"
-
+import {SuccessfulMessage, ErrorMessage} from "../styles/styledComponents"
 
 function AddFavorites({ template, stylingButton, styling }) {
 
@@ -37,18 +37,17 @@ function AddFavorites({ template, stylingButton, styling }) {
                     TemplateCss: `${template.TemplateCss}\n .template${template.id}{${templateStyles}}\n .template${template.id} .wp-block-button a, .template${template.id} tr:last-child td {${buttonStyles}}\n`
                 }
     
-                console.log(templateFavorite);
                 setFavorite(authUser.uid, templateFavorite)
                 setInputValues(initialState)
-                document.getElementById("error-msg").innerHTML = ""
-                document.getElementById("success-msg").innerHTML = "Plantilla guardada con éxito"
+                document.getElementById("favorite-error").innerHTML = ""
+                document.getElementById("favorite-sucess").innerHTML = "Plantilla guardada con éxito"
             } else {
-                document.getElementById("error-msg").innerHTML = "Introduce algún nombre"
-                document.getElementById("success-msg").innerHTML = ""
+                document.getElementById("favorite-error").innerHTML = "Introduce algún nombre"
+                document.getElementById("favorite-sucess").innerHTML = ""
             }
 
         } else {
-            document.getElementById("error-msg").innerHTML = "Inicia sesión o registrate para guardar en favoritos"
+            document.getElementById("favorite-error").innerHTML = "Inicia sesión o registrate para guardar en favoritos"
         }
 
     }
@@ -60,7 +59,6 @@ function AddFavorites({ template, stylingButton, styling }) {
 
     return (
         <>
-            <ErrorMessage id="error-msg"></ErrorMessage>
             <AddFavoritesWrapper>
                 <Input
                     type="text"
@@ -72,7 +70,8 @@ function AddFavorites({ template, stylingButton, styling }) {
                 />
                 <Button onClick={setFavoriteTemplate}>Guardar</Button>
             </AddFavoritesWrapper>
-            <SuccessfulMessage id="success-msg"></SuccessfulMessage>
+            <SuccessfulMessage id="favorite-sucess"></SuccessfulMessage>
+            <ErrorMessage id="favorite-error"></ErrorMessage>
         </>
     )
 
@@ -122,16 +121,4 @@ const Button = styled.button`
     &:hover {
         transform: scale(0.95);
     }
-`
-
-const ErrorMessage = styled.span`
-    font-size: 13px;
-    color: red;
-    flex: 1;
-`
-
-const SuccessfulMessage = styled.span`
-    font-size: 13px;
-    color: #2b702f;
-    flex: 1;
 `

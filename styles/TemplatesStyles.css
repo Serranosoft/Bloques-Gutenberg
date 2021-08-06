@@ -2,7 +2,7 @@
 .template1 {
     display: flex;
     align-items: center;
-	width: 100%;
+	width: 80%;
 	background: #faf5f0;
 	border: 1px solid gray;
 	margin: 8px auto;
@@ -80,12 +80,12 @@
 /* TEMPLATE 2 */
 
 .template2 {
-	width: 100%;
+	width: 95%;
 	display: flex;
 	flex-wrap: wrap;
 	transition: 1s;
-	background: transparent;
 	padding: 8px 4px;
+	margin: 0 auto;
 }
 
 .template2 h3 {
@@ -126,12 +126,11 @@
 /* TEMPLATE 3*/
 
 .template3 {
-	width: 100%;
+	width: 80%;
 	margin: 0 auto;
 	border: 1px solid lightgray;
 	padding: 16px 24px;
 	overflow-x: auto;
-	background-color: #ebeff4;
 	transition: 1s;
 	text-align: center;
 }
@@ -233,7 +232,7 @@
 /* TEMPLATE 5 */
 
 .template5 {
-	width: 95%;
+	width: 80%;
 	display: flex;
 	flex-wrap: wrap;
 	border: 1px solid lightgray;
@@ -325,7 +324,7 @@
 /* TEMPLATE 6 */
 
 .template6 {
-	width: 47%;
+	width: 35%;
 	margin: 16px auto;
 	padding: 24px 24px;
 	border: 1px solid lightgray;
@@ -385,7 +384,7 @@
 /* TEMPLATE 10 */
 
 .template10 {
-	width: 50%;
+	width: 40%;
 	margin: 8px auto;
 	border: 2px solid black;
 	overflow-x: auto;
@@ -443,7 +442,7 @@
 /* TEMPLATE 11 */
 
 .template11 {
-	width: 45%;
+	width: 35%;
 	border: 2px solid lightgray;
 	padding: 8px 16px;
 	margin: 8px auto;
@@ -570,10 +569,12 @@
 /* TEMPLATE 13 */
 
 .template13 {
+	width: 90%;
 	display: flex;
 	padding: 16px;
 	transition: 1s;
 	flex-wrap: wrap;
+	margin: 0 auto;
 }
 
 .template13 > div {
@@ -599,4 +600,131 @@
 }
 .template13 > div tr:nth-child(3) td {
 	font-size: 13.5px;
+}
+
+/* TEMPLATE 14 */
+
+.template14 {
+	width: 70%;
+	display: flex;
+	flex-wrap: wrap;
+	text-align: center;
+	margin: 0 auto;
+	transition: 1s;
+}
+
+.template14 img {
+	width: 100% !important;
+	max-height: 230px;
+}
+
+.template14 table tr td {
+	border: 0;
+	padding: 8px 16px;
+}
+
+.template14 table tr:nth-child(2) td {
+	line-height: 2;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.template14 table tr:nth-child(n+3) td {
+	font-size: 16px;
+	text-align: left;
+}
+
+.template14 table tr:nth-child(n+4) td {
+	text-align: center;
+	line-height: 1.5;
+}
+
+.template14 table tr:nth-last-child(2) td {
+	font-size: 56px;
+}
+
+.template14 table tr:last-child td a{
+	border:1px solid #000;
+	font-weight:700;
+	font-size:20px;
+	text-decoration:none;
+	line-height:3.5;
+	transition: 0.7s;
+}
+
+@media(max-width: 768px) {
+	.template14 {
+		width: 100%;
+	}
+	.template14 table tr:nth-child(2) td {
+	line-height: 1.3;
+	font-size: 26px;
+	font-weight: bold;
+	}
+	.template14 table tr:nth-child(n+3) td {
+	text-align: center;
+	}
+}
+
+/* TEMPLATE 15 */
+
+.template15 {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.template15 > div {
+	width: 100%;
+	flex-basis: 0;
+	flex-grow: 1;
+}
+
+.template15 > div figure img {
+	width: 100%;
+}
+
+.template15 table tr td {
+	border: 0;
+}
+
+.template15 div:nth-child(2) tr:first-child td {
+	font-size: 26px;
+	font-weight: bold;
+	line-height: 2;
+}
+
+.template15 div:nth-child(2) tr:nth-child(2) td {
+	font-size: 13.5px;
+}
+
+.template15 div:nth-child(2) tr:nth-child(3) td {
+	font-size: 32px;
+	line-height: 2;
+}
+
+.template15 div:nth-child(2) tr:nth-child(4) td a{
+	border: 1px solid #000;
+	font-weight: 700;
+	font-size: 16px;
+	text-decoration: none;
+	line-height: 3.5;
+	transition: 0.7s;
+}
+
+.template15 .wp-block-column:not(:first-child) {
+	margin-left: 16px;
+}
+
+@media(max-width: 920px) {
+	.template15 .wp-block-column {
+		flex-basis: 100% !important;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.template15 div:nth-child(2) tr td {
+		text-align: center;
+	}
 }

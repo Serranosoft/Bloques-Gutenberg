@@ -222,8 +222,38 @@ const Templates = [
         `,
         TemplateCss: ".template13>div figure{margin:3px;}.template13{padding:4px 8px}.template13 table tr td{border:0}.template13>div tr:nth-child(2) td:after{display:block;content:\"\"\;width:30%;margin:8px auto;border-top:1px solid gray}.template13>div tr:nth-child(3) td{font-size:14px}.entry-content>:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce){max-width:65%}@media(max-width:768px){.entry-content>:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce){max-width:95%}}\n",
         TemplateImg: "../images/box-template13.jpg"
-
+    },
+    {
+        id: 14,
+        name: "tabla-para-vender-servicios-detallado",
+        type: "table",
+        TemplateHtml:`<!-- wp:table {"align":"full","className":"template14 "} -->
+        <figure class="wp-block-table alignfull template14"><table><tbody><tr><td class="has-text-align-center" data-align="center"><img class="wp-image-272" style="width: 150px;" src="https://bg.manu-scholz.com/wp-content/uploads/2021/07/pexels-scott-webb-4302081.jpg" alt=""></td></tr><tr><td class="has-text-align-center" data-align="center">CURSO DE EJEMPLO EN WORDPRESS</td></tr><tr><td class="has-text-align-center" data-align="center">Curso orientado a principiantes y personas avanzadas, descripción sobre el curso, público al que va orientado y las siguientes opciones que se muestran representan los intereses del posible cliente o comprador:</td></tr><tr><td class="has-text-align-center" data-align="center">» <strong>Interés del cliente, ventaja del curso o característica importante</strong></td></tr><tr><td class="has-text-align-center" data-align="center"> » <strong>Interés del cliente, ventaja del curso o característica importante</strong> </td></tr><tr><td class="has-text-align-center" data-align="center"> » <strong>Interés del cliente, ventaja del curso o característica importante</strong> </td></tr><tr><td class="has-text-align-center" data-align="center"><strong>24€</strong></td></tr><tr><td class="has-text-align-center" data-align="center"><a href="https://bloques-gutenberg.com">Reserva Online</a></td></tr></tbody></table></figure>
+        <!-- /wp:table -->`,
+        TemplateCss: ".template14{width:50%}@media(max-width:920px){.template14{width:95%}}.template14 img{width:100%!important;max-height:230px}.template14 table tr td{border:0;padding:8px 16px}.template14 table tr:nth-child(2) td{line-height:2;font-size:28px;font-weight:700}.template14 table tr:nth-child(n+3) td{font-size:16px;text-align:left}.template14 table tr:nth-child(n+4) td{text-align:center;line-height:1.5;}.template14 table tr:nth-last-child(2) td{font-size:56px}.template14 table tr:last-child td a{border:1px solid #000;font-weight:700;font-size:20px;text-decoration:none;line-height:3.5}@media(max-width:768px){.template14 table tr:nth-child(2) td{line-height:1.3;font-size:26px;font-weight:700}.template14 table tr:nth-child(n+3) td{text-align:center}}\n",
+        TemplateImg: "../images/table-template14.jpg"
+    },
+    {
+        id: 15,
+        name: "caja-para-vender-servicios",
+        type: "box",
+        TemplateHtml:`<!-- wp:columns {"verticalAlignment":null,"align":"full","className":"template15"} -->
+        <div class="wp-block-columns alignfull template15"><!-- wp:column {"verticalAlignment":"center"} -->
+        <div class="wp-block-column is-vertically-aligned-center"><!-- wp:image {"align":"full","id":272,"sizeSlug":"full","linkDestination":"none"} -->
+        <figure class="wp-block-image alignfull size-full"><img src="https://bg.manu-scholz.com/wp-content/uploads/2021/07/pexels-scott-webb-4302081.jpg" alt="" class="wp-image-272"/></figure>
+        <!-- /wp:image --></div>
+        <!-- /wp:column -->
+        
+        <!-- wp:column {"verticalAlignment":"center"} -->
+        <div class="wp-block-column is-vertically-aligned-center"><!-- wp:table -->
+        <figure class="wp-block-table"><table><tbody><tr><td class="has-text-align-left" data-align="left">CURSO DE EJEMPLO EN WORDPRESS</td></tr><tr><td class="has-text-align-left" data-align="left">Curso orientado a principiantes y personas avanzadas, descripción sobre el curso, público al que va orientado y las siguientes opciones que se muestran representan los intereses del posible cliente o comprador:</td></tr><tr><td class="has-text-align-left" data-align="left"><strong>24€</strong></td></tr><tr><td class="has-text-align-left" data-align="left"><a href="https://bloques-gutenberg.com">Reserva Online</a></td></tr></tbody></table></figure>
+        <!-- /wp:table --></div>
+        <!-- /wp:column --></div>
+        <!-- /wp:columns -->`,
+        TemplateCss: ".template15{width:95%;height:100%}.template15 table tr td{border:0}.template15 div:nth-child(2) tr:first-child td{font-size:32px;font-weight:700}.template15 div:nth-child(2) tr:nth-child(2) td{font-size:16px}.template15 div:nth-child(2) tr:nth-child(3) td{font-size:38px;line-height:1.3}.template15 div:nth-child(2) tr:nth-child(4) td a{border:1px solid #000;font-weight:700;font-size:20px;text-decoration:none;line-height:3.5;transition:.7s}.template15 .wp-block-column:not(:first-child){margin-left:16px}@media(max-width:920px){.template15 .wp-block-column{flex-basis:100%!important;display:flex;flex-wrap:wrap}.template15 div:nth-child(2) tr td{text-align:center}}\n",
+        TemplateImg: "../images/box-template15.jpg"
     }
+
 ]
 
 export default Templates

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import styled from "@emotion/styled"
 import { DBContext } from "../components/Firebase/UserDAO.js";
 import StarRatingComponent from 'react-star-rating-component';
+import {SuccessfulMessage, ErrorMessage} from "../styles/styledComponents"
 
 function RateTemplate({isReady, template, authUser, getTotalRating}) {
 
@@ -23,7 +24,8 @@ function RateTemplate({isReady, template, authUser, getTotalRating}) {
                 value={rating}
                 onStarClick={rateOnClick}
             />
-            <ErrorMessage id="error-msg"></ErrorMessage>
+            <ErrorMessage id="rate-template-error"></ErrorMessage>
+            <SuccessfulMessage id="rate-template-success"></SuccessfulMessage>
         </div>
     )
 
@@ -32,9 +34,11 @@ function RateTemplate({isReady, template, authUser, getTotalRating}) {
         if(authUser !== null) {
             setTemplateRating(template.id, authUser.uid, nextValue, getTotalRating)
             rateTemplate(nextValue)
-            document.getElementById("error-msg").innerHtml= "";
+            document.getElementById("rate-template-success").innerHTML = "Gracias por puntuar";
+            document.getElementById("rate-template-error").innerHTML = "";
         } else {
-            document.getElementById("error-msg").innerHTML = "Registrate para poder valorar un bloque";
+            document.getElementById("rate-template-success").innerHTML = "";
+            document.getElementById("rate-template-error").innerHTML = "Inicia sesión o registrate para poder valorar un bloque";
         }
     }
 }
@@ -45,11 +49,4 @@ export default RateTemplate;
 const Label = styled.p`
     font-size: 14px;
     color: lightgray;
-`
-
-const ErrorMessage = styled.span`
-    display: block;
-    font-size: 13px;
-    color: red;
-    flex: 1;
 `

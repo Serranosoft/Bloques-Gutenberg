@@ -7,22 +7,26 @@ import Link from "next/link";
 function Header() {
 
     return (
-        <HeaderSection>
-            <Link href="/">
-                <a>
-                    <HeaderTitle>
-                        <span>Bloques gutenberg</span>
-                        <img src="/images/decoration/plugin.svg" alt="bloques gutenberg" />
-                    </HeaderTitle>
-                </a>
-            </Link>
-{/*             <Menu>
-                <DropdownMenuWrapper>
-                    <Link href="/enviar-idea">Envia tu idea »</Link>
-                </DropdownMenuWrapper>
-            </Menu> */}
-            <DropdownMenu />
-        </HeaderSection>
+        <>
+            <HeaderSection>
+                <Link href="/">
+                    <a>
+                        <HeaderTitle>
+                            <span>Bloques gutenberg</span>
+                            <img src="/images/decoration/plugin.svg" alt="bloques gutenberg" />
+                        </HeaderTitle>
+                    </a>
+                </Link>
+
+
+                <Menu>
+                    <DropdownMenuWrapper>
+                        <Link href="/estadisticas">Estadísticas »</Link>
+                    </DropdownMenuWrapper>
+                </Menu>
+                <DropdownMenu />
+            </HeaderSection>
+        </>
     )
 }
 
@@ -32,7 +36,7 @@ export default Header;
 const HeaderSection = styled.header`
   width: 100%;
   display: flex;
-  padding: 16px 32px;
+  padding: 16px 80px;
   align-items: center;
   justify-content: space-between;
   @media(max-width: 768px) {

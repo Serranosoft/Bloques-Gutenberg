@@ -1,6 +1,7 @@
 import { db } from "./config"
 import { useState, createContext, useContext, useEffect } from 'react';
 import { AuthContext } from "./AuthDAO";
+import { getAverage } from "../../lib/utils";
 
 export const DBContext = createContext()
 
@@ -108,13 +109,13 @@ export const UserDAO = ({ children }) => {
                     ...snap[key]
                 }))
                 const snapValue = snapValues[0];
-                if(snapValue.hasOwnProperty("rating")) {
+                if (snapValue.hasOwnProperty("rating")) {
                     const users = Object.keys(snapValue.rating).map(key => ({
                         ...snapValue.rating[key],
                         key
                     }));
                     for (let i = 0; i < users.length; i++) {
-                        if(users[i].uid === uid) {
+                        if (users[i].uid === uid) {
                             return users[i].key
                         }
                     }
@@ -134,7 +135,7 @@ export const UserDAO = ({ children }) => {
                         ...template.rating[key]
                     }))
                     let totalRating_aux = 0;
-                    for(let i = 0; i < snapValues.length; i++) {
+                    for (let i = 0; i < snapValues.length; i++) {
                         totalRating_aux += snapValues[i].rate
                     }
                     getTotalRating(Math.ceil(totalRating_aux / snapValues.length))
@@ -152,13 +153,13 @@ export const UserDAO = ({ children }) => {
     // Obtan rating chosed for a specific template
     function getUserTemplateRating(id, uid, rateTemplate) {
         getTemplateRef(id).then((response) => {
-            const {key, templateId, ...templateUsers} = response;
-            if(templateUsers.hasOwnProperty("rating")) {
+            const { key, templateId, ...templateUsers } = response;
+            if (templateUsers.hasOwnProperty("rating")) {
                 const users = Object.keys(templateUsers.rating).map(key => ({
                     ...response.rating[key]
                 }));
-                for(let i = 0; i < users.length; i++) {
-                    if(users[i].uid === uid) {
+                for (let i = 0; i < users.length; i++) {
+                    if (users[i].uid === uid) {
                         rateTemplate(users[i].rate)
                         break;
                     } else {
@@ -168,6 +169,10 @@ export const UserDAO = ({ children }) => {
             }
         })
 
+    }
+
+    function setANewTemplate() {
+        db.ref("templates").push({"templateId": 15})
     }
 
     useEffect(() => {
@@ -188,7 +193,8 @@ export const UserDAO = ({ children }) => {
                     removeFavorite,
                     getTemplateTotalRating,
                     setTemplateRating,
-                    getUserTemplateRating
+                    getUserTemplateRating,
+                    setANewTemplate
                 }
             }>
             {children}

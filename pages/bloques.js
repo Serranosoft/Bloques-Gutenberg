@@ -8,10 +8,12 @@ import { AuthContext } from '../components/Firebase/AuthDAO';
 import { withRouter } from 'next/router';
 import { useRouter } from 'next/router'
 
-function TemplateList({ router: { query } }) {
+function TemplateList({ router: { query } }, props) {
+    console.log(props);
     const { authUser } = useContext(AuthContext);
     const router = useRouter();
     const optionChosed = query.optionChosed
+
     useEffect(() => {
         if (!query.optionChosed) {
             router.push("/");
@@ -25,19 +27,18 @@ function TemplateList({ router: { query } }) {
     return (
         <>
             <Head>
-                <title>BLOQUES y DISEÑOS para nichos de Adsense y Amazon para Wordpress</title>
+                <title>Listado de Bloques Prediseñados para Wordpress - Bloques Gutenberg</title>
                 <meta name="description" content="Crea bloques gutenberg para wordpress en nichos de SEO en Adsense o Amazon sin saber programar y sin plugins. SEO amistoso, rápido y adaptables a móvil." />
             </Head>
             <LandingTitle>Elige una  <span style={{
                 color: "#34d399",
                 textAlign: "center"
             }}>plantilla</span></LandingTitle>
-            <DecorationArrow src="/images/decoration/curve-arrow-right.svg" className="scale-up-hor-right" optionChosed={optionChosed}/>
+            <DecorationArrow src="/images/decoration/curve-arrow-right.svg" className="scale-up-hor-right" optionChosed={optionChosed} />
             <ArrowText className="scale-up-hor-right" optionChosed={optionChosed}>¡Escoge una plantilla y personalízala!</ArrowText>
             <TemplateListWrapper type={query.optionChosed}>
                 {Templates.map((el => {
                     if (el.type === query.optionChosed) {
-                        console.log(query.optionChosed);
                         return (
                             <ConditionalLink
                                 key={el.id}
@@ -46,7 +47,7 @@ function TemplateList({ router: { query } }) {
                             >
                                 <a>
                                     <PremiumContentWarn>{!authUser && el.id === 1 || !authUser && el.id === 6 ? "Registrate gratis para usar esta plantilla premium" : ""}</PremiumContentWarn>
-                                    <Template image={el.TemplateImg} />
+                                    <Template image={el.TemplateImg}/>
                                 </a>
                             </ConditionalLink>
                         )
@@ -76,7 +77,7 @@ const LandingTitle = styled.h1`
 
 const TemplateListWrapper = styled.section`
     width: ${props =>
-        props.type === "box" ? "55%" : "73%"};
+        props.type === "box" ? "55%" : "77%"};
     display: grid;
     grid-template-columns: ${props =>
         props.type === "box" ? '1fr' : '1fr 1fr 1fr'};
@@ -88,12 +89,30 @@ const TemplateListWrapper = styled.section`
         width: 95%;
         margin: 0 auto;
     }
-    @media(max-width: 768px) {
-        width: 95%;
-        grid-template-columns: 1fr;
-        & > * {
-            width: 100% !important;
+    & > a img, div {
+        min-height: ${props =>
+        props.type === "box" ? "" : "420px"};
+    }
+    & > a img {
+        max-height: ${props =>
+        props.type === "box" ? "" : "500px"};
+    }
+    @media(min-width: 3840px) {
+        & > a img {
+            max-height: ${props =>
+            props.type === "box" ? "" : "100%"};
         }
+    }
+    @media(max-width: 920px) {
+        width: 75%;
+        grid-template-columns: 1fr;
+        & > a img {
+            max-height: ${props =>
+            props.type === "box" ? "" : "100%"};
+        }
+    }
+    @media(max-width: 480px) {
+        width: 95%;
     }
 `
 
@@ -108,7 +127,7 @@ const PremiumContentWarn = styled.p`
 const PremiumContentWrapper = styled.div`
     width: 60%;
     & > a div {
-        opacity: 0.3;
+        opacity: 0.3 !important;
         cursor: auto;
     }
     & > a div:hover {
@@ -122,10 +141,18 @@ const DecorationArrow = styled.img`
     top: ${props =>
         props.optionChosed === "box" ? '120px' : '120px'};
     left: ${props =>
-        props.optionChosed === "box" ? '-420px' : '-570px'};
+        props.optionChosed === "box" ? '-420px' : '-600px'};
     @media(max-width: 768px) {
         display: none;
     }
+    @media(min-width: 1920px) {
+        left: ${props =>
+        props.optionChosed === "box" ? '-420px' : '-750px'};
+      }
+      @media(min-width: 3840px) {
+        left: ${props =>
+        props.optionChosed === "box" ? '-420px' : '-1500px'};
+      }
 `
 
 const ArrowText = styled.span`
@@ -143,4 +170,12 @@ const ArrowText = styled.span`
     @media(max-width: 768px) {
         display: none;
     }
+    @media(min-width: 1920px) {
+        left: ${props =>
+        props.optionChosed === "box" ? '-425px' : '-700px'};
+    }
+    @media(min-width: 3840px) {
+            left: ${props =>
+        props.optionChosed === "box" ? '-425px' : '-1500px'};
+      }
 `

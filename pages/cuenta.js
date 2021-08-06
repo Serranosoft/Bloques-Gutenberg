@@ -52,7 +52,7 @@ function Account() {
     return (
         <>
             <Head>
-                <title>Tu Cuenta - Acceso a tus bloques gutenberg favoritos | Bloques Gutenberg</title>
+                <title>Cuenta - Bloques Gutenberg</title>
                 <meta name="description" content="Accede a tu cuenta, encuentra tus bloques gutenberg favoritos y consigue acceso a plantillas premium gratis" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
@@ -61,14 +61,12 @@ function Account() {
                 textAlign: "center"
             }}> {userName}</span></LandingTitle>
 
-            <LandingSubtitle>Accede a tus bloques guardados y modifica todos tus datos
-            </LandingSubtitle>
-
+            <LandingSubtitle>Tu panel personal</LandingSubtitle>
             <AccountWrapper>
                 <div style={{ gridArea: "favorites" }}>
                     <BoxTitle>Mis favoritos</BoxTitle>
                     <LandingSubtitle>Accede a tus bloques guardados</LandingSubtitle>
-                    <Link href="/cuenta/favoritos">
+                    <Link href="/cuenta/favoritos" passHref>
                         <LinkWrapper>
                             <Button>Favoritos</Button>
                         </LinkWrapper>
@@ -94,14 +92,21 @@ function Account() {
                     <ErrorMessage id="error-msg"></ErrorMessage>
                     <Button onClick={onSubmit}>Cambiar contraseña</Button>
                 </form>
-                <div style={{ gridArea: "temp1" }}>
-                    <BoxTitle>En construcción</BoxTitle>
+                <div style={{ gridArea: "stats" }}>
+                    <BoxTitle>Puntuación de los bloques</BoxTitle>
+                    <LandingSubtitle>Descúbre cuáles son los bloques mas usados</LandingSubtitle>
+                    <Link href="/estadisticas" passHref>
+                        <LinkWrapper>
+                            <Button>Estadísticas</Button>
+                        </LinkWrapper>
+                    </Link>
                 </div>
                 <div style={{ gridArea: "temp2" }}>
-                    <BoxTitle>En construcción</BoxTitle>
-                </div>
-                <div style={{ gridArea: "temp3" }}>
-                    <BoxTitle>En construcción</BoxTitle>
+                    <BoxTitle>Pídeme un bloque y yo te lo creo gratis 👍</BoxTitle>
+                    <LandingSubtitle>Envíame gratis un mensaje por Twitter con una descripción del bloque o una imágen de referencia</LandingSubtitle>
+                    <LinkWrapper href="https://twitter.com/ImScholz">
+                        <Button>Ir a Twitter</Button>
+                    </LinkWrapper>
                 </div>
             </AccountWrapper>
         </>
@@ -143,7 +148,7 @@ const AccountWrapper = styled.div`
     display: grid;
     grid-template-areas:
     "favorites favorites changepassword changepassword"
-    "temp1 temp1 temp2 temp3";
+    "stats stats temp2 temp2";
     gap: 40px;
     margin: 48px auto;
     & > div, & > form {
@@ -165,9 +170,9 @@ const AccountWrapper = styled.div`
         grid-template-areas:
         "favorites"
         "changepassword"
-        "temp1"
+        "stats"
         "temp2"
-        "temp3";
+        "temp2";
         gap: 30px;
         margin: 32px auto;
     }

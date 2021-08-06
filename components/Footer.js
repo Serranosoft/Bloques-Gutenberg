@@ -99,10 +99,8 @@ const Menu = styled.div`
 `
 
 const MenuColumn = styled.div`
-    display: flex;
-    flex-direction: column;
-
     & > a {
+        width: 95px;
         display: block;
         color: lightgray;
         text-decoration: none;

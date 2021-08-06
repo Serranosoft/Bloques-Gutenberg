@@ -10,13 +10,16 @@ import { DBContext } from "../../components/Firebase/UserDAO.js";
 import { generateRandomId } from "../../lib/utils"
 import StarRatingComponent from 'react-star-rating-component';
 import RateTemplate from "../../components/RateTemplate"
+import { getPostBySlug } from "../../lib/api.js";
+import { AboutMe } from "../../styles/styledComponents"
 
 function PersonalizeTemplate(props) {
 
-    const template = props;
+    const template = props.template;
+
 
     const { authUser } = useContext(AuthContext);
-    const { getTemplateTotalRating } = useContext(DBContext)
+    const { getTemplateTotalRating, setANewTemplate } = useContext(DBContext)
 
     const [styling, changeStyling] = useState({
         color: "#1C1C1C",
@@ -81,8 +84,8 @@ function PersonalizeTemplate(props) {
                 }}>plantilla</span></LandingTitle>
 
                 <Workspace>
-                    <DecorationArrow src="/images/decoration/curve-arrow-right.svg" className="scale-up-hor-right" type={template.type} />
-                    <ArrowText className="scale-up-hor-right" type={template.type}>Así es como quedará en tu página web, visita la web en tu móvil para ver la versión adaptada</ArrowText>
+                    <DecorationArrow src="/images/decoration/curve-arrow-right.svg" type={template.type} />
+                    <ArrowText type={template.type}>Así es como quedará en tu página web, visita la web en tu móvil para ver la versión adaptada</ArrowText>
                     <div style={{ fontSize: 28, textAlign: "center" }}>
                         <StarRatingComponent
                             name={"templateRate"}
@@ -104,7 +107,7 @@ function PersonalizeTemplate(props) {
                         authUser={authUser}
                         getTotalRating={getTotalRating}
                     />
-                    <Button onClick={showResult}>OBTENER CÓDIGO</Button>
+                    <Button onClick={showResult} className="hvr-sweep-to-right">OBTENER CÓDIGO</Button>
                     <AddFavorites
                         template={template}
                         stylingButton={stylingButton}
@@ -123,6 +126,20 @@ function PersonalizeTemplate(props) {
                         <SuccessfulMessage id="css-copied" className="slide-top">¡Copiado!</SuccessfulMessage>
                     </div>
                 </CodeSpace>
+                <SpinContainer>
+                    <aside>
+                        <h1>{props.data.title}</h1>    
+                        <div dangerouslySetInnerHTML={{ __html: props.data.content }}></div>
+                    </aside>
+                    <AboutMe>
+                        <div>
+                            <img src="/images/decoration/avatar.jpg" />
+                        </div>
+                        <div>
+                            <span>Hola, soy Manuel Scholz, fundador de Bloques Gutenberg, puedes seguir el progreso de la construcción de esta herramienta en <a href="https://twitter.com/ImScholz" target="_blank" style={{ color: "#34d399", textDecoration: "underline" }}>mi Twitter</a></span>
+                        </div>
+                    </AboutMe>
+                </SpinContainer>
             </>
         )
     } else {
@@ -171,7 +188,7 @@ function PersonalizeTemplate(props) {
     function showResult() {
         let codespace = document.getElementById("codespace");
         codespace.setAttribute("style", "display: grid");
-        window.scrollTo({ top: document.body.scrollHeight - 1000, behavior: "smooth" });
+        window.scrollTo({ top: window.innerHeight + 650, behavior: "smooth" });
     }
 
     function HtmlClipBoard() {
@@ -214,8 +231,12 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
     const name = context.params.name;
+    const data = await getPostBySlug(context.params.name)
     return {
-        props: Templates.find((el) => el.name === name),
+        props: {
+            template: Templates.find((el) => el.name === name),
+            data: data
+        }
     };
 }
 
@@ -239,7 +260,7 @@ const LandingTitle = styled.h1`
 `
 
 const Workspace = styled.div`
-    width: 55%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -296,7 +317,7 @@ const DecorationArrow = styled.img`
     width: 50px;
     position: relative;
     top: ${props =>
-        props.type === "box" ? '80px' : '70px'};
+        props.type === "box" ? '65px' : '70px'};
     left: ${props =>
         props.type === "box" ? '-450px' : '-210px'};
     @media(max-width: 920px) {
@@ -313,7 +334,7 @@ const DecorationArrow = styled.img`
 const ArrowText = styled.span`
     position: relative;
     top: ${props =>
-        props.type === "box" ? '-5px' : '-15px'};
+        props.type === "box" ? '-20px' : '-15px'};
     left: ${props =>
         props.type === "box" ? '-300px' : '-230px'};
     color: #34d399;
@@ -349,4 +370,43 @@ const SuccessfulMessage = styled.span`
     color: #2b702f;
     text-align: center;
     transition: 1s;
+`
+
+const SpinContainer = styled.div`
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 50px;
+    padding: 20px 80px;
+    border-radius: 30px;
+    background-color: #151b24;
+    @media(max-width: 768px) {
+        width: 95%;
+        grid-template-columns: 1fr;
+        padding: 24px;
+    }
+    & > aside {
+        & > h1 {
+            font-size: 28px;
+        }
+    }
+    & > aside div {
+        padding: 0px 40px 24px 40;
+        border-radius: 30px;
+        & > p {
+            line-height: 1.7;
+            margin: 36px 0;
+            color: #dbdbdb;
+            font-size: 16.5px;
+        }
+        & > p a {
+            color: #1f6952;
+        }
+    }
+    & > div {
+        align-self: flex-start;
+        position: sticky;
+        top: 50px;
+    }
+
 `

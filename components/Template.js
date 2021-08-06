@@ -5,8 +5,8 @@ import styled from '@emotion/styled'
 function Template({ image }) {
 
     return (
-        <TemplateWrapper>
-                <TemplateImage src={(image)} />
+        <TemplateWrapper className="rotate-in-2-cw">
+                <TemplateImage src={(image)} className="hvr-float-shadow"/>
         </TemplateWrapper>
     )
 }

@@ -19,8 +19,6 @@ export default function Home() {
         <meta name="og:description" content="Elige y personaliza un bloque gutenberg (Adsense y Amazon) sin instalar plugins en tu página web, optimizados y adaptado a todos los dispositivos" />
         <meta property="og:image" content="https://bg.manu-scholz.com/wp-content/uploads/2021/07/bloques-gutenberg-twitter2.jpg" />
         <meta name="og:image" content="https://bg.manu-scholz.com/wp-content/uploads/2021/07/bloques-gutenberg-twitter2.jpg" />
-        {/* <meta property="og:image:width" content="600" />
-        <meta property="og:image:height" content="550" /> */}
         <meta property="og:url" content="https://bloques-gutenberg.com/" />
         <meta property="og:type" content="website" />
       </Head>
@@ -49,13 +47,13 @@ export default function Home() {
         <DecorationArrow
           src="/images/decoration/curve-arrow-right.svg"
           arrowRight />
-        <OptionWrapper>
+        <OptionWrapper className="wobble-hor-bottom">
           <Link href={{
             pathname: '/bloques',
             query: { optionChosed: "box" },
           }} as="/bloques" passHref>
             <a>
-              <ImageOption src="/images/opcion-caja.png" />
+              <ImageOption src="/images/opcion-caja.png"/>
             </a>
           </Link>
           <Link href={{
@@ -63,7 +61,7 @@ export default function Home() {
             query: { optionChosed: "table" },
           }} as="/bloques" passHref>
             <a>
-              <ImageOption src="/images/opcion-tabla2.png" />
+              <ImageOption src="/images/opcion-tabla2.png"/>
             </a>
           </Link>
         </OptionWrapper>
@@ -80,6 +78,37 @@ export default function Home() {
             <span>Hola, soy Manuel Scholz, fundador de Bloques Gutenberg, puedes seguir el progreso de la construcción de esta herramienta en <a href="https://twitter.com/ImScholz" target="_blank" style={{ color: "#34d399", textDecoration: "underline" }}>mi Twitter</a></span>
           </div>
         </AboutMe>
+        <LandingInfoTitle>Decora tu web, <span style={{ color: "#34d399" }}>en segundos</span></LandingInfoTitle>
+        <CTA2Columns>
+          <div>
+            <H2>Cajas Informativas</H2>
+            <LandingInfoBoxDescr>Consigue atraer mas público con elegantes cajas informativas para tus webs y aumenta tus ingresos en Adsense.</LandingInfoBoxDescr>
+            <button className="hvr-sweep-to-right">
+              <Link href={{
+                pathname: '/bloques',
+                query: { optionChosed: "box" },
+              }} as="/bloques" passHref>
+                <a>
+                  Aumenta mis ganancias con cajas
+                </a>
+              </Link>
+            </button>
+          </div>
+          <div>
+            <H2>Tablas de Productos</H2>
+            <LandingInfoBoxDescr>Consigue una mayor conversión de ventas enseñando tus productos de Amazon Afiliados con bonitas comparativas.</LandingInfoBoxDescr>
+            <button className="hvr-sweep-to-right">
+              <Link href={{
+                pathname: '/bloques',
+                query: { optionChosed: "table" },
+              }} as="/bloques" passHref>
+                <a>
+                  Aumenta mis ganancias con tablas
+                </a>
+              </Link>
+            </button>
+          </div>
+        </CTA2Columns>
         <LandingInfoTitle><span style={{ color: "#34d399" }}>Características</span> de los bloques gutenberg</LandingInfoTitle>
         <Grid4Options>
           <div>
@@ -128,37 +157,15 @@ export default function Home() {
             <img src="/images/decoration/oxygen.svg" style={{ gridColumn: "1 / 3" }} />
           </CompatibilitySvgWrapper>
         </CompatibilitySection>
-        <LandingInfoTitle>Decora tu web, <span style={{ color: "#34d399" }}>en segundos</span></LandingInfoTitle>
-        <CTA2Columns>
+        <FeaturesAndSections>
           <div>
-            <H2>Cajas Informativas</H2>
-            <LandingInfoBoxDescr>Consigue atraer mas público con elegantes cajas informativas para tus webs y aumenta tus ingresos en Adsense.</LandingInfoBoxDescr>
-            <button>
-              <Link href={{
-                pathname: '/bloques',
-                query: { optionChosed: "box" },
-              }} as="/bloques" passHref>
-                <a>
-                  Aumenta mis ganancias con cajas
-                </a>
-              </Link>
-            </button>
+            <img src="/images/decoration/section-feature1.jpg" />
           </div>
           <div>
-            <H2>Tablas de Productos</H2>
-            <LandingInfoBoxDescr>Consigue una mayor conversión de ventas enseñando tus productos de Amazon Afiliados con bonitas comparativas.</LandingInfoBoxDescr>
-            <button>
-              <Link href={{
-                pathname: '/bloques',
-                query: { optionChosed: "table" },
-              }} as="/bloques" passHref>
-                <a>
-                  Aumenta mis ganancias con tablas
-                </a>
-              </Link>
-            </button>
+            <H2>Descúbre los bloques gutenberg mas usados</H2>
+            <LandingInfoBoxDescr>Accede a las <Link href="/estadisticas">estadísticas</Link> de la web para saber cuales son los bloques mas populares y descúbre que puntuación han dado los usuarios a cada bloque que han personalizado y usado en sus webs y nichos</LandingInfoBoxDescr>
           </div>
-        </CTA2Columns>
+        </FeaturesAndSections>
         <LandingInfoTitle>Aprende a crear uno y <span style={{ color: "#34d399" }}>publicarlo en 1 minuto</span></LandingInfoTitle>
         <VideoTutorialWrapper>
           <LandingSubtitle>
@@ -184,9 +191,12 @@ const LandingTitle = styled.h1`
     text-align: center;
     @media(max-width: 768px) {
         padding: 16px 12px 8px 12px;
-        font-size: 29px;
+        font-size: 38px;
         line-height: 1.3;
         word-spacing: 1px;
+    }
+    @media(max-width: 480px) {
+      font-size: 30px;
     }
 `
 
@@ -341,11 +351,14 @@ const AboutMe = styled.div`
       }
     }
     @media(max-width: 768px) {
-      width: 100%;
+      width: 75%;
       grid-template-columns: 1fr;
       & > div {
         display: flex;
       }
+    }
+    @media(max-width: 480px) {
+      width: 100%;
     }
     `
 
@@ -355,12 +368,12 @@ const CTA2Columns = styled.div`
     margin: 24px 0 120px 0;
     & > div {
       width: 40%;
-    display: flex;
-    flex-direction: column;
-    @media(max-width: 768px) {
-      width: 100%;
-      text-align: center;
-    }
+      display: flex;
+      flex-direction: column;
+      @media(max-width: 768px) {
+        width: 100%;
+        text-align: center;
+      }
     }
     & > div button {
       width: 75%;
@@ -383,8 +396,11 @@ const CTA2Columns = styled.div`
         transform: scale(0.95);
       }
       @media(max-width: 768px) {
-        width: 100%;
+        width: 50%;
         margin: 22px auto;
+      }
+      @media(max-width: 480px) {
+        width: 100%;
       }
     }
     @media(max-width: 768px) {
@@ -432,7 +448,7 @@ const CompatibilitySection = styled.div`
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: 30px;
-    margin: 24px 0 100px 0;
+    margin: 24px 0 60px 0;
     @media(max-width: 768px) {
       grid-template-columns: 1fr;
       margin: 32px 0 50px 0;
@@ -502,6 +518,9 @@ const H2 = styled.h2`
     font-weight: bold;
     margin: 16px 0;
     @media(max-width: 768px) {
+      font-size: 28.5px;
+    }
+    @media(max-width: 480px) {
       font-size: 22.5px;
     }
 `
@@ -517,7 +536,38 @@ const LandingInfoBoxDescr = styled.p`
     @media(max-width: 768px) {
       font-size: 16px;
       line-height: 1.4;
-      text-align: left;
+      text-align: center;
       margin: 16px auto;
+    }
+`
+
+const FeaturesAndSections = styled.div`
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 50px;
+    justify-content: center;
+    margin: 100px auto 120px auto;
+    & > div {
+      width: 100%;
+    }
+    & > div img {
+      padding: 8px;
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+      box-shadow: 3px 8px 30px black;
+      border-radius: 30px;
+    }
+    & > div p {
+      line-height: 1.6;
+      margin: 32px 0;
+    }
+    @media(max-width: 768px) {
+      display: flex;
+      flex-direction: column-reverse;
+      & > div h2 {
+        text-align: center;
+      }
     }
 `
