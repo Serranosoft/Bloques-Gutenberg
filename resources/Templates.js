@@ -197,6 +197,26 @@ const Templates = [
         TemplateImg: "../images/table-template6.jpg"
     },
     {
+        id: 7,
+        name: "caja-de-ingredientes-para-recetas",
+        type: "box",
+        TemplateHtml: `<!-- wp:columns {"className":"template7"} -->
+        <div class="wp-block-columns template7"><!-- wp:column {"width":"50%"} -->
+        <div class="wp-block-column" style="flex-basis:50%"><!-- wp:list {"ordered":true} -->
+        <ol><li>Ingrediente número 1 o ingrediente número 6</li><li>Ingrediente número 2</li><li>Ingrediente número 3</li><li>Ingrediente número 4</li><li>Ingrediente número 5</li></ol>
+        <!-- /wp:list --></div>
+        <!-- /wp:column -->
+        
+        <!-- wp:column {"width":"50%"} -->
+        <div class="wp-block-column" style="flex-basis:50%"><!-- wp:image {"align":"full","id":386,"sizeSlug":"full","linkDestination":"none"} -->
+        <figure class="wp-block-image alignfull size-full"><img src="https://bg.manu-scholz.com/wp-content/uploads/2021/08/receta-de-paninni-air-fryer.jpg" alt="" class="wp-image-386"/></figure>
+        <!-- /wp:image --></div>
+        <!-- /wp:column --></div>
+        <!-- /wp:columns -->`,
+        TemplateCss: ".template7 ol{list-style:none;counter-reset:item;padding-left:8px}.template7 ol li{counter-increment:item;margin:32px 0;padding-right:5px}.template7 ol li:before{margin-right:8px;content:counter(item);background:#f8a5c2;border-radius:100%;color:#000;width:2em;text-align:center;display:inline-block;font-size:20px}.wp-block-column:not(:first-child){margin-left:0}.template7>div figure{height:100%!important}.template7>div figure img{height:100%}\n",
+        TemplateImg: "../images/box-template7.jpg"
+    },
+    {
         id: 13,
         name: "caracteristicas-con-3-imagenes",
         type: "box",

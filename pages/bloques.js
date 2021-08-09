@@ -95,7 +95,7 @@ const TemplateListWrapper = styled.section`
     }
     & > a img {
         max-height: ${props =>
-        props.type === "box" ? "" : "500px"};
+        props.type === "box" ? "370px" : "500px"};
     }
     @media(min-width: 3840px) {
         & > a img {

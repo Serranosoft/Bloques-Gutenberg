@@ -172,7 +172,7 @@ export const UserDAO = ({ children }) => {
     }
 
     function setANewTemplate() {
-        db.ref("templates").push({"templateId": 15})
+        db.ref("templates").push({"templateId": 7})
     }
 
     useEffect(() => {

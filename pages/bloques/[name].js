@@ -21,6 +21,7 @@ function PersonalizeTemplate(props) {
     const { authUser } = useContext(AuthContext);
     const { getTemplateTotalRating, setANewTemplate } = useContext(DBContext)
 
+
     const [styling, changeStyling] = useState({
         color: "#1C1C1C",
         background: "#ffffff",
